@@ -57,11 +57,15 @@ export default function reducer(state = initialState, action) {
                 errors: action.payload
             }
         case SET_FEED_SUCCESS:
+            const imagesObjs = {}
+            for (let image of action.payload) {
+                imagesObjs[image.id] = image
+            }
             return {
                 ...state,
                 loading: false,
                 errors: null,
-                images: action.payload
+                images: imagesObjs
             }
         default:
             return state;
