@@ -65,11 +65,12 @@ export const set_image = (imgUrl, caption) => async (dispatch) => {
     dispatch(setImageBegin());
     const response = await fetch('/api/image_feed/create', {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
             imgUrl,
             caption,
-            totalLikes: 0,
-            createdAt: Date.now()
         }),
     })
 

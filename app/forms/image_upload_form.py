@@ -3,6 +3,6 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 
-class LoginForm(FlaskForm):
+class ImageUploadForm(FlaskForm):
     imgUrl = StringField('Image Url', validators=[DataRequired()])
     caption = StringField('Caption')

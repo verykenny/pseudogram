@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
-    const userId = useSelector(state => state.session.user.id)
+    const user = useSelector(state => state.session.user)
 
     return (
         <nav>
@@ -35,11 +35,13 @@ const NavBar = () => {
                         Feed
                     </NavLink>
                 </li>
+
                 <li>
-                    <NavLink to={`/users/${userId}`} exact={true} activeClassName='active'>
+                    <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
                         Profile
                     </NavLink>
                 </li>
+
                 <li>
                     <LogoutButton />
                 </li>
