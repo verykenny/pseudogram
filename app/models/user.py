@@ -10,7 +10,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profileImgUrl = db.Column(db.String)
+    profileImgUrl = db.Column(
+        db.String, default='https://i.pinimg.com/474x/60/13/a3/6013a33f806d8d74f43ee2eb565ff4dc.jpg')
 
     image = db.relationship("Image", back_populates='images')
     likes = db.relationship("Like", back_populates='like')
