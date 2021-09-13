@@ -4,7 +4,7 @@ import { get_feed } from "../../store/feed";
 
 
 const ImageFeed = () => {
-    const images = useSelector(state => state.feed)
+    const feed = useSelector(state => state.feed)
     const dispatch = useDispatch()
 
 
@@ -16,6 +16,13 @@ const ImageFeed = () => {
     return (
         <>
             <h1>Image Feed</h1>
+            {feed.loading === true && <h2>Loading</h2>}
+            {feed.images && feed.images.map(image => (
+                <>
+                    <p>{image.caption}</p>
+                    <p>{image.userId}</p>
+                </>
+            ))}
         </>
     )
 }
