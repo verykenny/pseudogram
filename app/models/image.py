@@ -31,5 +31,5 @@ class Image(db.Model):
             'imgUrl': self.imgUrl,
             'caption': self.caption,
             'totalLikes': self.totalLikes,
-            'createdAt': self.createdAt
+            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
         }
