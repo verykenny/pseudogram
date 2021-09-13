@@ -64,5 +64,5 @@ def upload_image():
 def delete_image(imgId):
     image = Image.query.get(imgId)
     db.session.delete(image)
-    db.session.commit
-    return {'message': 'image deleted'}
+    db.session.commit()
+    return {'imgId': imgId}
