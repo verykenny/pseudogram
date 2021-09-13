@@ -1,7 +1,5 @@
 import React from "react";
-import { NavLink, Route } from 'react-router-dom';
-
-// import { useDispatch } from "react-redux"
+import { NavLink } from 'react-router-dom';
 
 const Profile = () => {
 
