@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { get_feed } from "../../store/feed";
 
 
-const ImageUploadModal = () => {
+const ImageUploadForm = () => {
     const [imgUrl, setImgUrl] = useState('')
     const [imageProvided, setImageProvided] = useState(false)
     const [caption, setCaption] = useState('')
@@ -58,4 +58,4 @@ const ImageUploadModal = () => {
 }
 
 
-export default ImageUploadModal;
+export default ImageUploadForm;

@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ImageFeed from './components/ImageFeed/ImageFeed';
 import Profile from './components/Profile/Profile';
-import ImageUploadModal from './components/ImageUploadModals/ImageUploadModal';
+import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
 import { authenticate } from './store/session';
 
 function App() {
