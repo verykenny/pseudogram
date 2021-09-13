@@ -59,9 +59,28 @@ def upload_image():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@image_routes.route('/<int:imgId>', methods=['PUT'])
+def update_image(imgId):
+    """
+    Update image caption on the database and return the image
+    """
+    form = ImageUploadForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        image = Image.query.get(imgId)
+        image.caption = form['caption'].data
+        db.session.add(image)
+        db.session.commit()
+        return {'image': image.to_dict()}
+
+
 @image_routes.route('/<int:imgId>', methods=['DELETE'])
 @login_required
 def delete_image(imgId):
+    """
+    Delete and image from the database
+    """
     image = Image.query.get(imgId)
     db.session.delete(image)
     db.session.commit()
