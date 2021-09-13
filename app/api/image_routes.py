@@ -57,3 +57,12 @@ def upload_image():
         return {'image': image.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@image_routes.route('/<int:imgId>', methods=['DELETE'])
+@login_required
+def delete_image(imgId):
+    image = Image.query.get(imgId)
+    db.session.delete(image)
+    db.session.commit
+    return {'message': 'image deleted'}
