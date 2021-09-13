@@ -6,6 +6,7 @@ now = datetime.now()
 
 
 def seed_images():
+
     img1 = Image(userId=2, imgUrl='https://scontent-bos3-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/211360836_1721868358020900_8685700322860583052_n.jpg?_nc_ht=scontent-bos3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=uKK7qzRdSbMAX-1tXZX&edm=AP_V10EBAAAA&ccb=7-4&oh=9cb9e959ad18640ea35ccb504e841ff4&oe=6145912E&_nc_sid=4f375e',
                  caption='Don’t trust everything you see, even salt looks like sugar', totalLikes=0, createdAt=f'{now}')
     img2 = Image(userId=1, imgUrl='https://scontent-bos3-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/241289134_1760211510845481_5556064939689026643_n.jpg?_nc_ht=scontent-bos3-1.cdninstagram.com&_nc_cat=1&_nc_ohc=hQevMUfNS_wAX_8yZH1&edm=AP_V10EBAAAA&ccb=7-4&oh=2a052c5598b376eba9be35dd02db4d94&oe=61473167&_nc_sid=4f375e',
