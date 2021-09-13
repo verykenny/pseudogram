@@ -22,7 +22,7 @@ class Image(db.Model):
     images = db.relationship("User", back_populates='image')
     likes = db.relationship("Like", back_populates='imageLiked')
     comment = db.relationship("Comment", back_populates='image')
-    tag = db.relationship("imageTag", back_populates='taggedImg')
+    tag = db.relationship("ImageTag", back_populates='taggedImg')
 
     def to_dict(self):
         return {
