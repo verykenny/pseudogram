@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux"
+import { set_image } from "../../store/feed";
 
 import './ImageUploadForm.css'
 
@@ -17,7 +18,7 @@ const ImageUploadForm = () => {
 
     const handleImagePost = (e) => {
         e.preventDefault()
-        dispatch()
+        dispatch(set_image(imgUrl, caption))
     }
 
     return (
