@@ -12,11 +12,16 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profileImgUrl = db.Column(db.String)
 
-    follow = db.relationship("Follow", back_populates='following')
-    folowers = db.relationship("Follow", back_populates='follower')
     image = db.relationship("Image", back_populates='images')
     likes = db.relationship("Like", back_populates='like')
     comment = db.relationship("Comment", back_populates='commenter')
+
+    following = db.relationship(
+        'User', lambda: user_following,
+        primaryjoin=lambda: User.id == user_following.c.user_id,
+        secondaryjoin=lambda: User.id == user_following.c.following_id,
+        backref='followers'
+    )
 
     @property
     def password(self):
@@ -36,3 +41,11 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profileImgUrl': self.profileImgUrl
         }
+
+
+user_following = db.Table(
+    'user_following',
+    db.Column('user_id', db.Integer, db.ForeignKey(User.id), primary_key=True),
+    db.Column('following_id', db.Integer,
+              db.ForeignKey(User.id), primary_key=True)
+)
