@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { get_feed } from "../../store/feed";
 
+import './ImageUploadForm.css'
+
 
 const ImageUploadForm = () => {
     const [imgUrl, setImgUrl] = useState('')
@@ -39,7 +41,7 @@ const ImageUploadForm = () => {
             {imageProvided && (
                 <>
                     <h1>update with info</h1>
-                    <img src={imgUrl} alt='to be uploaded'></img>
+                    <img class='uploading' src={imgUrl} alt='to be uploaded'></img>
                     <form onSubmit={handleImagePost}>
                         <div>
                             <textarea
