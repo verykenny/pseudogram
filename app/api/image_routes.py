@@ -5,7 +5,7 @@ from app.models.image import Image
 image_routes = Blueprint('images', __name__)
 
 
-@image_routes('/')
+@image_routes.route('/')
 def image_feed():
     images = Image.query.all()
 
