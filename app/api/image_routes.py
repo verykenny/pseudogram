@@ -28,6 +28,7 @@ def image_feed():
 def upload_image():
 
     newImage = request.body
+    print(newImage)
 
     image = Image()
 
