@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Image, User
+from app.models import Image, User, image
 from flask_login import current_user, login_required
 
 
@@ -8,7 +8,7 @@ image_routes = Blueprint('images', __name__)
 
 @image_routes.route('/images')
 @login_required
-def another_image_feed():
+def image_feed():
     """
     Return list of images created by session user and their followers
     """
@@ -21,3 +21,14 @@ def another_image_feed():
     images.extend(followingsImages)
 
     return {'images': [image.to_dict() for image in images]}
+
+
+@image_routes.route('/create', methods=['POST'])
+@login_required
+def upload_image():
+
+    newImage = request.body
+
+    image = Image()
+
+    return {'image': image.to_dict()}
