@@ -39,9 +39,12 @@ def image_feed():
 @image_routes.route('/create', methods=['POST'])
 @login_required
 def upload_image():
+    """
+    Add image to the database and return the image
+    """
     form = ImageUploadForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.validate_on_submit())
+
     if form.validate_on_submit():
         image = Image()
         form.populate_obj(image)
@@ -50,6 +53,7 @@ def upload_image():
         image.createdAt = datetime.now()
         db.session.add(image)
         db.session.commit()
-        print(image)
+
         return {'image': image.to_dict()}
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
