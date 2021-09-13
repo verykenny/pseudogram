@@ -27,8 +27,7 @@ def image_feed():
 @login_required
 def upload_image():
 
-    newImage = request.body
-    print(newImage)
+    print(dir(request))
 
     image = Image()
 
