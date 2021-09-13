@@ -41,13 +41,10 @@ function App() {
                     <UsersList />
                 </ProtectedRoute>
                 <ProtectedRoute path='/users/:userId' exact={true} >
-                    <User />
+                    <Profile />
                 </ProtectedRoute>
                 <ProtectedRoute path='/home' exact={true} >
                     <ImageFeed />
-                </ProtectedRoute>
-                <ProtectedRoute path='/profile' exact={true} >
-                    <Profile />
                 </ProtectedRoute>
                 <ProtectedRoute path='/' exact={true} >
                     <h1>My Home Page</h1>
