@@ -70,8 +70,10 @@ def seed_images():
                   caption='There\'s no place like home - The Wizard of Oz', totalLikes=0, createdAt=f'{now}')
     img32 = Image(userId=4, imgUrl='https://images.unsplash.com/photo-1604537529586-87ac173f4310?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                   caption='boxed water is better', totalLikes=0, createdAt=f'{now}')
+    img33 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1515735543535-12664d2453f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+                  caption='big ole cat fishy', totalLikes=0, createdAt=f'{now}')
     seeds = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13,
-             img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32]
+             img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33]
 
     for i in seeds:
         db.session.add(i)

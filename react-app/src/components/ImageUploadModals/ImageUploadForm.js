@@ -41,7 +41,7 @@ const ImageUploadForm = () => {
             {imageProvided && (
                 <>
                     <h1>update with info</h1>
-                    <img class='uploading' src={imgUrl} alt='to be uploaded'></img>
+                    <img className='uploading' src={imgUrl} alt='to be uploaded'></img>
                     <form onSubmit={handleImagePost}>
                         <div>
                             <textarea

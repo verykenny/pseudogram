@@ -6,10 +6,12 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import ImageFeed from './components/ImageFeed/ImageFeed';
+import ImageFeed from './components/ImageFeed';
 import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
 import { authenticate } from './store/session';
+import ImageEditForm from './components/ImageEditForm';
+import { get_feed } from './store/feed';
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -18,6 +20,7 @@ function App() {
     useEffect(() => {
         (async () => {
             await dispatch(authenticate());
+            await dispatch(get_feed())
             setLoaded(true);
         })();
     }, [dispatch]);
@@ -44,6 +47,9 @@ function App() {
                 </ProtectedRoute>
                 <ProtectedRoute path='/home' exact={true} >
                     <ImageFeed />
+                </ProtectedRoute>
+                <ProtectedRoute path='/images/:imageId' exact={true} >
+                    <ImageEditForm />
                 </ProtectedRoute>
                 <ProtectedRoute path='/' exact={true} >
                     <h1>My Home Page</h1>
