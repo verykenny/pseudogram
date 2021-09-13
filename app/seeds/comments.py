@@ -11,10 +11,51 @@ def seed_comments():
                  edited=False, createdAt=f'{now}')
     c3 = Comment(userId=2, imgId=3, content='ok dog',
                  edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
+    # c3 = Comment(userId=2, imgId=3, content='ok dog',
+    #              edited=False, createdAt=f'{now}')
 
-    db.session.add(c1)
-    db.session.add(c2)
-    db.session.add(c3)
+    seeds = [c1, c2, c3]
+
+    for i in seeds:
+        db.session.add(i)
 
     db.session.commit()
 
