@@ -110,6 +110,27 @@ export default function reducer(state = initialState, action) {
                 errors: null,
                 images: imagesObjs
             }
+        case SET_IMAGE_BEGIN:
+            return {
+                ...state,
+                loading: true,
+                errors: null
+            }
+        case SET_IMAGE_FAIL:
+            return {
+                ...state,
+                images: {},
+                loading: false,
+                errors: action.payload
+            }
+        case SET_IMAGE_SUCCESS:
+            const newState = {
+                ...state,
+                loading: false,
+                errors: null,
+            }
+            newState['images'][action.payload.image.id] = action.payload.image
+            return newState
         default:
             return state;
     }
