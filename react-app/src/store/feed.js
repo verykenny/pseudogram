@@ -101,6 +101,28 @@ export const set_image = (imgUrl, caption) => async (dispatch) => {
     }
 }
 
+export const update_image = (imgId, caption) => async (dispatch) => {
+    dispatch(setImageBegin());
+    const response = await fetch(`/api/image_feed/${imgId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            caption,
+        }),
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            dispatch(setImageFail('error'))
+            return;
+        }
+        dispatch(setImageSuccess(data))
+    }
+}
+
 
 export const delete_image = (imgId) => async (dispatch) => {
     dispatch(deleteImageBegin());
