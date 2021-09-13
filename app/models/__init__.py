@@ -5,3 +5,4 @@ from .like import Like
 from .comment import Comment
 from .tag import Tag
 from .imageTag import ImageTag
+from .user import user_following
