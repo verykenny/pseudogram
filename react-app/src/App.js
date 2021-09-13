@@ -6,7 +6,6 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
 import ImageFeed from './components/ImageFeed/ImageFeed';
 import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';

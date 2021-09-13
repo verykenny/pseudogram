@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { get_feed } from "../../store/feed";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux"
 
 import './ImageUploadForm.css'
 
