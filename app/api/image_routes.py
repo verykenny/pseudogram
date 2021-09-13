@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from app.models import db, Image, User
 from flask_login import current_user, login_required
-from app.forms import ImageUploadForm
+from app.forms import ImageUploadForm, ImageUpdateForm
 from datetime import datetime
 
 
@@ -64,7 +64,7 @@ def update_image(imgId):
     """
     Update image caption on the database and return the image
     """
-    form = ImageUploadForm()
+    form = ImageUpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -73,6 +73,8 @@ def update_image(imgId):
         db.session.add(image)
         db.session.commit()
         return {'image': image.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @image_routes.route('/<int:imgId>', methods=['DELETE'])

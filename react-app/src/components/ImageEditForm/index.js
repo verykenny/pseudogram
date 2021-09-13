@@ -3,19 +3,19 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { update_image } from "../../store/feed";
 
-import './ImageUploadForm.css'
+
 
 
 const ImageEditForm = () => {
-    const { imgId } = useParams()
-    const image = useSelector(state => state.feed.images[imgId])
-
-    const [caption, setCaption] = useState('')
+    const { imageId } = useParams()
+    const image = useSelector(state => state.feed.images[imageId])
+    console.log(image);
+    const [caption, setCaption] = useState(image.caption)
     const dispatch = useDispatch()
 
     const handleImagePost = (e) => {
         e.preventDefault()
-        dispatch(update_image(imgId, caption))
+        dispatch(update_image(imageId, caption))
     }
 
     return (
@@ -32,7 +32,7 @@ const ImageEditForm = () => {
                             ></textarea>
                         </div>
                         <div>
-                            <button type='submit'>Post</button>
+                            <button type='submit'>Update</button>
                         </div>
                     </form>
                 </>

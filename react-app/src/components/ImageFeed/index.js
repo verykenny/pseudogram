@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { delete_image, get_feed } from "../../store/feed";
+import { NavLink } from "react-router-dom";
+import { delete_image } from "../../store/feed";
 
 import './ImageFeed.css'
 
@@ -9,11 +10,6 @@ const ImageFeed = () => {
     const feed = useSelector(state => state.feed)
     const user = useSelector(state => state.session.user)
     const dispatch = useDispatch()
-
-
-    useEffect(() => {
-        dispatch(get_feed());
-    }, [dispatch])
 
     const handleDeleteImage = (imgId) => {
         dispatch(delete_image(imgId))
@@ -29,7 +25,10 @@ const ImageFeed = () => {
                     <p>{image.userId}</p>
                     <img src={image.imgUrl} alt={image.caption}></img>
                     {user?.id === image.userId && (
+                        <>
                         <button onClick={() => handleDeleteImage(image.id)}>Delete Image</button>
+                        <NavLink to={`/images/${image.id}`}>edit</NavLink>
+                        </>
                     )}
                 </>
             ))}
