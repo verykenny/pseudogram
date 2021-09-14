@@ -11,7 +11,7 @@ import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
 import { authenticate } from './store/session';
 import ImageEditForm from './components/ImageEditForm';
-import { delete_comment, get_comments, set_new_comment } from './store/comment';
+import { delete_comment, get_comments, set_new_comment, update_comment } from './store/comment';
 
 
 function App() {
@@ -21,7 +21,6 @@ function App() {
     useEffect(() => {
         (async () => {
             await dispatch(authenticate());
-            await dispatch(get_comments());
             setLoaded(true);
         })();
     }, [dispatch]);

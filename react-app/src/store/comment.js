@@ -91,6 +91,29 @@ export const set_new_comment = (content, imgId) => async (dispatch) => {
 }
 
 
+export const update_comment = (content, commentId) => async (dispatch) => {
+    dispatch(setNewCommentBegin());
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            content
+        }),
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            dispatch(setNewCommentFail('error'))
+            return;
+        }
+        dispatch(setNewCommentSuccess(data))
+    }
+}
+
+
 
 export const delete_comment = (commentId) => async (dispatch) => {
     dispatch(deleteCommentBegin());
