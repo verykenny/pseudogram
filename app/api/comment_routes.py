@@ -21,3 +21,11 @@ def get_comments():
     comments = [comment.to_dict() for comment in comments]
 
     return {'comments': comments}
+
+
+@comment_routes.route('/<int:commentId>', methods=['PUT'])
+@login_required
+def update_comment(commentId):
+    comment = Comment.query.get(commentId)
+
+    return {'comment': comment}
