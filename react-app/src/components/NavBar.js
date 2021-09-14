@@ -1,10 +1,13 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
+  const location = useLocation()
   return (
+    <div>
+      {location.pathname !== '/login' && 
     <nav>
       <ul>
         <li>
@@ -32,6 +35,8 @@ const NavBar = () => {
         </li>
       </ul>
     </nav>
+}
+    </div>
   );
 }
 
