@@ -111,5 +111,5 @@ def comment_on_image(imageId):
         db.session.commit()
 
         return {'comment': comment.to_dict()}
-        
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
