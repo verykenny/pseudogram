@@ -90,9 +90,9 @@ export const set_new_like = (imgId) => async (dispatch) => {
 }
 
 
-export const delete_like = (likeId) => async (dispatch) => {
+export const delete_like = (imgId) => async (dispatch) => {
     dispatch(deleteLikeBegin());
-    const response = await fetch(`/api/likes/${likeId}`, { method: 'DELETE' })
+    const response = await fetch(`/api/image_feed/${imgId}/likes/delete`, { method: 'DELETE' })
 
     if (response.ok) {
         const data = await response.json();

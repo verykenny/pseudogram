@@ -27,9 +27,9 @@ def get_likes():
     return {'likes': [like.to_dict() for like in likes]}
 
 
-@likes_routes.route('/<int:likeId>', methods=['DELETE'])
-def un_like(likeId):
-    like = Like.query.get(likeId)
-    db.session.delete(like)
-    db.session.commit()
-    return {'like': like.to_dict()}
+# @likes_routes.route('/<int:likeId>', methods=['DELETE'])
+# def un_like(likeId):
+#     like = Like.query.get(likeId)
+#     db.session.delete(like)
+#     db.session.commit()
+#     return {'like': like.to_dict()}
