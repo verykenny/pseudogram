@@ -4,12 +4,13 @@
   justify-content: space-around;
   align-content: space-around;
   width: 100%;
-  border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  border-bottom: 1px solid rgba(219, 219, 219);
   height: 54px;
   position: fixed;
   margin-bottom: 55px;
   top: 0;
-  background: white;
+  background-color: white;
+
 }
 
 .inner-nav {
@@ -57,15 +58,25 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  align-content: space-around;
+  justify-content: center;
+  align-items: right;
   top: 40px;
   overflow: hidden;
   max-height: 200px;
   z-index: 15;
   list-style: none;
+  background-color: rgb(225, 222, 222);
+  height: 125px;
+  width: 125px;
 }
 .nav-profile-dropdown > * {
   position: relative;
+  padding: 10px;
+  text-decoration: none;
+}
+.nav-profile-dropdown > * > a {
+  text-decoration: none;
+  color: rgba(38, 38, 38);
 }
 
 .activity-dropdown {
@@ -78,12 +89,16 @@
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  max-height: 100px;
   z-index: 15;
   list-style: none;
+  background-color: rgb(225, 222, 222);
+  height: 325px;
+  width: 125px;
 }
 .activity-dropdown > * {
   position: relative;
+  padding: 10px;
+  text-decoration: none;
 }
 .search-dropdown {
   background-color: transparent;
@@ -92,29 +107,74 @@
   display: flex;
   flex-direction: column;
   align-content: space-around;
-  top: 25px;
-  overflow: hidden;
-  max-height: 200px;
-  max-width: 200px;
+  top: 40px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 12px 0 0 0;
+  width: 275px;
+  height: 350px;
   z-index: 15;
   list-style: none;
-  background-color: gray;
+  background-color: rgb(225, 222, 222);
 }
 .search-dropdown > * {
-  background-color: gray;
   position: relative;
-  right: 40px;
-  margin-left: 10px;
   margin-bottom: 10px;
   display: flex;
-  text-align: center;
-  border-bottom: 1px solid rgba(219, 219, 219);
+  justify-content: left;
+  align-items: center;
+  border-bottom: 1px solid rgb(253, 253, 253);
   margin-top: 5px;
   padding: 5px;
 }
 
+.search-dropdown > *:hover {
+  background-color: grey;
+}
+.search-dropdown > * > a {
+  text-decoration: none;
+  text-align: center;
+  padding-left: 10px;
+  color: rgba(38, 38, 38);
+}
+.search-dropdown > * > a > img {
+  margin-right: 10px;
+}
+.search-bar {
+  background-image: url("./search.png");
+  background-repeat: no-repeat;
+  background-size: 17px;
+  background-position: left center;
+  text-indent: 20px;
+  padding: 5px 3px;
+  transition: 0.3s;
+}
+.search-bar:focus {
+  background-image: none;
+}
 .profile-img-nav {
   height: 24px;
   width: 24px;
   border-radius: 2rem;
+}
+.profile-img-nav:hover {
+  box-shadow: grey 2px 2px 2px;
+  height: 24px;
+  width: 24px;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.nav-home-img:hover {
+  background: url("./filledhome.png");
+}
+.nav-add-btn {
+  background: url("./add.png");
+}
+.nav-add-btn:hover {
+  cursor: pointer;
+  background: url("./blackadd.png");
+}
+.activity-nav-img:hover {
+  cursor: pointer;
 }
