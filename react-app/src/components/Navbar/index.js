@@ -106,7 +106,7 @@ const NavBar = () => {
     return (
 
         <nav>
-            {location.pathname !== '/login' &&
+            {location.pathname !== '/login' && location.pathname !== '/sign-up' &&
                 <div className='nav-bar'>
                     <div className='inner-nav'>
                         <h2 className='nav-logo'>Pseudogram</h2>
