@@ -1,9 +1,20 @@
-from flask import Blueprint, jsonify
+from app.forms.comment_update_form import CommentUpdateForm
+from flask import Blueprint, request
 from flask_login import login_required, current_user
-from sqlalchemy.orm import joinedload
 from app.models import db, User, Comment, Image
 
 comment_routes = Blueprint('comments', __name__)
+
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 
 @comment_routes.route('/')
@@ -26,6 +37,16 @@ def get_comments():
 @comment_routes.route('/<int:commentId>', methods=['PUT'])
 @login_required
 def update_comment(commentId):
-    comment = Comment.query.get(commentId)
 
-    return {'comment': comment}
+    form = CommentUpdateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        comment = Comment.query.get(commentId)
+        comment.content = form['content'].data
+        comment.edited = True
+        db.session.add(comment)
+        db.session.commit()
+        return {'comment': comment.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
