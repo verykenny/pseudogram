@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@image_routes.route('/images')
+@image_routes.route('')
 @login_required
 def image_feed():
     """
