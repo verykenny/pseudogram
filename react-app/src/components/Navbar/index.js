@@ -6,6 +6,10 @@ import { Modal } from '../../context/Modal';
 import ImageUploadForm from '../ImageUploadModals/ImageUploadForm';
 import LogoutButton from '../auth/LogoutButton';
 import { useDebounce } from '../../hooks/useDebounce'
+import home from './home.png'
+import add from './add.png'
+import heart from './heart.png'
+import search from './search.png'
 import './navbar.css'
 
 const NavBar = () => {
@@ -112,12 +116,12 @@ const NavBar = () => {
                             onKeyDown={_handleKeyDown}
                             onChange={(e) => (setSearch(e.target.value), openSearchDropdown())}
                         ></input>
-                            {filteredSearch && showSearch && filteredSearch.map(user =>
-                                <ul>
+                            <ul className='search-dropdown'>
+                                {filteredSearch && showSearch && filteredSearch.map(user =>
                                     <li><NavLink to={`/users/${user?.id}`}>{`${user.username}`}</NavLink></li>
-                                </ul>
 
-                            )}
+                                )}
+                            </ul>
 
                         </div>
 
@@ -125,12 +129,12 @@ const NavBar = () => {
 
                         <div className='right-side-nav'>
 
-                            <NavLink to='/home' exact={true} activeClassName='active'>Home</NavLink>
+                            <NavLink to='/home' exact={true} activeClassName='active'><img src={home}></img></NavLink>
 
 
 
 
-                            <button className='nav-post-new-img' onClick={() => setShowModal(true)}>Post</button>
+                            <img size='24px' onClick={() => setShowModal(true)} src={add}></img>
                             {showModal && (
                                 <Modal onClose={() => setShowModal(false)}>
                                     <ImageUploadForm setShowModal={setShowModal} />
@@ -139,30 +143,40 @@ const NavBar = () => {
 
 
 
-                            <button onClick={openActivity}>activity</button>
+                            <img src={heart} onClick={openActivity}></img>
                             {showActivity && (
                                 <ul className='activity-dropdown'>
                                     <li>placeholders</li>
                                     <li>placeholders</li>
                                     <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
                                 </ul>
 
                             )}
 
 
 
+                            <div>
+                                <img className='nav-profile-img' onClick={openMenu} src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" height='32px' width='32px'></img>
+                                {showMenu && (
+                                    <ul className="nav-profile-dropdown">
+                                        <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>
+                                        <li><NavLink to={'/'}>Profile settings</NavLink></li>
+                                        <li>
+                                            <LogoutButton />
+                                        </li>
+                                    </ul>
+                                )}
 
-                            <button className="nav-profile-button" onClick={openMenu}><img className='nav-profile-img' src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" height='32px' width='32px'></img></button>
-
-                            {showMenu && (
-                                <ul className="nav-profile-dropdown">
-                                    <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>
-                                    <li>Profile settings</li>
-                                    <li>
-                                        <LogoutButton />
-                                    </li>
-                                </ul>
-                            )}
+                            </div>
 
                         </div>
                     </div>
