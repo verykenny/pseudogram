@@ -137,7 +137,10 @@ def like_image(imageId):
 
 @image_routes.route('/<int:imgId>/likes/delete', methods=['DELETE'])
 def un_like(imgId):
-    like = Like.query.filter(and_(Like.userId == current_user.get_id(), Like.imgId == imgId)).first()
+    like = Like.query.filter(and_(
+        Like.userId == current_user.get_id(),
+        Like.imgId == imgId
+    )).first()
     db.session.delete(like)
     db.session.commit()
     return {'like': like.to_dict()}
