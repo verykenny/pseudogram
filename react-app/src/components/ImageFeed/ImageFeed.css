@@ -1,10 +1,6 @@
-img {
-    max-width: 100px;
-}
-
-
 .feed-container{
     border: 1px solid black;
+    font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 
 .feed-subcontainer{
@@ -18,8 +14,8 @@ img {
     display: block;
     margin: 50px 100px;
     max-width: 600px;
-    max-height: 650px;
-    min-height: 649px;
+    max-height: 800px;
+    min-height: 799px;
 }
 
 .image-top-padding{
@@ -44,8 +40,49 @@ img {
 
 .profile-username__feed{
     display: inline-block;
-    border: 1px solid black;
-    margin-left: 20px;
+    margin-left: 10px;
     vertical-align: top;
     margin-top: 20px;
+    font-weight: 500;
+    font-size: 15px;
 }
+
+.feed-profile__link{
+    text-decoration: none;
+    color: black;
+}
+
+.image-container__image{
+    width:100%;
+    height: 600px;
+    /* border: 1px solid black; */
+    background-size: fill;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.caption-comment-container{
+     border: 1px solid pink;
+     width:100%;
+     height: 40px;
+}
+
+.like-button-container{
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    margin-top: 6px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.fa-heart{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.fa-comment{
+    font-size: 24px;
+    cursor: pointer;
+}
+

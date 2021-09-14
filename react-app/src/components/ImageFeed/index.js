@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { delete_image, get_feed } from "../../store/feed";
 import { get_followings } from "../../store/following"
+import heart from "../Navbar/heart.png"
 
 import './ImageFeed.css'
 
@@ -45,7 +46,6 @@ const ImageFeed = () => {
     users.forEach(element => {
         arrayOfId.push(element.id)
     })
-    console.log(following.users)
 
 
     return (
@@ -61,13 +61,21 @@ const ImageFeed = () => {
                                     <div className="profile-picture__feed" style={
                                         { backgroundImage: `url(${following.users[image?.userId].profileImgUrl})` }
                                     }></div>
-                                    <div className="profile-username__feed">{users[arrayOfId.indexOf(image.userId)]?.username}</div>
-
+                                    <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
+                                </div>
+                                <div className="image-container__image" style={
+                                    { backgroundImage: `url(${image.imgUrl})` }
+                                }></div>
+                                <div className="caption-comment-container">
+                                    <div className="like-button-container">
+                                        <i class="far fa-heart"></i>
+                                    </div>
+                                    <div className="like-button-container">
+                                        <i class="far fa-comment"></i>
+                                    </div>
                                 </div>
                                 <p>{image.caption}</p>
                                 <p>{image.userId}</p>
-
-                                <img src={image.imgUrl} alt={image.caption}></img>
                                 {user?.id === image.userId && (
                                     <>
                                         <button onClick={() => handleDeleteImage(image.id)}>Delete Image</button>
