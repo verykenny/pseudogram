@@ -1,6 +1,9 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
+
+now = datetime.now()
 
 
 class User(db.Model, UserMixin):
@@ -48,5 +51,6 @@ user_following = db.Table(
     'user_following',
     db.Column('user_id', db.Integer, db.ForeignKey(User.id), primary_key=True),
     db.Column('following_id', db.Integer,
-              db.ForeignKey(User.id), primary_key=True)
+              db.ForeignKey(User.id), primary_key=True),
+    db.Column('createdAt', db.Time, default=f'{now}')
 )
