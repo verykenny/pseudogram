@@ -144,6 +144,11 @@ hr:after {
     display:inline-block;
 }
 
+.signup-link{
+    text-decoration: none;
+    color: #24a0ed;
+    font-weight: 510;
+}
 
 @media only screen and (max-width: 800px){
     .phone-image{

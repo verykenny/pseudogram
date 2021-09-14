@@ -46,7 +46,7 @@ const NavBar = () => {
 
     return (
         <div>
-            {location.pathname !== '/login' &&
+            {location.pathname !== '/login' && location.pathname !== '/sign-up' &&
         <nav>
             <ul>
                 <li className='nav-logo'><h2>Placeholder</h2></li>
