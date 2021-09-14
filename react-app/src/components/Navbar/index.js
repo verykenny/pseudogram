@@ -123,47 +123,48 @@ const NavBar = () => {
 
 
 
+                        <div className='right-side-nav'>
 
-                        <div className='home-link'>
                             <NavLink to='/home' exact={true} activeClassName='active'>Home</NavLink>
+
+
+
+
+                            <button className='nav-post-new-img' onClick={() => setShowModal(true)}>Post</button>
+                            {showModal && (
+                                <Modal onClose={() => setShowModal(false)}>
+                                    <ImageUploadForm setShowModal={setShowModal} />
+                                </Modal>
+                            )}
+
+
+
+                            <button onClick={openActivity}>activity</button>
+                            {showActivity && (
+                                <ul className='activity-dropdown'>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                    <li>placeholders</li>
+                                </ul>
+
+                            )}
+
+
+
+
+                            <button className="nav-profile-button" onClick={openMenu}><img className='nav-profile-img' src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" height='32px' width='32px'></img></button>
+
+                            {showMenu && (
+                                <ul className="nav-profile-dropdown">
+                                    <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>
+                                    <li>Profile settings</li>
+                                    <li>
+                                        <LogoutButton />
+                                    </li>
+                                </ul>
+                            )}
+
                         </div>
-
-
-
-                        <button className='nav-post-new-img' onClick={() => setShowModal(true)}>Post</button></div>
-                    {showModal && (
-                        <Modal onClose={() => setShowModal(false)}>
-                            <ImageUploadForm setShowModal={setShowModal} />
-                        </Modal>
-                    )}
-
-
-
-                    <div className='activity-dropdown' onClick={openActivity}><button>activity</button>
-                        {showActivity && (
-                            <ul>
-                                <li>placeholders</li>
-                                <li>placeholders</li>
-                                <li>placeholders</li>
-                            </ul>
-                        )}
-
-
-                    </div>
-
-                    <div className="profile-button-div">
-                        <button className="nav-profile-button" onClick={openMenu}><img className='nav-profile-img' src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" height='32px' width='32px'></img></button>
-                        {showMenu && (
-                            <ul className="nav-profile-dropdown">
-                                <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>
-                                <li>Profile settings</li>
-                                <li>
-                                    <LogoutButton />
-                                </li>
-                            </ul>
-                        )
-                        }
-
                     </div>
                 </div>
 
