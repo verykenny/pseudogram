@@ -52,13 +52,68 @@
   margin-left: 20px;
 }
 .nav-profile-dropdown {
+  float: right;
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 45px;
-  right: 250px;
-}
-.nav-profile-dropdown > li {
-  text-decoration: none;
+  align-content: space-around;
+  top: 40px;
+  overflow: hidden;
+  max-height: 200px;
+  z-index: 15;
   list-style: none;
+}
+.nav-profile-dropdown > * {
+  position: relative;
+}
+
+.activity-dropdown {
+  float: right;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  top: 40px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  max-height: 100px;
+  z-index: 15;
+  list-style: none;
+}
+.activity-dropdown > * {
+  position: relative;
+}
+.search-dropdown {
+  background-color: transparent;
+  float: right;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  top: 25px;
+  overflow: hidden;
+  max-height: 200px;
+  max-width: 200px;
+  z-index: 15;
+  list-style: none;
+  background-color: gray;
+}
+.search-dropdown > * {
+  background-color: gray;
+  position: relative;
+  right: 40px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  text-align: center;
+  border-bottom: 1px solid rgba(219, 219, 219);
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.profile-img-nav {
+  height: 24px;
+  width: 24px;
+  border-radius: 2rem;
 }
