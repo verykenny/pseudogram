@@ -29,5 +29,16 @@ class Comment(db.Model):
             'imgId': self.imgId,
             'content': self.content,
             'edited': self.edited,
-            'createdAt': self.createdAt
+            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
+        }
+
+    def to_dict_extended(self):
+        return {
+            'id': self.id,
+            'userId': self.userId,
+            'commenter': self.commenter.to_dict(),
+            'imgId': self.imgId,
+            'content': self.content,
+            'edited': self.edited,
+            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
         }

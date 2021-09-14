@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
+from sqlalchemy.orm import joinedload
 from app.models import User
 
 user_routes = Blueprint('users', __name__)
@@ -17,3 +18,29 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:userId>/followings')
+@login_required
+def user_followings(userId):
+    paramUser = User.query.get(userId)
+    return {'followings': [user.to_dict() for user in paramUser.following]}
+
+
+@user_routes.route('/<int:userId>/followers')
+@login_required
+def user_followers(userId):
+    paramUser = User.query.get(userId)
+    users = User.query.all()
+
+    return ({
+        'followings':
+            [user.to_dict() for user in users if paramUser in user.following]
+    })
+
+
+@user_routes.route('/<int:userId>/images')
+@login_required
+def user_images(userId):
+    user = User.query.options(joinedload(User.image)).get(userId)
+    return {'images': [image.to_dict_extended() for image in user.image]}
