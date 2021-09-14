@@ -57,7 +57,7 @@ def user_followers(userId):
     users = User.query.all()
 
     return ({
-        'followings':
+        'followers':
             [user.to_dict() for user in users if paramUser in user.following]
     })
 
