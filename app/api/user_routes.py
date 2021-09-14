@@ -27,6 +27,11 @@ def user_followings(userId):
     return {'followings': [user.to_dict() for user in paramUser.following]}
 
 
+@user_routes.route('/<int:userId>/followings/create', methods=['POST'])
+def follow_user(userId):
+    return {'message': 'success'}
+
+
 @user_routes.route('/<int:userId>/followers')
 @login_required
 def user_followers(userId):
