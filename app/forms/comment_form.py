@@ -3,5 +3,5 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 
-class CommentUpdateForm(FlaskForm):
+class CommentForm(FlaskForm):
     content = StringField('Content', validators=[DataRequired()])

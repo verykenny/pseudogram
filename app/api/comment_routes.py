@@ -1,4 +1,4 @@
-from app.forms.comment_update_form import CommentUpdateForm
+from app.forms import CommentForm
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, User, Comment, Image
@@ -38,7 +38,7 @@ def get_comments():
 @login_required
 def update_comment(commentId):
 
-    form = CommentUpdateForm()
+    form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
