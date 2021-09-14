@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
 import './LoginForm.css'
 
@@ -107,7 +107,7 @@ const LoginForm = () => {
         </form>
       </div>
     </div>
-      <div className="login-form__signup">Don't have an account? Sign up</div>
+      <div className="login-form__signup">Don't have an account? <Link to="/sign-up" className="signup-link">Sign up</Link></div>
       </div>
     </div>
   );
