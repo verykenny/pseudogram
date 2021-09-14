@@ -42,7 +42,8 @@ def follow_user(userId):
 def unfollow_user(userId):
     session_user = User.query.get(current_user.get_id())
     user = User.query.get(userId)
-    session_user.following = [user for user in session_user.following if user.id != userId]
+    session_user.following = \
+        [user for user in session_user.following if user.id != userId]
     db.session.add(session_user)
     db.session.commit()
 
