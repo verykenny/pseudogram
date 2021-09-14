@@ -22,5 +22,17 @@ def user(id):
 @user_routes.route('/<int:userId>/followings')
 @login_required
 def user_followings(userId):
-    user = User.query.get(userId)
-    return {'followings': [user.to_dict() for user in user.following]}
+    paramUser = User.query.get(userId)
+    return {'followings': [user.to_dict() for user in paramUser.following]}
+
+
+@user_routes.route('/<int:userId>/followers')
+@login_required
+def user_followers(userId):
+    paramUser = User.query.get(userId)
+    users = User.query.all()
+
+    return ({
+        'followings':
+            [user.to_dict() for user in users if paramUser in user.following]
+    })
