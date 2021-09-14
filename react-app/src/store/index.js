@@ -4,12 +4,14 @@ import session from './session'
 import feed from './feed'
 import following from './following'
 import followers from './follower'
+import comments from './comment'
 
 const rootReducer = combineReducers({
   session,
   feed,
   following,
   followers,
+  comments,
 });
 
 
