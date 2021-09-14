@@ -1,3 +1,4 @@
+from sqlalchemy import and_
 from flask import Blueprint, request
 from app.models import db, Image, User, Comment, Like
 from flask_login import current_user, login_required
@@ -130,5 +131,16 @@ def like_image(imageId):
 
     db.session.add(like)
     db.session.add(image)
+    db.session.commit()
+    return {'like': like.to_dict()}
+
+
+@image_routes.route('/<int:imgId>/likes/delete', methods=['DELETE'])
+def un_like(imgId):
+    like = Like.query.filter(and_(
+        Like.userId == current_user.get_id(),
+        Like.imgId == imgId
+    )).first()
+    db.session.delete(like)
     db.session.commit()
     return {'like': like.to_dict()}
