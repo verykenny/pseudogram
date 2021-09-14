@@ -50,3 +50,12 @@ def update_comment(commentId):
         return {'comment': comment.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@comment_routes.route('/<int:commentId>', methods=['DELETE'])
+@login_required
+def delete_comment(commentId):
+    comment = Comment.query.get(commentId)
+    db.session.delete(comment)
+    db.session.commit()
+    return {'comment': comment.to_dict()}
