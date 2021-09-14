@@ -9,7 +9,8 @@ import { useDebounce } from '../../hooks/useDebounce'
 import home from './home.png'
 import add from './add.png'
 import heart from './heart.png'
-import search from './search.png'
+import blackHeart from './blackHeart.png'
+import searchimg from './search.png'
 import './navbar.css'
 
 const NavBar = () => {
@@ -22,6 +23,7 @@ const NavBar = () => {
     const [search, setSearch] = useState('')
     const [users, setUsers] = useState([])
     const [filteredSearch, setFilteredSearch] = useState([])
+    const [activityImg, setActivityImg] = useState(heart)
     const debouncedSearch = useDebounce(search, 250);
     const history = useHistory()
 
@@ -31,6 +33,7 @@ const NavBar = () => {
     };
     const openActivity = () => {
         if (showActivity) return;
+        setActivityImg(blackHeart)
         setShowActivity(true)
     }
     const openSearchDropdown = () => {
@@ -52,6 +55,7 @@ const NavBar = () => {
         if (!showActivity) return;
 
         const closeActivity = () => {
+            setActivityImg(heart)
             setShowActivity(false);
         };
         document.addEventListener('click', closeActivity);
@@ -88,7 +92,7 @@ const NavBar = () => {
         const filteredUsers = users.filter(user => {
             return user.username.toLowerCase().startsWith(lowerSearch)
         })
-        if (search !== '') setFilteredSearch(filteredUsers.slice(0, 5))
+        if (search !== '') setFilteredSearch(filteredUsers)
         else setFilteredSearch([])
     }
     let _handleKeyDown = (e) => {
@@ -112,16 +116,17 @@ const NavBar = () => {
                         <h2 className='nav-logo'>Pseudogram</h2>
                         <div className='search-bar-div'><input
                             className='search-bar'
+                            placeholder='Search'
                             value={search}
                             onKeyDown={_handleKeyDown}
                             onChange={(e) => (setSearch(e.target.value), openSearchDropdown())}
                         ></input>
-                            <ul className='search-dropdown'>
+                            {filteredSearch && showSearch && (<ul className='search-dropdown'>
                                 {filteredSearch && showSearch && filteredSearch.map(user =>
                                     <li><NavLink to={`/users/${user?.id}`}><img className='profile-img-nav' src={`${user.profileImgUrl}`}></img>{`${user.username}`}</NavLink></li>
 
                                 )}
-                            </ul>
+                            </ul>)}
 
                         </div>
 
@@ -129,12 +134,12 @@ const NavBar = () => {
 
                         <div className='right-side-nav'>
 
-                            <NavLink to='/home' exact={true} activeClassName='active'><img src={home}></img></NavLink>
+                            <NavLink to='/home' exact={true} activeClassName='active'><img className='nav-home-img' src={home}></img></NavLink>
 
 
 
 
-                            <img size='24px' onClick={() => setShowModal(true)} src={add}></img>
+                            <img size='24px' className='nav-add-btn' onClick={() => setShowModal(true)} src={add}></img>
                             {showModal && (
                                 <Modal onClose={() => setShowModal(false)}>
                                     <ImageUploadForm setShowModal={setShowModal} />
@@ -142,8 +147,7 @@ const NavBar = () => {
                             )}
 
 
-
-                            <img src={heart} onClick={openActivity}></img>
+                            <img className='activity-nav-img' src={activityImg} onClick={openActivity}></img>
                             {showActivity && (
                                 <ul className='activity-dropdown'>
                                     <li>placeholders</li>
@@ -163,20 +167,18 @@ const NavBar = () => {
                             )}
 
 
+                            <img className='profile-img-nav' onClick={openMenu} src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" ></img>
 
-                            <div>
-                                <img className='profile-img-nav' onClick={openMenu} src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" ></img>
-                                {showMenu && (
-                                    <ul className="nav-profile-dropdown">
-                                        <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>
-                                        <li><NavLink to={'/'}>Profile settings</NavLink></li>
-                                        <li>
-                                            <LogoutButton />
-                                        </li>
-                                    </ul>
-                                )}
+                            {showMenu && (
+                                <ul className="nav-profile-dropdown">
+                                    <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>
+                                    <li><NavLink to={'/'}>Profile settings</NavLink></li>
+                                    <li>
+                                        <LogoutButton />
+                                    </li>
+                                </ul>
+                            )}
 
-                            </div>
 
                         </div>
                     </div>
