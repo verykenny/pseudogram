@@ -104,27 +104,31 @@ const NavBar = () => {
         <nav>
             {location.pathname !== '/login' &&
                 <div className='nav-bar'>
-                    <ul >
-                        <li className='nav-logo'><h2>Placeholder</h2></li>
-                        <li className='search-bar'><input
+                    <div className='inner-nav'>
+                        <h2 className='nav-logo'>Pseudogram</h2>
+                        <div className='search-bar-div'><input
+                            className='search-bar'
                             value={search}
                             onKeyDown={_handleKeyDown}
                             onChange={(e) => (setSearch(e.target.value), openSearchDropdown())}
                         ></input>
-                            {filteredSearch && setShowSearch && filteredSearch.map(user =>
+                            {filteredSearch && showSearch && filteredSearch.map(user =>
                                 <ul>
                                     <li><NavLink to={`/users/${user?.id}`}>{`${user.username}`}</NavLink></li>
                                 </ul>
 
                             )}
-                        </li>
+
+                        </div>
 
 
 
+                        <div className='rightside-nav-bar'>
+                            <NavLink to='/home' exact={true} activeClassName='active'>Home</NavLink>
 
-                        <li className='home-link'><NavLink to='/home' exact={true} activeClassName='active'>Home</NavLink></li>
-                        <li >
-                            <button className='nav-post-new-img' onClick={() => setShowModal(true)}>Post</button></li>
+
+
+                            <button className='nav-post-new-img' onClick={() => setShowModal(true)}>Post</button></div>
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
                                 <ImageUploadForm setShowModal={setShowModal} />
@@ -158,7 +162,8 @@ const NavBar = () => {
                             )
                             }
                         </div >
-                    </ul>
+
+                    </div>
                 </div>
             }
         </nav >

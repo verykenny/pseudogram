@@ -2,17 +2,41 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-content: center;
+  align-content: space-between;
   width: 100%;
+  border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  height: 54px;
+  position: fixed;
+  margin-bottom: 55px;
 }
 
-.nav-bar > ul {
+.inner-nav {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-content: center;
+  justify-content: space-around;
+  height: 54px;
+  max-width: 975px;
+  padding: 0 20px;
+  width: 100%;
+  z-index: 10;
 }
 
 .nav-logo {
-  text-align: center;
+  font-family: "Billabong", sans-serif;
+  font-size: 35px;
+  align-self: center;
+  justify-self: center;
+}
+
+.search-bar-div {
+}
+
+.search-bar {
+  width: 145px;
+}
+rightside-nav-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
