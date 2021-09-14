@@ -11,7 +11,7 @@ import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
 import { authenticate } from './store/session';
 import ImageEditForm from './components/ImageEditForm';
-import { get_comments } from './store/comment';
+import { get_comments, set_new_comment } from './store/comment';
 
 
 function App() {
