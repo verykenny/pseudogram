@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
 import './LoginForm.css'
 
@@ -87,27 +87,29 @@ const LoginForm = () => {
               <button className="login-button" type='submit'>Log In</button>
             </div>
 
-            <div className="demo-or">
-              <hr className="hr-text" data-content='OR'></hr>
-            </div>
-          </form>
-          <div>
-            <form onSubmit={onDemoLogin}>
-              <input
-                type="hidden"
-                value={demoEmail}
-                onChange={updateDemoEmail}
-              />
-              <input
-                type="hidden"
-                value={demoPassword}
-                onChange={updateDemoPassword}
-              />
-              <button className="demo-button" type='submit'>Demo</button>
-            </form>
-          </div>
-        </div>
-        <div className="login-form__signup">Don't have an account? Sign up</div>
+
+      <div className="demo-or">
+        <hr className="hr-text" data-content='OR'></hr>
+      </div>
+    </form>
+      <div>
+        <form onSubmit={onDemoLogin}>
+          <input 
+            type="hidden"
+            value={demoEmail}
+            onChange={updateDemoEmail}
+          />
+          <input
+          type="hidden"
+          value={demoPassword}
+          onChange={updateDemoPassword}
+          />
+        <button className="demo-button" type='submit'>Demo</button>
+        </form>
+      </div>
+    </div>
+      <div className="login-form__signup">Don't have an account? <Link to="/sign-up" className="signup-link">Sign up</Link></div>
+
       </div>
     </div>
   );

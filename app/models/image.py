@@ -33,3 +33,17 @@ class Image(db.Model):
             'totalLikes': self.totalLikes,
             'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
         }
+
+    def to_dict_extended(self):
+        image = {
+            'comments': [comm.to_dict_extended() for comm in self.comment]
+        }
+        rest_of_image = {
+            'id': self.id,
+            'userId': self.userId,
+            'imgUrl': self.imgUrl,
+            'caption': self.caption,
+            'totalLikes': self.totalLikes,
+            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
+        }
+        return {**image, **rest_of_image}

@@ -1,0 +1,32 @@
+.signup-form {
+    border: 1px solid #D4D4D4;
+    max-width: 300px;
+    width:300px;
+    height: 450px;
+    text-align: center;
+    font-family:'Roboto',sans-serif;
+    display: block;
+    margin: 3.5em auto;
+    border-radius: 3px;
+}
+
+.signup-text{
+    color: #808080;
+    font-weight: 600;
+    max-width: 250px;
+    display: block;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    margin: 1.5em auto;
+}
+
+.signup-button{
+    color:white;
+    cursor: pointer;
+    border: none;
+    background-color: #24a0ed;
+    width: 250px;
+    margin-top: 30px;
+    height: 30px;
+    font-weight: 600;
+    border-radius: 5px;
+}

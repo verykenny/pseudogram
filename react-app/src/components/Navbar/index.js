@@ -100,7 +100,6 @@ const NavBar = () => {
     }, [debouncedSearch])
 
     return (
-
         <nav>
             {location.pathname !== '/login' &&
                 <div className='nav-bar'>
