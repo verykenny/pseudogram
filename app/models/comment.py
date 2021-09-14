@@ -29,5 +29,5 @@ class Comment(db.Model):
             'imgId': self.imgId,
             'content': self.content,
             'edited': self.edited,
-            'createdAt': self.createdAt
+            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
         }
