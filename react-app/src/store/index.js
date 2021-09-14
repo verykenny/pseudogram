@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import feed from './feed'
 import following from './following'
+import followers from './follower'
 
 const rootReducer = combineReducers({
   session,
   feed,
   following,
+  followers,
 });
 
 
