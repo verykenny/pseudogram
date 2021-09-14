@@ -118,7 +118,7 @@ const NavBar = () => {
                         ></input>
                             <ul className='search-dropdown'>
                                 {filteredSearch && showSearch && filteredSearch.map(user =>
-                                    <li><NavLink to={`/users/${user?.id}`}>{`${user.username}`}</NavLink></li>
+                                    <li><NavLink to={`/users/${user?.id}`}><img className='profile-img-nav' src={`${user.profileImgUrl}`}></img>{`${user.username}`}</NavLink></li>
 
                                 )}
                             </ul>
@@ -165,7 +165,7 @@ const NavBar = () => {
 
 
                             <div>
-                                <img className='nav-profile-img' onClick={openMenu} src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" height='32px' width='32px'></img>
+                                <img className='profile-img-nav' onClick={openMenu} src={`${user?.profileImgUrl}`} alt="profile-dropdown-button" ></img>
                                 {showMenu && (
                                     <ul className="nav-profile-dropdown">
                                         <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>

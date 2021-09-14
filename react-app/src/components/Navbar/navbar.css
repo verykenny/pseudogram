@@ -93,10 +93,11 @@
   align-content: space-around;
   top: 25px;
   overflow: hidden;
-  min-height: 200px;
-  min-width: 200px;
+  max-height: 200px;
+  max-width: 200px;
   z-index: 15;
   list-style: none;
+  background-color: gray;
 }
 .search-dropdown > * {
   background-color: gray;
@@ -104,4 +105,15 @@
   right: 40px;
   margin-left: 10px;
   margin-bottom: 10px;
+  display: flex;
+  text-align: center;
+  border-bottom: 1px solid rgba(219, 219, 219);
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.profile-img-nav {
+  height: 24px;
+  width: 24px;
+  border-radius: 2rem;
 }
