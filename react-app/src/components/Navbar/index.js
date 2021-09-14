@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import ImageUploadForm from '../ImageUploadModals/ImageUploadForm';
 import LogoutButton from '../auth/LogoutButton';
 import './navbar.css'
 
 const NavBar = () => {
+    const location = useLocation()
     const [showMenu, setShowMenu] = useState(false);
     const [showActivity, setShowActivity] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -44,6 +45,8 @@ const NavBar = () => {
     }, [openActivity]);
 
     return (
+        <div>
+            {location.pathname !== '/login' &&
         <nav>
             <ul>
                 <li className='nav-logo'><h2>Placeholder</h2></li>
@@ -86,6 +89,8 @@ const NavBar = () => {
                 </div >
             </ul>
         </nav >
+}
+        </div>
     );
 }
 
