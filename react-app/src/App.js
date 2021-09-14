@@ -11,7 +11,7 @@ import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
 import { authenticate } from './store/session';
 import ImageEditForm from './components/ImageEditForm';
-import { get_followings } from './store/following';
+import { get_followings, set_new_following } from './store/following';
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
     useEffect(() => {
         (async () => {
             await dispatch(authenticate());
+            await dispatch(get_followings(26))
             setLoaded(true);
         })();
     }, [dispatch]);
