@@ -1,3 +1,51 @@
 img {
     max-width: 100px;
 }
+
+
+.feed-container{
+    border: 1px solid black;
+}
+
+.feed-subcontainer{
+    border: 1px solid black;
+    margin-top: 45px;
+
+}
+
+.image-container{
+    border: 1px solid green;
+    display: block;
+    margin: 50px 100px;
+    max-width: 600px;
+    max-height: 650px;
+    min-height: 649px;
+}
+
+.image-top-padding{
+    width:100%;
+    height: 60px;
+    border: 1px solid black;
+    /* background-color: aquamarine; */
+}
+
+.profile-picture__feed{
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 12px;
+    margin-left: 10px;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.profile-username__feed{
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 20px;
+    vertical-align: top;
+    margin-top: 20px;
+}
