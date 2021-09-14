@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
-from app.models import User
+from app.models import db, User
 
 user_routes = Blueprint('users', __name__)
 
@@ -29,7 +29,13 @@ def user_followings(userId):
 
 @user_routes.route('/<int:userId>/followings/create', methods=['POST'])
 def follow_user(userId):
-    return {'message': 'success'}
+    session_user = User.query.get(current_user.get_id())
+    user = User.query.get(userId)
+    session_user.following.append(user)
+    db.session.add(session_user)
+    db.session.commit()
+
+    return {'following': user.to_dict()}
 
 
 @user_routes.route('/<int:userId>/followers')
