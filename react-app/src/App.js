@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Navbar/index.js';
@@ -11,7 +11,7 @@ import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
 import { authenticate } from './store/session';
 import ImageEditForm from './components/ImageEditForm';
-import { get_feed } from './store/feed';
+
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -20,7 +20,6 @@ function App() {
     useEffect(() => {
         (async () => {
             await dispatch(authenticate());
-            await dispatch(get_feed())
             setLoaded(true);
         })();
     }, [dispatch]);
