@@ -1,7 +1,7 @@
 from flask import Blueprint, request
-from app.models import db, Image, User
+from app.models import db, Image, User, Comment
 from flask_login import current_user, login_required
-from app.forms import ImageUploadForm, ImageUpdateForm
+from app.forms import ImageUploadForm, ImageUpdateForm, CommentForm
 from datetime import datetime
 
 
@@ -87,3 +87,29 @@ def delete_image(imgId):
     db.session.delete(image)
     db.session.commit()
     return {'imgId': imgId}
+
+
+@image_routes.route('/<int:imageId>/comments/create', methods=['POST'])
+@login_required
+def comment_on_image(imageId):
+    """
+    Add comment on image to the database and return the comment
+    """
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        comment = Comment()
+
+        form.populate_obj(comment)
+        comment.userId = current_user.get_id()
+        comment.imgId = imageId
+        comment.edited = False
+        comment.createdAt = datetime.now()
+
+        db.session.add(comment)
+        db.session.commit()
+
+        return {'comment': comment.to_dict()}
+        
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
