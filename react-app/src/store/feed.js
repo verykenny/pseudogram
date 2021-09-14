@@ -206,7 +206,6 @@ export default function reducer(state = initialState, action) {
                 errors: null,
             }
             delete newState['images'][action.payload.imgId]
-            // console.log(action.payload);
             return newState
         default:
             return state;

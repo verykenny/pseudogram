@@ -6,6 +6,10 @@ const SET_NEW_COMMENT_BEGIN = 'comments/SET_NEW_COMMENT_BEGIN'
 const SET_NEW_COMMENT_FAIL = 'comments/SET_NEW_COMMENT_FAIL'
 const SET_NEW_COMMENT_SUCCESS = 'comments/SET_NEW_COMMENT_SUCCESS'
 
+const DELETE_COMMENT_BEGIN = 'feed/DELETE_COMMENT_BEGIN'
+const DELETE_COMMENT_FAIL = 'feed/DELETE_COMMENT_FAIL'
+const DELETE_COMMENT_SUCCESS = 'feed/DELETE_COMMENT_SUCCESS'
+
 const setCommentsBegin = () => ({
     type: SET_COMMENTS_BEGIN,
 })
@@ -31,6 +35,17 @@ const setNewCommentSuccess = ({ comment }) => ({
     payload: comment
 })
 
+const deleteCommentBegin = () => ({
+    type: DELETE_COMMENT_BEGIN,
+})
+const deleteCommentFail = (error) => ({
+    type: DELETE_COMMENT_FAIL,
+    payload: error
+})
+const deleteCommentSuccess = ({ comment }) => ({
+    type: DELETE_COMMENT_SUCCESS,
+    payload: comment
+})
 
 
 const initialState = {
@@ -72,6 +87,22 @@ export const set_new_comment = (content, imgId) => async (dispatch) => {
             return;
         }
         dispatch(setNewCommentSuccess(data))
+    }
+}
+
+
+
+export const delete_comment = (commentId) => async (dispatch) => {
+    dispatch(deleteCommentBegin());
+    const response = await fetch(`/api/comments/${commentId}`, { method: 'DELETE' })
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            dispatch(deleteCommentFail('error'))
+            return;
+        }
+        dispatch(deleteCommentSuccess(data))
     }
 }
 
@@ -124,6 +155,26 @@ export default function reducer(state = initialState, action) {
             }
             newState['comments'][action.payload.id] = action.payload
             return newState;
+        case DELETE_COMMENT_BEGIN:
+                return {
+                    ...state,
+                    loading: true,
+                    errors: null
+                }
+        case DELETE_COMMENT_FAIL:
+                return {
+                    ...state,
+                    loading: false,
+                    errors: action.payload
+                }
+        case DELETE_COMMENT_SUCCESS:
+            newState = {
+                ...state,
+                loading: false,
+                errors: null,
+            }
+            delete newState['comments'][action.payload.id]
+            return newState
         default:
             return state;
     }
