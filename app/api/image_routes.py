@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Image, User, Comment
+from app.models import db, Image, User, Comment, Like
 from flask_login import current_user, login_required
 from app.forms import ImageUploadForm, ImageUpdateForm, CommentForm
 from datetime import datetime
@@ -113,3 +113,23 @@ def comment_on_image(imageId):
         return {'comment': comment.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@image_routes.route('/<int:imageId>/likes/create', methods=['POST'])
+@login_required
+def like_image(imageId):
+    """
+    Add like to an image and return the like
+    """
+    like = Like()
+    like.userId = current_user.get_id()
+    like.imgId = imageId
+    # user = User.query.get(current_user.get_id())
+    image = Image.query.get(imageId)
+    image.totalLikes += 1
+    # user.likes.append(image)
+
+    db.session.add(like)
+    db.session.add(image)
+    db.session.commit()
+    return {'like': like.to_dict()}
