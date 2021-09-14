@@ -24,5 +24,6 @@ class Like(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
-            'imgId': self.imgId
+            'imgId': self.imgId,
+            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
         }

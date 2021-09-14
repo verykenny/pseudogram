@@ -65,7 +65,7 @@ const initialState = {
 
 export const get_feed = () => async (dispatch) => {
     dispatch(setFeedBegin());
-    const response = await fetch('/api/image_feed/images')
+    const response = await fetch('/api/image_feed')
 
     if (response.ok) {
         const data = await response.json();
