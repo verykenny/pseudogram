@@ -46,46 +46,47 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/home' />;
   }
 
   return (
     <div className="outterDiv">
-    <div className="phone-image"></div>
-    <div className="wrapper">
-    <div className="login-form">
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div className="instagram-title">Pseudogram</div>
-      <div className="login-field">
-        {/* <label htmlFor='email'>Email</label> */}
-        <input className="login-form-inputs"
-          name='email'
-          type='text'
-          placeholder='Email'
-          autocomplete="off"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-        <div className="login-field">
-        {/* <label htmlFor='password'>Password</label> */}
-          <input className="login-form-inputs"
-          name='password'
-          type='password'
-          placeholder='Password'
-          autocomplete="off"
-          value={password}
-          onChange={updatePassword}
-        />
-      </div>
-      <div>
-        <button className="login-button" type='submit'>Log In</button>
-      </div>
+      <div className="phone-image"></div>
+      <div className="wrapper">
+        <div className="login-form">
+          <form onSubmit={onLogin}>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
+            <div className="instagram-title">Pseudogram</div>
+            <div className="login-field">
+              {/* <label htmlFor='email'>Email</label> */}
+              <input className="login-form-inputs"
+                name='email'
+                type='text'
+                placeholder='Email'
+                autoComplete="off"
+                value={email}
+                onChange={updateEmail}
+              />
+            </div>
+            <div className="login-field">
+              {/* <label htmlFor='password'>Password</label> */}
+              <input className="login-form-inputs"
+                name='password'
+                type='password'
+                placeholder='Password'
+                autoComplete="off"
+                value={password}
+                onChange={updatePassword}
+              />
+            </div>
+            <div>
+              <button className="login-button" type='submit'>Log In</button>
+            </div>
+
 
       <div className="demo-or">
         <hr className="hr-text" data-content='OR'></hr>
@@ -108,6 +109,7 @@ const LoginForm = () => {
       </div>
     </div>
       <div className="login-form__signup">Don't have an account? <Link to="/sign-up" className="signup-link">Sign up</Link></div>
+
       </div>
     </div>
   );
