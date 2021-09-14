@@ -124,10 +124,9 @@ def like_image(imageId):
     like = Like()
     like.userId = current_user.get_id()
     like.imgId = imageId
-    # user = User.query.get(current_user.get_id())
+
     image = Image.query.get(imageId)
     image.totalLikes += 1
-    # user.likes.append(image)
 
     db.session.add(like)
     db.session.add(image)
