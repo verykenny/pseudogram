@@ -38,6 +38,17 @@ def follow_user(userId):
     return {'following': user.to_dict()}
 
 
+@user_routes.route('/<int:userId>/followings/delete', methods=['DELETE'])
+def unfollow_user(userId):
+    session_user = User.query.get(current_user.get_id())
+    user = User.query.get(userId)
+    session_user.following = [user for user in session_user.following if user.id != userId]
+    db.session.add(session_user)
+    db.session.commit()
+
+    return {'unfollowed': user.to_dict()}
+
+
 @user_routes.route('/<int:userId>/followers')
 @login_required
 def user_followers(userId):
