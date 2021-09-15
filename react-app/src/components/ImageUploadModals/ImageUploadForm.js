@@ -21,6 +21,15 @@ const ImageUploadForm = () => {
         dispatch(set_image(imgUrl, caption))
     }
 
+    const config = {
+        bucketName: process.env.REACT_APP_BUCKET,
+        region: process.env.REACT_APP_REGION,
+        accessKeyId: process.env.REACT_APP_ACCESS_KEY,
+        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+    }
+
+    console.log(config);
+
     return (
         <>
             <h1>Image Upload Modal</h1>
