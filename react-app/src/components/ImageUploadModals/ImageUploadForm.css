@@ -1,5 +1,7 @@
 #modal-content {
     border-radius: 5px;
+    width: 950px;
+    max-width: 95%;
 }
 
 .exit-bar__image_upload {
@@ -56,6 +58,7 @@
 .container__image_upload {
     width: 935px;
     height: 550px;
+    max-width: 100%;
     display: flex;
 }
 
@@ -172,4 +175,11 @@
 .caption-input__image_upload:focus {
     /* border: 1px solid grey; */
     outline: none !important;
+}
+
+
+@media screen and (max-width: 535px) {
+    .image-post-container__image_upload {
+        flex-direction: column;
+    }
 }
