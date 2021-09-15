@@ -11,11 +11,11 @@ function ImageModal({ image, user }) {
                 className='profile-page-image__profile'
                 style={{ backgroundImage: `url(${image.imgUrl})` }}
                 onClick={() => setShowModal(true)}
-                >
-                    <div className='image_likes_comments__profile'>
-                        <p>{image.totalLikes}</p>
-                    </div>
+            >
+                <div className='image_likes_comments__profile'>
+                    <p>{image.totalLikes}</p>
                 </div>
+            </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <Image setShowModal={setShowModal} image={image} user={user} />

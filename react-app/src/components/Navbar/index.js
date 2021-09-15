@@ -7,6 +7,7 @@ import ImageUploadForm from '../ImageUploadModals/ImageUploadForm';
 import LogoutButton from '../auth/LogoutButton';
 import { get_likes } from '../../store/like';
 import { useDebounce } from '../../hooks/useDebounce'
+import ImageModal from '../ImageModal';
 
 import home from './home.png'
 import add from './add.png'
@@ -24,6 +25,9 @@ const NavBar = () => {
     const [users, setUsers] = useState([])
     const [activityFeed, setActivityFeed] = useState([])
     const [filteredSearch, setFilteredSearch] = useState([])
+    const [imageModalShow, setImageModalShow] = useState(false)
+    const [imgIdForModal, setImgIdForModal] = useState()
+    const [userForModal, setUserForModal] = useState()
     const [activityImg, setActivityImg] = useState(heart)
     const user = useSelector(state => state.session.user);
     const activity = useSelector(state => Object.values(state.likes.likes))
@@ -111,7 +115,7 @@ const NavBar = () => {
 
     useEffect(() => {
         searchUsers(search, user.id)
-    }, [debouncedSearch])
+    }, [debouncedSearch, user.id])
 
     useEffect(async () => {
         await dispatch(get_likes(user.id))
@@ -123,6 +127,13 @@ const NavBar = () => {
         setActivityFeed(sorted)
         console.log(activityFeed)
     })
+
+    const imageModalHandler = (user, image) => {
+        console.log(user)
+        setUserForModal(user)
+        setImgIdForModal(image)
+        setImageModalShow(true)
+    }
     return (
 
         <nav>
@@ -140,7 +151,6 @@ const NavBar = () => {
                             {filteredSearch && showSearch && (<ul className='search-dropdown'>
                                 {filteredSearch && showSearch && filteredSearch.map(user =>
                                     <li key={`${user.id}`}><NavLink to={`/users/${user?.id}`}><img className='profile-img-nav' src={`${user.profileImgUrl}`}></img>{`${user.username}`}</NavLink></li>
-
                                 )}
                             </ul>)}
 
@@ -167,8 +177,12 @@ const NavBar = () => {
                             {showActivity && (
                                 <ul className='activity-dropdown'>
                                     {activityFeed.length && activityFeed.map(likes =>
-                                        <li><NavLink to={`/users/${likes.user.id}`}> <img className='profile-img-nav' src={`${likes.user.profileImgUrl}`}></img>{`${likes.user.username}`}</NavLink><NavLink to='/'>
-                                            <img src={`${likes.imgId.imgUrl}`} className='activity-img'></img></NavLink></li>
+                                        <>
+                                            <li><NavLink to={`/users/${likes.user.id}`}> <img className='profile-img-nav' src={`${likes.user.profileImgUrl}`}></img>{`${likes.user.username}`}</NavLink>
+                                                <img onClick={(e) => imageModalHandler} src={`${likes.imgId.imgUrl}`} className='activity-img'></img></li>
+                                            <div display='none'></div>
+                                        </>
+
                                     )}
 
                                 </ul>
@@ -186,6 +200,11 @@ const NavBar = () => {
                                         <LogoutButton />
                                     </li>
                                 </ul>
+                            )}
+                            {imageModalShow && (
+                                <Modal onClose={() => setImageModalShow(false)}>
+                                    <ImageModal user={userForModal} image={imgIdForModal} random={imageModalShow} />
+                                </Modal>
                             )}
 
 
