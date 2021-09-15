@@ -7,10 +7,10 @@ import './Image.css'
 
 
 
-const Image = ({ setShowModal, image, user }) => {
-    const {comments} = useSelector(state => state)
+const Image = ({ setShowModal, image, user, setImageModalShow }) => {
+    const { comments } = useSelector(state => state)
     const dispatch = useDispatch()
-     
+
     const closeModal = () => {
         if (setShowModal) setShowModal(false);
         if (setImageModalShow) setImageModalShow(false);
@@ -50,7 +50,7 @@ const Image = ({ setShowModal, image, user }) => {
                             {comments.loading && <div>Loading...</div>}
                             {!comments.loading && Object.values(comments?.comments).map(comment => {
                                 if (comment.imgId === image.id) {
-                                    return <CommentCard comment={comment}/>
+                                    return <CommentCard comment={comment} />
                                 } else {
                                     return ''
                                 }
@@ -68,10 +68,10 @@ const Image = ({ setShowModal, image, user }) => {
 
 
 
-const CommentCard = ({comment}) => {
+const CommentCard = ({ comment }) => {
     return (
         <>
-        
+
         </>
     )
 
