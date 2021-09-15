@@ -52,42 +52,42 @@ const ImageUploadForm = ({ setShowModal }) => {
 
     return (
         <>
-            <div className='modal-exit-bar'>
+            <div className='exit-bar__image_upload'>
                 <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
             </div>
             {!imageProvided && (
-                <div className='image-upload-container image-select-container'>
+                <div className='container__image_upload image-select-container__image_upload'>
                     <i className="fas fa-images"></i>
                     <div>
-                        <button className='image-select-button' onClick={handleClick}>Select an image (PNG, JPG)</button>
+                        <button className='select-button__image_upload' onClick={handleClick}>Select an image (PNG, JPG)</button>
                         <input ref={imageInput} style={{ display: 'none' }} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
                     </div>
                 </div>
             )}
             {imageProvided && (
                 <>
-                    <div className='image-upload-container image-post-container'>
-                        <div className='image-upload-display-container'>
-                            <img className='image-to-upload' src={imgUrl} alt='to be uploaded'></img>
+                    <div className='container__image_upload image-post-container__image_upload'>
+                        <div className='display-container__image_upload'>
+                            <img className='image-to-upload__image_upload' src={imgUrl} alt='to be uploaded'></img>
                         </div>
-                        <div className='caption-upload-and-share-container'>
-                            <div className='share-container-user-info'>
-                                <div className='user-profile-thumb' style={
+                        <div className='caption-share-container__image_upload'>
+                            <div className='share-container-user-info__image_upload'>
+                                <div className='user-profile-thumb__image_upload' style={
                                         { backgroundImage: `url(${user?.profileImgUrl})` }
                                     }></div>
                                 <p>{user.username}</p>
                             </div>
-                            <form className='caption-share-image-form' onSubmit={handleImagePost}>
-                                <div className='image-caption-container'>
+                            <form className='caption-share-form__image_upload' onSubmit={handleImagePost}>
+                                <div className='image-caption-container__image_upload'>
                                     <textarea
                                         value={caption}
                                         onChange={(e) => setCaption(e.target.value)}
-                                        className='caption-input'
+                                        className='caption-input__image_upload'
                                         placeholder='Write a caption...'
                                     ></textarea>
                                 </div>
-                                <div className='image-share-button-container'>
-                                    <button className='image-share-button' type='submit'>Share</button>
+                                <div className='share-button-container__image_upload'>
+                                    <button className='share-button__image_upload' type='submit'>Share</button>
                                 </div>
                             </form>
                         </div>

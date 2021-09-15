@@ -2,7 +2,7 @@
     border-radius: 5px;
 }
 
-.modal-exit-bar {
+.exit-bar__image_upload {
     height: 50px;
     border-bottom: 1px solid rgb(182, 182, 182);
     display: flex;
@@ -29,20 +29,20 @@
 
 
 
-.image-upload-container {
+.container__image_upload {
     width: 935px;
     height: 550px;
     display: flex;
 }
 
-.image-select-container {
+.image-select-container__image_upload {
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.image-select-button,
-.image-share-button {
+.select-button__image_upload,
+.share-button__image_upload {
     color:white;
     cursor: pointer;
     border: none;
@@ -62,24 +62,24 @@
 
 
 
-.image-post-container {
+.image-post-container__image_upload {
     justify-content: space-between;
 }
 
-.image-upload-display-container {
+.display-container__image_upload {
     width: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.image-to-upload {
+.image-to-upload__image_upload {
     max-width: 85%;
     max-height: 85%;
 }
 
 
-.caption-upload-and-share-container {
+.caption-share-container__image_upload {
     width: 35%;
     display: flex;
     justify-content: space-between;
@@ -87,19 +87,19 @@
     border-left: 1px solid rgb(182, 182, 182);
 }
 
-.share-container-user-info {
+.share-container-user-info__image_upload {
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
 }
-.share-container-user-info p {
+.share-container-user-info__image_upload p {
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.user-profile-thumb {
+.user-profile-thumb__image_upload {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -111,7 +111,7 @@
 }
 
 
-.caption-share-image-form {
+.caption-share-form__image_upload {
     height: 100%;
     padding: 15px;
     display: flex;
@@ -119,7 +119,7 @@
     flex-direction: column;
 }
 
-.image-share-button-container {
+.share-button-container__image_upload {
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
@@ -128,16 +128,16 @@
     justify-content: center;
 }
 
-.image-share-button {
+.share-button__image_upload {
     width: 100%;
 }
 
 
-.image-caption-container {
+.image-caption-container__image_upload {
     height: 50%;
 }
 
-.caption-input {
+.caption-input__image_upload {
     border: none;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
@@ -145,9 +145,7 @@
     resize: none;
 }
 
-.caption-input:focus {
+.caption-input__image_upload:focus {
     /* border: 1px solid grey; */
     outline: none !important;
-
-
 }
