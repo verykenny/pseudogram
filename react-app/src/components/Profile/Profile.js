@@ -39,7 +39,7 @@ const Profile = () => {
                     {images.length > 0 && images.map(image => {
                         if (image.userId === user.id) {
                             return (
-                                <ImageModal key={image.id} image={image} user={user} />
+                                <ImageModal key={image.id} imageId={image.id} user={user} />
                             )
                         }
                         return '';

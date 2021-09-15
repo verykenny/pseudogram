@@ -82,6 +82,7 @@
 .display-container__image_modal {
     width: 65%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -130,6 +131,25 @@
     flex-direction: column;
 }
 
+.comment-section__image_modal {
+    height: 75%;
+}
+
+.comment-card__image_modal {
+    display: flex;
+}
+
+.comment-card__image_modal p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0;
+}
+
+.username__image_modal {
+    font-weight: bold;
+    padding-right: 5px
+}
+
+
 .share-button-container__image_modal {
     width: 100%;
     padding: 15px;
@@ -143,9 +163,6 @@
     width: 100%;
 }
 
-.image-caption-container__image_modal {
-    height: 50%;
-}
 
 .caption-input__image_modal {
     border: none;
