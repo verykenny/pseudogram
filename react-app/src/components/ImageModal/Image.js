@@ -1,6 +1,7 @@
 import React, { useDebugValue, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_comments } from "../../store/comment";
+import { get_comments, set_new_comment } from "../../store/comment";
+import { get_feed } from "../../store/feed";
 
 import './Image.css'
 
@@ -8,6 +9,7 @@ import './Image.css'
 const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     const image = useSelector(state => state.feed.images[imageId])
     const [comment, setComment] = useState('')
+    const dispatch = useDispatch()
 
     const closeModal = () => {
         if (setShowModal) setShowModal(false);
@@ -15,9 +17,16 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
         return;
     }
 
+    const handleCommentSubmit = (e) => {
+        e.preventDefault()
+
+        dispatch(set_new_comment(comment, image.id))
+        dispatch(get_feed())
+        setComment('')
+    }
+
     return (
         <>
-
             <div className='exit-bar__image_upload'>
                 <i className="far fa-image"></i>
                 <h2 className='modal-header__image_upload'>{`${user.username}'s Post`}</h2>
@@ -52,7 +61,11 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                                 placeholder='Leave a comment...'
                             ></textarea>
                             <div className='share-button-container__image_modal'>
-                                <button disabled={(comment.length === 0) ? true : false} className='comment-button__image_modal' >Post</button>
+                                <button
+                                disabled={(comment.length === 0) ? true : false}
+                                className='comment-button__image_modal'
+                                onClick={handleCommentSubmit}
+                                >Post</button>
                             </div>
                         </div>
                     </div>
