@@ -39,7 +39,6 @@ const Profile = () => {
                     {images.length > 0 && images.map(image => {
                         if (image.userId === user.id) {
                             return (
-                                // <img className='profile-page-img' src={image.imgUrl} alt={image.caption} />
                                 <ImageModal key={image.id} image={image} user={user} />
                             )
                         }
