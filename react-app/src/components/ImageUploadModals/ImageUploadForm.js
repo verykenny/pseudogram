@@ -25,14 +25,11 @@ const ImageUploadForm = () => {
         e.preventDefault();
             async function upload () {
                 try {
-
                     const data = await uploadFile(file, config)
-                    console.log(data.location);
                     setImgUrl(data.location)
                     setImageProvided(true)
                 } catch (e) {
-                    console.log('*******************************');
-                    console.log(e);
+                    return;
                 }
             }
         upload()
