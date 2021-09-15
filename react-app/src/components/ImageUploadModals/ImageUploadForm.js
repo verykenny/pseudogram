@@ -1,19 +1,41 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux"
 import { set_image } from "../../store/feed";
+import { uploadFile } from 'react-s3'
 
 import './ImageUploadForm.css'
 
 
+const config = {
+    bucketName: process.env.REACT_APP_BUCKET,
+    region: process.env.REACT_APP_REGION,
+    accessKeyId: process.env.REACT_APP_ACCESS_KEY,
+    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+}
+
+
 const ImageUploadForm = () => {
-    const [imgUrl, setImgUrl] = useState('')
+    const [file, setFile] = useState(null)
+    const [imgUrl, setImgUrl] = useState(null)
     const [imageProvided, setImageProvided] = useState(false)
     const [caption, setCaption] = useState('')
     const dispatch = useDispatch()
 
     const handleUrlSubmit = (e) => {
-        e.preventDefault()
-        setImageProvided(true)
+        e.preventDefault();
+            async function upload () {
+                try {
+
+                    const data = await uploadFile(file, config)
+                    console.log(data.location);
+                    setImgUrl(data.location)
+                    setImageProvided(true)
+                } catch (e) {
+                    console.log('*******************************');
+                    console.log(e);
+                }
+            }
+        upload()
     }
 
     const handleImagePost = (e) => {
@@ -21,26 +43,13 @@ const ImageUploadForm = () => {
         dispatch(set_image(imgUrl, caption))
     }
 
-    const config = {
-        bucketName: process.env.REACT_APP_BUCKET,
-        region: process.env.REACT_APP_REGION,
-        accessKeyId: process.env.REACT_APP_ACCESS_KEY,
-        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
-    }
-
-    console.log(config);
-
     return (
         <>
             <h1>Image Upload Modal</h1>
             {!imageProvided && (
                 <form onSubmit={handleUrlSubmit}>
                     <div>
-                        <input
-                            type='text'
-                            value={imgUrl}
-                            onChange={(e) => setImgUrl(e.target.value)}
-                        ></input>
+                        <input type='file' onChange={(e) => setFile(e.target.files[0])}></input>
                     </div>
                     <div>
                         <button type='submit'>Submit</button>
