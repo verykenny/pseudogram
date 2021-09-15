@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { set_image } from "../../store/feed";
 import { uploadFile } from 'react-s3'
 
@@ -15,12 +15,14 @@ const config = {
 
 
 const ImageUploadForm = ({ setShowModal }) => {
-    // const [file, setFile] = useState(null)
+    const user = useSelector(state => state.session.user)
     const [imgUrl, setImgUrl] = useState(null)
     const [imageProvided, setImageProvided] = useState(false)
     const [caption, setCaption] = useState('')
     const dispatch = useDispatch()
     const imageInput = useRef(null)
+
+    console.log(user);
 
     const handleUrlSubmit = (e) => {
         e.preventDefault();
@@ -50,34 +52,46 @@ const ImageUploadForm = ({ setShowModal }) => {
 
     return (
         <>
-        <div className='modal-exit-bar'>
-            <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
-        </div>
+            <div className='modal-exit-bar'>
+                <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
+            </div>
             {!imageProvided && (
                 <div className='image-upload-container image-select-container'>
                     <i className="fas fa-images"></i>
-                        <div>
-                            <button className='image-select-button' onClick={handleClick}>Select an image (PNG, JPG)</button>
-                            <input ref={imageInput} style={{display:'none'}} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
-                        </div>
+                    <div>
+                        <button className='image-select-button' onClick={handleClick}>Select an image (PNG, JPG)</button>
+                        <input ref={imageInput} style={{ display: 'none' }} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
+                    </div>
                 </div>
             )}
             {imageProvided && (
                 <>
-                <div className='image-upload-container image-post-container'>
-                    <img className='image-to-upload' src={imgUrl} alt='to be uploaded'></img>
-                    <form onSubmit={handleImagePost}>
-                        <div>
-                            <textarea
-                                value={caption}
-                                onChange={(e) => setCaption(e.target.value)}
-                            ></textarea>
+                    <div className='image-upload-container image-post-container'>
+                        <div className='image-upload-display-container'>
+                            <img className='image-to-upload' src={imgUrl} alt='to be uploaded'></img>
                         </div>
-                        <div>
-                            <button type='submit'>Post</button>
+                        <div className='caption-upload-and-share-container'>
+                            <div className='share-container-user-info'>
+                                <div className='user-profile-thumb' style={
+                                        { backgroundImage: `url(${user?.profileImgUrl})` }
+                                    }></div>
+                                <p>{user.username}</p>
+                            </div>
+                            <form className='caption-share-image-form' onSubmit={handleImagePost}>
+                                <div className='image-caption-container'>
+                                    <textarea
+                                        value={caption}
+                                        onChange={(e) => setCaption(e.target.value)}
+                                        className='caption-input'
+                                        placeholder='Write a caption...'
+                                    ></textarea>
+                                </div>
+                                <div className='image-share-button-container'>
+                                    <button className='image-share-button' type='submit'>Share</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
+                    </div>
                 </>
             )}
         </>

@@ -1,5 +1,5 @@
 .modal-exit-bar {
-    height: 50px;
+    height: 40px;
     border-bottom: 1px solid rgb(182, 182, 182);
     display: flex;
     justify-content: flex-end;
@@ -7,7 +7,7 @@
 }
 
 .fa-window-close {
-    font-size: 30px;
+    font-size: 28px;
     padding-right: 20px;
     color: grey;
 }
@@ -25,10 +25,6 @@
 
 
 
-.image-to-upload {
-    max-width: 75px;
-}
-
 .image-upload-container {
     width: 935px;
     height: 600px;
@@ -42,14 +38,113 @@
     flex-direction: column;
 }
 
-.image-select-button {
+.image-select-button,
+.image-share-button {
     color:white;
     cursor: pointer;
     border: none;
     background-color: #24a0ed;
     width: 240px;
-    margin-top: 10px;
     height: 30px;
     font-weight: 600;
     border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+.image-post-container {
+    justify-content: space-between;
+}
+
+.image-upload-display-container {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-to-upload {
+    max-width: 85%;
+    max-height: 85%;
+}
+
+
+.caption-upload-and-share-container {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-left: 1px solid rgb(182, 182, 182);
+}
+
+.share-container-user-info {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+.share-container-user-info p {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.user-profile-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 20px;
+}
+
+
+.caption-share-image-form {
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.image-share-button-container {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-share-button {
+    width: 100%;
+}
+
+
+.image-caption-container {
+    height: 50%;
+}
+
+.caption-input {
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+
+.caption-input:focus {
+    /* border: 1px solid grey; */
+    outline: none !important;
+
+
 }
