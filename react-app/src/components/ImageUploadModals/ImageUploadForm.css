@@ -1,3 +1,11 @@
 .uploading {
     max-width: 75px;
 }
+
+.image-upload-container {
+    max-width: 935px;
+}
+
+.image-select-container {
+    padding: 50px;
+}

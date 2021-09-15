@@ -14,7 +14,7 @@ const config = {
 }
 
 
-const ImageUploadForm = () => {
+const ImageUploadForm = ({ setShowModal }) => {
     const [file, setFile] = useState(null)
     const [imgUrl, setImgUrl] = useState(null)
     const [imageProvided, setImageProvided] = useState(false)
@@ -23,40 +23,43 @@ const ImageUploadForm = () => {
 
     const handleUrlSubmit = (e) => {
         e.preventDefault();
-            async function upload () {
-                try {
-                    const data = await uploadFile(file, config)
-                    setImgUrl(data.location)
-                    setImageProvided(true)
-                } catch (e) {
-                    return;
-                }
+        async function upload() {
+            try {
+                const data = await uploadFile(file, config)
+                setImgUrl(data.location)
+                setImageProvided(true)
+            } catch (e) {
+                return;
             }
+        }
         upload()
     }
 
     const handleImagePost = (e) => {
         e.preventDefault()
         dispatch(set_image(imgUrl, caption))
+        setShowModal(false)
     }
 
     return (
         <>
-            <h1>Image Upload Modal</h1>
             {!imageProvided && (
-                <form onSubmit={handleUrlSubmit}>
-                    <div>
-                        <input type='file' onChange={(e) => setFile(e.target.files[0])}></input>
-                    </div>
-                    <div>
-                        <button type='submit'>Submit</button>
-                    </div>
-                </form>
+                <div className='image-upload-container image-select-container'>
+                    <form className='form image-upload-form' onSubmit={handleUrlSubmit}>
+                        <div>
+                            <label for='image-upload'>Choose image to upload (PNG, JPG)</label>
+                            <input type='file' accept='.png,.jpeg,.jpg,' onChange={(e) => setFile(e.target.files[0])} />
+                        </div>
+                        <div>
+                            <button type='submit'>Continue</button>
+                        </div>
+                    </form>
+                </div>
             )}
             {imageProvided && (
                 <>
-                    <h1>update with info</h1>
-                    <img className='uploading' src={imgUrl} alt='to be uploaded'></img>
+                <div className='image-upload-container image-post-container'>
+                    <img className='image-to-upload' src={imgUrl} alt='to be uploaded'></img>
                     <form onSubmit={handleImagePost}>
                         <div>
                             <textarea
@@ -68,6 +71,7 @@ const ImageUploadForm = () => {
                             <button type='submit'>Post</button>
                         </div>
                     </form>
+                </div>
                 </>
             )}
         </>
