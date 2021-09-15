@@ -61,28 +61,64 @@
     background-position: center;
 }
 
-.caption-comment-container{
-     border: 1px solid pink;
-     width:100%;
-     height: 40px;
+.like-comment-container{
+border: 1px solid pink;
+width:100%;
+height: 30px;
 }
 
 .like-button-container{
-    text-align: center;
-    height: 30px;
-    width: 30px;
-    margin-top: 6px;
-    margin-left: 10px;
-    display: inline-block;
+text-align: center;
+height: 30px;
+width: 30px;
+margin-top: 6px;
+margin-left: 10px;
+display: inline-block;
 }
 
 .fa-heart{
-    font-size: 24px;
-    cursor: pointer;
+font-size: 24px;
+cursor: pointer;
 }
 
 .fa-comment{
-    font-size: 24px;
-    cursor: pointer;
+font-size: 24px;
+cursor: pointer;
 }
 
+.liked-container{
+border: 1px solid pink;
+width:100%;
+margin-top:5px;
+height: 30px;
+}
+
+.three-image-container{
+border: 1px solid black;
+width: 19px;
+height: 19px;
+border-radius: 50%;
+display: inline-block;
+margin-left: 10px;
+margin-top: 2px;
+background-size: 150%;
+background-repeat: no-repeat;
+background-position: center;
+}
+
+.users-who-liked{
+    border: 1px solid yellow;
+    height: 20px;
+    display: inline-block;
+    width: 250px;
+    margin-left: 10px;
+    font-size: 15px;
+    vertical-align: top;
+    margin-top: 3px;
+}
+
+.link_liked{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
