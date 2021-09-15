@@ -73,7 +73,7 @@
 
 .image-post-container__image_modal {
     justify-content: space-between;
-        width: 935px;
+    width: 935px;
     height: 550px;
     max-width: 100%;
     display: flex;
@@ -81,6 +81,7 @@
 
 .display-container__image_modal {
     width: 65%;
+    height: 550px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,8 +89,12 @@
 }
 
 .image__image_modal {
-    max-width: 100%;
-    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    background-size: fill;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .caption-share-container__image_modal {

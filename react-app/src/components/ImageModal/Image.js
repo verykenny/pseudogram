@@ -26,7 +26,9 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
             </div>
             <div className='image-post-container__image_modal'>
                 <div className='display-container__image_modal'>
-                    <img className='image__image_modal' src={image?.imgUrl} alt='to be uploaded'></img>
+                    <div className='image__image_modal' style={
+                        { backgroundImage: `url(${image?.imgUrl})` }
+                    }></div>
                     <p>{image.caption}</p>
                 </div>
                 <div className='caption-share-container__image_modal'>
@@ -50,7 +52,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                                 placeholder='Leave a comment...'
                             ></textarea>
                             <div className='share-button-container__image_modal'>
-                                <button disabled={(comment.length === 0) ? true : false}className='comment-button__image_modal' >Post</button>
+                                <button disabled={(comment.length === 0) ? true : false} className='comment-button__image_modal' >Post</button>
                             </div>
                         </div>
                     </div>
