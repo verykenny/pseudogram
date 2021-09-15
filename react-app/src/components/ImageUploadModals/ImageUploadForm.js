@@ -22,8 +22,6 @@ const ImageUploadForm = ({ setShowModal }) => {
     const dispatch = useDispatch()
     const imageInput = useRef(null)
 
-    console.log(user);
-
     const handleUrlSubmit = (e) => {
         e.preventDefault();
         async function upload() {

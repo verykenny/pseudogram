@@ -4,8 +4,10 @@ import { useParams } from 'react-router-dom';
 import { get_feed } from "../../store/feed";
 
 import ImageUploadModal from "../ImageUploadModals";
+import ImageModal from "../ImageModal";
 
 import './Profile.css'
+import { get_likes } from "../../store/like";
 
 const Profile = () => {
     const user = useSelector(state => state.session.user);
@@ -22,9 +24,6 @@ const Profile = () => {
     return (
         <>
             <h1>Profile Page</h1>
-            {/* <NavLink to='/image-upload' exact={true} activeClassName='active'>
-                Add New Image
-            </NavLink> */}
             {user.id === Number(userId) && <ImageUploadModal />}
             <ul>
                 <li>
@@ -36,13 +35,17 @@ const Profile = () => {
                 <li>
                     <strong>Email</strong> {user.email}
                 </li>
-                {images.length > 0 && images.map(image => {
-                    if (image.userId === user.id) {
-                        return (
-                            <img className='profile-page-img' src={image.imgUrl} alt={image.caption} />
-                        )
-                    }
-                })}
+                <div className='images_container__profile'>
+                    {images.length > 0 && images.map(image => {
+                        if (image.userId === user.id) {
+                            return (
+                                // <img className='profile-page-img' src={image.imgUrl} alt={image.caption} />
+                                <ImageModal key={image.id} image={image} user={user} />
+                            )
+                        }
+                        return '';
+                    })}
+                </div>
             </ul>
         </>
     )
