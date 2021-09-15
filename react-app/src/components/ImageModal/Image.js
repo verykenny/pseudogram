@@ -1,4 +1,4 @@
-import React, { useDebugValue, useEffect } from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { get_comments } from "../../store/comment";
 
@@ -7,6 +7,7 @@ import './Image.css'
 
 const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     const image = useSelector(state => state.feed.images[imageId])
+    const [comment, setComment] = useState('')
 
     const closeModal = () => {
         if (setShowModal) setShowModal(false);
@@ -41,7 +42,16 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                                 return <CommentCard comment={comment} />
                             })}
                         </div>
-                        <div className='share-button-container__image_modal'>
+                        <div className='comment-button-container__image_modal'>
+                            <textarea
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                className='comment-input__image_modal'
+                                placeholder='Leave a comment...'
+                            ></textarea>
+                            <div className='share-button-container__image_modal'>
+                                <button disabled={(comment.length === 0) ? true : false}className='comment-button__image_modal' >Post</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -60,9 +70,9 @@ const CommentCard = ({ comment }) => {
                 <div className='user-profile-thumb__image_modal' style={
                     { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
                 }></div>
-                    <div>
-                        <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
-                    </div>
+                <div>
+                    <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
+                </div>
             </div>
         </>
     )
