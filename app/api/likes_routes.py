@@ -21,7 +21,12 @@ def validation_errors_to_error_messages(validation_errors):
 def get_likes():
     user = User.query.get(current_user.get_id())
     followings = [user.id for user in user.following]
+    images = [image for image in user.image]
     likes = Like.query.filter(Like.userId == current_user.get_id()).all()
     other_likes = Like.query.filter(Like.userId.in_(followings)).all()
-    likes = likes + other_likes
-    return {'likes': [like.to_dict() for like in likes]}
+    image_likes = [image.likes for image in images]
+    all_image_likes = []
+    for likes in image_likes:
+        all_image_likes += likes
+    likes = set(likes + other_likes + all_image_likes)
+    return {'likes': [like.to_dict_extended() for like in likes]}
