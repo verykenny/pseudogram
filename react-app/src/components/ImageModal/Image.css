@@ -24,7 +24,7 @@
     max-width: 95%;
 }
 
-.exit-bar__image_upload {
+.exit-bar__image_modal {
     height: 50px;
     border-bottom: 1px solid rgb(182, 182, 182);
     display: flex;
@@ -32,7 +32,7 @@
     align-items: center;
 }
 
-.modal-header__image_upload {
+.modal-header__image_modal {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 200;
     font-size: 20px;
@@ -70,48 +70,28 @@
     margin-bottom: 50px;
 }
 
-.container__image_upload {
-    width: 935px;
+
+.image-post-container__image_modal {
+    justify-content: space-between;
+        width: 935px;
     height: 550px;
     max-width: 100%;
     display: flex;
 }
 
-.image-select-container__image_upload {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.select-button__image_upload,
-.share-button__image_upload {
-    color: white;
-    cursor: pointer;
-    border: none;
-    background-color: #24a0ed;
-    width: 240px;
-    height: 30px;
-    font-weight: 600;
-    border-radius: 5px;
-}
-
-.image-post-container__image_upload {
-    justify-content: space-between;
-}
-
-.display-container__image_upload {
+.display-container__image_modal {
     width: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.image-to-upload__image_upload {
-    max-width: 85%;
-    max-height: 85%;
+.image__image_modal {
+    max-width: 100%;
+    max-height: 100%;
 }
 
-.caption-share-container__image_upload {
+.caption-share-container__image_modal {
     width: 35%;
     display: flex;
     justify-content: space-between;
@@ -119,19 +99,19 @@
     border-left: 1px solid rgb(182, 182, 182);
 }
 
-.share-container-user-info__image_upload {
+.share-container-user-info__image_modal {
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
 }
-.share-container-user-info__image_upload p {
+.share-container-user-info__image_modal p {
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.user-profile-thumb__image_upload {
+.user-profile-thumb__image_modal {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -142,7 +122,7 @@
     margin-right: 20px;
 }
 
-.caption-share-form__image_upload {
+.comments_container__image_modal {
     height: 100%;
     padding: 15px;
     display: flex;
@@ -150,7 +130,7 @@
     flex-direction: column;
 }
 
-.share-button-container__image_upload {
+.share-button-container__image_modal {
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
@@ -159,15 +139,15 @@
     justify-content: center;
 }
 
-.share-button__image_upload {
+.share-button__image_modal {
     width: 100%;
 }
 
-.image-caption-container__image_upload {
+.image-caption-container__image_modal {
     height: 50%;
 }
 
-.caption-input__image_upload {
+.caption-input__image_modal {
     border: none;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
@@ -175,31 +155,31 @@
     resize: none;
 }
 
-.caption-input__image_upload:focus {
+.caption-input__image_modal:focus {
     /* border: 1px solid grey; */
     outline: none !important;
 }
 
 @media screen and (max-width: 535px) {
-    .image-post-container__image_upload {
+    .image-post-container__image_modal {
         flex-direction: column;
     }
 
-    .display-container__image_upload {
+    .display-container__image_modal {
         margin: 0 auto;
         height: 50%;
     }
 
-    .caption-share-container__image_upload {
+    .caption-share-container__image_modal {
         height: 50%;
         width: 100%;
     }
-    .select-button__image_upload,
-    .share-button__image_upload {
+    .select-button__image_modal,
+    .share-button__image_modal {
         max-width: 100%;
     }
 
-    .image-select-container__image_upload div {
+    .image-select-container__image_modal div {
         max-width: 90%;
     }
 }
