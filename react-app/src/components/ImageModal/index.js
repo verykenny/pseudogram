@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import Image from './Image';
 
-function ImageModal({ image, user, display = false }) {
+function ImageModal({ imageId, user, display = false }) {
     const [showModal, setShowModal] = useState(display);
+    const image = useSelector(state => state.feed.images[imageId])
 
     return (
         <>
@@ -18,7 +20,7 @@ function ImageModal({ image, user, display = false }) {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <Image setShowModal={setShowModal} image={image} user={user} />
+                    <Image setShowModal={setShowModal} imageId={imageId} user={user} />
                 </Modal>
             )}
         </>
