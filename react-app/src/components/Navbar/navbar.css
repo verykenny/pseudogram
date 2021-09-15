@@ -78,27 +78,6 @@
   color: rgba(38, 38, 38);
 }
 
-.activity-dropdown {
-  float: right;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-content: space-around;
-  top: 40px;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  z-index: 15;
-  list-style: none;
-  background-color: rgb(225, 222, 222);
-  height: 250px;
-  width: 200px;
-}
-.activity-dropdown > * {
-  position: relative;
-  padding: 10px;
-  text-decoration: none;
-}
 .search-dropdown {
   background-color: transparent;
   float: right;
@@ -182,4 +161,38 @@
 .activity-img {
   height: 24px;
   width: 24px;
+
+  border: 1px solid black;
+}
+
+.activity-dropdown {
+  float: right;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  top: 40px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 15;
+  list-style: none;
+  background-color: rgb(225, 222, 222);
+  height: 250px;
+  width: fit-content;
+}
+.activity-dropdown > li {
+  position: relative;
+  right: 6%;
+  padding: 10px;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(253, 253, 253);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.activity-dropdown > * > a {
+  text-align: center;
+  text-decoration: none;
+  padding-right: 1%;
 }
