@@ -1,16 +1,17 @@
 
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import ImageUploadForm from '../ImageUploadModals/ImageUploadForm';
 import LogoutButton from '../auth/LogoutButton';
+import { get_likes } from '../../store/like';
 import { useDebounce } from '../../hooks/useDebounce'
+
 import home from './home.png'
 import add from './add.png'
 import heart from './heart.png'
 import blackHeart from './blackHeart.png'
-import searchimg from './search.png'
 import './navbar.css'
 
 const NavBar = () => {
@@ -19,20 +20,29 @@ const NavBar = () => {
     const [showActivity, setShowActivity] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const user = useSelector(state => state.session.user);
     const [search, setSearch] = useState('')
     const [users, setUsers] = useState([])
+    const [activityFeed, setActivityFeed] = useState([])
     const [filteredSearch, setFilteredSearch] = useState([])
     const [activityImg, setActivityImg] = useState(heart)
+    const user = useSelector(state => state.session.user);
+    const activity = useSelector(state => Object.values(state.likes.likes))
     const debouncedSearch = useDebounce(search, 250);
+    const dispatch = useDispatch()
     const history = useHistory()
+
+
 
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
     const openActivity = () => {
-        if (showActivity) return;
+        if (showActivity) {
+            sortingLikes()
+            return
+        };
+        sortingLikes()
         setActivityImg(blackHeart)
         setShowActivity(true)
     }
@@ -62,9 +72,6 @@ const NavBar = () => {
 
         return () => document.removeEventListener("click", closeActivity);
     }, [openActivity]);
-
-
-
     useEffect(() => {
         if (!showSearch) return;
 
@@ -76,8 +83,6 @@ const NavBar = () => {
         return () => document.removeEventListener("click", closeActivity);
     }, [openSearchDropdown]);
 
-
-
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('/api/users/');
@@ -87,10 +92,10 @@ const NavBar = () => {
         fetchData();
     }, []);
 
-    const searchUsers = (search) => {
+    const searchUsers = (search, id) => {
         let lowerSearch = search.toLowerCase()
         const filteredUsers = users.filter(user => {
-            return user.username.toLowerCase().startsWith(lowerSearch)
+            return user.username.toLowerCase().startsWith(lowerSearch) && user.id !== id
         })
         if (search !== '') setFilteredSearch(filteredUsers)
         else setFilteredSearch([])
@@ -103,10 +108,21 @@ const NavBar = () => {
             }
         }
     }
+
     useEffect(() => {
-        searchUsers(search)
+        searchUsers(search, user.id)
     }, [debouncedSearch])
 
+    useEffect(async () => {
+        await dispatch(get_likes(user.id))
+    }, [dispatch])
+    const sortingLikes = (() => {
+        let sorted = activity.sort(function (a, b) {
+            return new Date(b.date) - new Date(a.date)
+        });
+        setActivityFeed(sorted)
+        console.log(activityFeed)
+    })
     return (
 
         <nav>
@@ -123,7 +139,7 @@ const NavBar = () => {
                         ></input>
                             {filteredSearch && showSearch && (<ul className='search-dropdown'>
                                 {filteredSearch && showSearch && filteredSearch.map(user =>
-                                    <li><NavLink to={`/users/${user?.id}`}><img className='profile-img-nav' src={`${user.profileImgUrl}`}></img>{`${user.username}`}</NavLink></li>
+                                    <li key={`${user.id}`}><NavLink to={`/users/${user?.id}`}><img className='profile-img-nav' src={`${user.profileImgUrl}`}></img>{`${user.username}`}</NavLink></li>
 
                                 )}
                             </ul>)}
@@ -150,18 +166,11 @@ const NavBar = () => {
                             <img className='activity-nav-img' src={activityImg} onClick={openActivity}></img>
                             {showActivity && (
                                 <ul className='activity-dropdown'>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
-                                    <li>placeholders</li>
+                                    {activityFeed.length && activityFeed.map(likes =>
+                                        <li><NavLink to={`/users/${likes.user.id}`}> <img className='profile-img-nav' src={`${likes.user.profileImgUrl}`}></img>{`${likes.user.username}`}</NavLink><NavLink to='/'>
+                                            <img src={`${likes.imgId.imgUrl}`} className='activity-img'></img></NavLink></li>
+                                    )}
+
                                 </ul>
 
                             )}
