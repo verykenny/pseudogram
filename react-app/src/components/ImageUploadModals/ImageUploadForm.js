@@ -14,7 +14,7 @@ const config = {
 }
 
 
-const ImageUploadForm = () => {
+const ImageUploadForm = ({ setShowModal }) => {
     const [file, setFile] = useState(null)
     const [imgUrl, setImgUrl] = useState(null)
     const [imageProvided, setImageProvided] = useState(false)
@@ -38,6 +38,7 @@ const ImageUploadForm = () => {
     const handleImagePost = (e) => {
         e.preventDefault()
         dispatch(set_image(imgUrl, caption))
+        setShowModal(false)
     }
 
     return (
