@@ -44,7 +44,7 @@ const ImageUploadForm = ({ setShowModal }) => {
         setShowModal(false)
     }
 
-    const handleClick = (e) => {
+    const handleClickSelect = (e) => {
         e.preventDefault()
         imageInput.current.click()
 
@@ -62,7 +62,7 @@ const ImageUploadForm = ({ setShowModal }) => {
                     <div className='container__image_upload image-select-container__image_upload'>
                         <i className="fas fa-images"></i>
                         <div>
-                            <button className='select-button__image_upload' onClick={handleClick}>Select an image (PNG, JPG)</button>
+                            <button className='select-button__image_upload' onClick={handleClickSelect}>Select an image (PNG, JPG)</button>
                             <input ref={imageInput} style={{ display: 'none' }} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
                         </div>
                     </div>
@@ -71,7 +71,7 @@ const ImageUploadForm = ({ setShowModal }) => {
             {imageProvided && (
                 <>
                     <div className='exit-bar__image_upload'>
-                        <i className="fas fa-arrow-left"></i>
+                        <i onClick={() => setImageProvided(false)} className="fas fa-arrow-left"></i>
                         <h2 className='modal-header__image_upload'>Add a caption</h2>
                         <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
                     </div>
