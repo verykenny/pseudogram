@@ -82,7 +82,7 @@ const CommentCard = ({ comment }) => {
     return (
         <>
             <div className='comment-card__image_modal'>
-                <div className='user-profile-thumb__image_modal' style={
+                <div className='commenter-profile-thumb__image_modal' style={
                     { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
                 }></div>
                 <div className='comment__image_modal'>

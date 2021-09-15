@@ -115,7 +115,8 @@
     display: inline-block;
 }
 
-.user-profile-thumb__image_modal {
+.user-profile-thumb__image_modal,
+.commenter-profile-thumb__image_modal {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -123,6 +124,10 @@
     background-size: 150%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.user-profile-thumb__image_modal {
+    margin-right: 20px;
 }
 
 .comments_container__image_modal {
