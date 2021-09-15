@@ -10,7 +10,6 @@
   margin-bottom: 55px;
   top: 0;
   background-color: white;
-
 }
 
 .inner-nav {
@@ -92,8 +91,8 @@
   z-index: 15;
   list-style: none;
   background-color: rgb(225, 222, 222);
-  height: 325px;
-  width: 125px;
+  height: 250px;
+  width: 200px;
 }
 .activity-dropdown > * {
   position: relative;
@@ -153,6 +152,7 @@
   background-image: none;
 }
 .profile-img-nav {
+  border: 1px solid black;
   height: 24px;
   width: 24px;
   border-radius: 2rem;
@@ -177,4 +177,9 @@
 }
 .activity-nav-img:hover {
   cursor: pointer;
+}
+
+.activity-img {
+  height: 24px;
+  width: 24px;
 }
