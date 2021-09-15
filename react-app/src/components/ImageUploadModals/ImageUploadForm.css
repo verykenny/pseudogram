@@ -19,8 +19,6 @@
     margin: 0;
 }
 
-
-
 .fa-window-close,
 .fa-image,
 .fa-arrow-left {
@@ -52,9 +50,6 @@
     margin-bottom: 50px;
 }
 
-
-
-
 .container__image_upload {
     width: 935px;
     height: 550px;
@@ -70,7 +65,7 @@
 
 .select-button__image_upload,
 .share-button__image_upload {
-    color:white;
+    color: white;
     cursor: pointer;
     border: none;
     background-color: #24a0ed;
@@ -79,15 +74,6 @@
     font-weight: 600;
     border-radius: 5px;
 }
-
-
-
-
-
-
-
-
-
 
 .image-post-container__image_upload {
     justify-content: space-between;
@@ -104,7 +90,6 @@
     max-width: 85%;
     max-height: 85%;
 }
-
 
 .caption-share-container__image_upload {
     width: 35%;
@@ -137,7 +122,6 @@
     margin-right: 20px;
 }
 
-
 .caption-share-form__image_upload {
     height: 100%;
     padding: 15px;
@@ -159,7 +143,6 @@
     width: 100%;
 }
 
-
 .image-caption-container__image_upload {
     height: 50%;
 }
@@ -177,9 +160,8 @@
     outline: none !important;
 }
 
-
 @media screen and (max-width: 535px) {
-        .image-post-container__image_upload {
+    .image-post-container__image_upload {
         flex-direction: column;
     }
 
@@ -191,5 +173,13 @@
     .caption-share-container__image_upload {
         height: 50%;
         width: 100%;
+    }
+    .select-button__image_upload,
+    .share-button__image_upload {
+        max-width: 100%;
+    }
+
+    .image-select-container__image_upload div {
+        max-width: 90%;
     }
 }
