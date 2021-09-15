@@ -37,14 +37,13 @@ const Image = ({ setShowModal, image, user }) => {
                     </div>
                     <div className='comments_container__image_modal'>
                         <div className='image-caption-container__image_modal'>
-                            {comments.loading === true && <div>Loading...</div>}
-                            {comments.comments && Object.values(comments?.comments).map(comment => {
+                            {comments.loading && <div>Loading...</div>}
+                            {!comments.loading && Object.values(comments?.comments).map(comment => {
                                 if (comment.imgId === image.id) {
-                                    return (
-                                        <p>{comment}</p>
-                                    )
+                                    return <CommentCard comment={comment}/>
+                                } else {
+                                    return ''
                                 }
-                                return ''
                             })}
                         </div>
                         <div className='share-button-container__image_modal'>
@@ -55,6 +54,18 @@ const Image = ({ setShowModal, image, user }) => {
 
         </>
     )
+}
+
+
+
+const CommentCard = ({comment}) => {
+    return (
+        <>
+        
+        </>
+    )
+
+
 }
 
 
