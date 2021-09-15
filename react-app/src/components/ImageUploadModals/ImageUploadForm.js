@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux"
 import { set_image } from "../../store/feed";
 import { uploadFile } from 'react-s3'
@@ -15,17 +15,18 @@ const config = {
 
 
 const ImageUploadForm = ({ setShowModal }) => {
-    const [file, setFile] = useState(null)
+    // const [file, setFile] = useState(null)
     const [imgUrl, setImgUrl] = useState(null)
     const [imageProvided, setImageProvided] = useState(false)
     const [caption, setCaption] = useState('')
     const dispatch = useDispatch()
+    const imageInput = useRef(null)
 
     const handleUrlSubmit = (e) => {
         e.preventDefault();
         async function upload() {
             try {
-                const data = await uploadFile(file, config)
+                const data = await uploadFile(e.target.files[0], config)
                 setImgUrl(data.location)
                 setImageProvided(true)
             } catch (e) {
@@ -41,19 +42,24 @@ const ImageUploadForm = ({ setShowModal }) => {
         setShowModal(false)
     }
 
+    const handleClick = (e) => {
+        e.preventDefault()
+        imageInput.current.click()
+
+    }
+
     return (
         <>
+        <div className='modal-exit-bar'>
+            <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
+        </div>
             {!imageProvided && (
                 <div className='image-upload-container image-select-container'>
-                    <form className='form image-upload-form' onSubmit={handleUrlSubmit}>
+                    <i className="fas fa-images"></i>
                         <div>
-                            <label for='image-upload'>Choose image to upload (PNG, JPG)</label>
-                            <input type='file' accept='.png,.jpeg,.jpg,' onChange={(e) => setFile(e.target.files[0])} />
+                            <button className='image-select-button' onClick={handleClick}>Select an image (PNG, JPG)</button>
+                            <input ref={imageInput} style={{display:'none'}} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
                         </div>
-                        <div>
-                            <button type='submit'>Continue</button>
-                        </div>
-                    </form>
                 </div>
             )}
             {imageProvided && (
