@@ -33,7 +33,6 @@
 }
 
 .modal-header__image_modal {
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 200;
     font-size: 20px;
     margin: 0;
@@ -114,7 +113,6 @@
 }
 .share-container-user-info__image_modal p {
     display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .user-profile-thumb__image_modal {
@@ -125,7 +123,6 @@
     background-size: 150%;
     background-repeat: no-repeat;
     background-position: center;
-    margin-right: 20px;
 }
 
 .comments_container__image_modal {
@@ -145,11 +142,19 @@
 
 .comment-card__image_modal {
     display: flex;
+    justify-content: space-between;
 }
 
 .comment-card__image_modal p {
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 0;
+    max-width: 100%;
+    font-size: 14px;
+
+}
+
+.comment__image_modal {
+    max-width: 85%;
 }
 
 .username__image_modal {
@@ -191,10 +196,10 @@
 
 .comment-input__image_modal {
     border: none;
-    font-family: Arial, Helvetica, sans-serif;
     width: 100%;
     height: 100%;
     resize: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .comment-input__image_modal:focus {

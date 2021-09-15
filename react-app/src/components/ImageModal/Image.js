@@ -85,7 +85,7 @@ const CommentCard = ({ comment }) => {
                 <div className='user-profile-thumb__image_modal' style={
                     { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
                 }></div>
-                <div>
+                <div className='comment__image_modal'>
                     <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
                 </div>
             </div>
