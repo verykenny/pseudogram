@@ -1,5 +1,9 @@
+#modal-content {
+    border-radius: 5px;
+}
+
 .modal-exit-bar {
-    height: 40px;
+    height: 50px;
     border-bottom: 1px solid rgb(182, 182, 182);
     display: flex;
     justify-content: flex-end;
@@ -9,7 +13,7 @@
 .fa-window-close {
     font-size: 28px;
     padding-right: 20px;
-    color: grey;
+    color: rgb(73, 73, 73);
 }
 
 .fa-window-close:hover {
@@ -27,12 +31,11 @@
 
 .image-upload-container {
     width: 935px;
-    height: 600px;
+    height: 550px;
     display: flex;
 }
 
 .image-select-container {
-    padding: 50px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
