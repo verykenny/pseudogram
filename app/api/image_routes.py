@@ -34,7 +34,7 @@ def image_feed():
     followingsImages = Image.query.filter(Image.userId.in_(followings)).all()
     images.extend(followingsImages)
 
-    return {'images': [image.to_dict() for image in images]}
+    return {'images': [image.to_dict_extended() for image in images]}
 
 
 @image_routes.route('/create', methods=['POST'])

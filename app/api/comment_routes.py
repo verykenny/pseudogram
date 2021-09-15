@@ -20,6 +20,9 @@ def validation_errors_to_error_messages(validation_errors):
 @comment_routes.route('/')
 @login_required
 def get_comments():
+    """
+    Get comments for session user images and images for the people they follow
+    """
     user = User.query.get(current_user.get_id())
     images = user.image
     comments = []
