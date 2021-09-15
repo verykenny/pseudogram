@@ -179,7 +179,17 @@
 
 
 @media screen and (max-width: 535px) {
-    .image-post-container__image_upload {
+        .image-post-container__image_upload {
         flex-direction: column;
+    }
+
+    .display-container__image_upload {
+        margin: 0 auto;
+        height: 50%;
+    }
+
+    .caption-share-container__image_upload {
+        height: 50%;
+        width: 100%;
     }
 }
