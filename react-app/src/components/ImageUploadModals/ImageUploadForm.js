@@ -52,20 +52,29 @@ const ImageUploadForm = ({ setShowModal }) => {
 
     return (
         <>
-            <div className='exit-bar__image_upload'>
-                <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
-            </div>
             {!imageProvided && (
-                <div className='container__image_upload image-select-container__image_upload'>
-                    <i className="fas fa-images"></i>
-                    <div>
-                        <button className='select-button__image_upload' onClick={handleClick}>Select an image (PNG, JPG)</button>
-                        <input ref={imageInput} style={{ display: 'none' }} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
+                <>
+                    <div className='exit-bar__image_upload'>
+                        <i className="far fa-image"></i>
+                        <h2 className='modal-header__image_upload'>New Post</h2>
+                        <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
                     </div>
-                </div>
+                    <div className='container__image_upload image-select-container__image_upload'>
+                        <i className="fas fa-images"></i>
+                        <div>
+                            <button className='select-button__image_upload' onClick={handleClick}>Select an image (PNG, JPG)</button>
+                            <input ref={imageInput} style={{ display: 'none' }} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
+                        </div>
+                    </div>
+                </>
             )}
             {imageProvided && (
                 <>
+                    <div className='exit-bar__image_upload'>
+                        <i className="fas fa-arrow-left"></i>
+                        <h2 className='modal-header__image_upload'>Add a caption</h2>
+                        <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
+                    </div>
                     <div className='container__image_upload image-post-container__image_upload'>
                         <div className='display-container__image_upload'>
                             <img className='image-to-upload__image_upload' src={imgUrl} alt='to be uploaded'></img>
@@ -73,8 +82,8 @@ const ImageUploadForm = ({ setShowModal }) => {
                         <div className='caption-share-container__image_upload'>
                             <div className='share-container-user-info__image_upload'>
                                 <div className='user-profile-thumb__image_upload' style={
-                                        { backgroundImage: `url(${user?.profileImgUrl})` }
-                                    }></div>
+                                    { backgroundImage: `url(${user?.profileImgUrl})` }
+                                }></div>
                                 <p>{user.username}</p>
                             </div>
                             <form className='caption-share-form__image_upload' onSubmit={handleImagePost}>

@@ -6,17 +6,41 @@
     height: 50px;
     border-bottom: 1px solid rgb(182, 182, 182);
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 
-.fa-window-close {
+.modal-header__image_upload {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    margin: 0;
+}
+
+
+
+.fa-window-close,
+.fa-image,
+.fa-arrow-left {
     font-size: 28px;
-    padding-right: 20px;
     color: rgb(73, 73, 73);
 }
 
-.fa-window-close:hover {
+.fa-window-close {
+    padding-right: 20px;
+}
+
+.fa-image,
+.fa-arrow-left {
+    padding-left: 20px;
+}
+
+.fa-arrow-left {
+    font-size: 20px;
+}
+
+.fa-window-close:hover,
+.fa-arrow-left:hover {
     cursor: pointer;
 }
 
