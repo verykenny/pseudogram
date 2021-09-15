@@ -27,3 +27,12 @@ class Like(db.Model):
             'imgId': self.imgId,
             'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
         }
+
+    def to_dict_extended(self):
+        return {
+            'id': self.id,
+            'userId': self.userId,
+            'user': self.like.to_dict(),
+            'imgId': self.imgId,
+            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
+        }

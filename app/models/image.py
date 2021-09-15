@@ -36,7 +36,8 @@ class Image(db.Model):
 
     def to_dict_extended(self):
         image = {
-            'comments': [comm.to_dict_extended() for comm in self.comment]
+            'comments': [comm.to_dict_extended() for comm in self.comment],
+            'likes':  [like.to_dict_extended() for like in self.likes]
         }
         rest_of_image = {
             'id': self.id,
