@@ -23,15 +23,15 @@ const ImageUploadForm = ({ setShowModal }) => {
 
     const handleUrlSubmit = (e) => {
         e.preventDefault();
-            async function upload () {
-                try {
-                    const data = await uploadFile(file, config)
-                    setImgUrl(data.location)
-                    setImageProvided(true)
-                } catch (e) {
-                    return;
-                }
+        async function upload() {
+            try {
+                const data = await uploadFile(file, config)
+                setImgUrl(data.location)
+                setImageProvided(true)
+            } catch (e) {
+                return;
             }
+        }
         upload()
     }
 
@@ -43,20 +43,21 @@ const ImageUploadForm = ({ setShowModal }) => {
 
     return (
         <>
-            <h1>Image Upload Modal</h1>
             {!imageProvided && (
-                <form onSubmit={handleUrlSubmit}>
-                    <div>
-                        <input type='file' onChange={(e) => setFile(e.target.files[0])}></input>
-                    </div>
-                    <div>
-                        <button type='submit'>Submit</button>
-                    </div>
-                </form>
+                <div className='image-upload-container'>
+                    <form className='form image-upload-form' onSubmit={handleUrlSubmit}>
+                        <div>
+                            <input type='file' accept='.png,.jpeg,.jpg,' onChange={(e) => setFile(e.target.files[0])}></input>
+                        </div>
+                        <div>
+                            <button type='submit'>Continue</button>
+                        </div>
+                    </form>
+                </div>
             )}
             {imageProvided && (
                 <>
-                    <h1>update with info</h1>
+                <div className='image-upload-container'>
                     <img className='uploading' src={imgUrl} alt='to be uploaded'></img>
                     <form onSubmit={handleImagePost}>
                         <div>
@@ -69,6 +70,7 @@ const ImageUploadForm = ({ setShowModal }) => {
                             <button type='submit'>Post</button>
                         </div>
                     </form>
+                </div>
                 </>
             )}
         </>
