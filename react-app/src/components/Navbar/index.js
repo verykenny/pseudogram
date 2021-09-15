@@ -124,15 +124,16 @@ const NavBar = () => {
 
 
     const sortingLikes = (() => {
+        let id = user.id
         let sorted = activity.sort(function (a, b) {
             return new Date(b.date) - new Date(a.date)
         });
-        setActivityFeed(sorted)
+        let filtered = sorted.filter(el => el.imgId.userId === id)
+        setActivityFeed(filtered)
         console.log(activityFeed)
     })
 
-    const imageModalHandler = (user, image) => {
-        console.log(user)
+    const imageModalHandler = (image) => {
         setUserForModal(user)
         setImgIdForModal(image)
         setImageModalShow(true)
@@ -185,7 +186,7 @@ const NavBar = () => {
                                     {activityFeed.length && activityFeed.map(likes =>
                                         <>
                                             <li><NavLink to={`/users/${likes.user.id}`}> <img className='profile-img-nav' src={`${likes.user.profileImgUrl}`}></img></NavLink><NavLink to={`/users/${likes.user.id}`}> {`${likes.user.username}`}  </NavLink>
-                                                <img onClick={(e) => imageModalHandler(likes.user, likes.imgId.id)} src={`${likes.imgId.imgUrl}`} className='activity-img'></img><img height='12px' width='12px' src={blackHeart}></img></li>
+                                                <img onClick={(e) => imageModalHandler(likes.imgId.id)} src={`${likes.imgId.imgUrl}`} className='activity-img'></img><img height='12px' width='12px' src={blackHeart}></img></li>
 
                                         </>
 
@@ -209,7 +210,7 @@ const NavBar = () => {
                             )}
                             {imageModalShow && (
                                 <Modal onClose={() => setImageModalShow(false)}>
-                                    <Image setImageModalShow={setImageModalShow} user={userForModal} image={imgIdForModal} />
+                                    <Image setImageModalShow={setImageModalShow} user={userForModal} imageId={imgIdForModal} />
                                 </Modal>
                             )}
 
