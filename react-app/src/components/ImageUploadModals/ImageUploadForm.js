@@ -44,10 +44,11 @@ const ImageUploadForm = ({ setShowModal }) => {
     return (
         <>
             {!imageProvided && (
-                <div className='image-upload-container'>
+                <div className='image-upload-container image-select-container'>
                     <form className='form image-upload-form' onSubmit={handleUrlSubmit}>
                         <div>
-                            <input type='file' accept='.png,.jpeg,.jpg,' onChange={(e) => setFile(e.target.files[0])}></input>
+                            <label for='image-upload'>Choose image to upload (PNG, JPG)</label>
+                            <input type='file' accept='.png,.jpeg,.jpg,' onChange={(e) => setFile(e.target.files[0])} />
                         </div>
                         <div>
                             <button type='submit'>Continue</button>
@@ -57,8 +58,8 @@ const ImageUploadForm = ({ setShowModal }) => {
             )}
             {imageProvided && (
                 <>
-                <div className='image-upload-container'>
-                    <img className='uploading' src={imgUrl} alt='to be uploaded'></img>
+                <div className='image-upload-container image-post-container'>
+                    <img className='image-to-upload' src={imgUrl} alt='to be uploaded'></img>
                     <form onSubmit={handleImagePost}>
                         <div>
                             <textarea
