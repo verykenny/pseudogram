@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import Image from './Image';
 
-function ImageModal({ image, user }) {
-    const [showModal, setShowModal] = useState(false);
+function ImageModal({ image, user, display=false }) {
+    const [showModal, setShowModal] = useState(display);
 
     return (
         <>

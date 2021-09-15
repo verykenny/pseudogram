@@ -1,14 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux"
 
 import './Image.css'
 
 
 
 const ImageUploadForm = ({ setShowModal, image, user }) => {
-
-
-
 
     return (
 
