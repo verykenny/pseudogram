@@ -1,10 +1,11 @@
-.image-edit-modal__image_edit {
+.image-edit-modal__comment_edit {
     border-radius: 5px;
-    width: 950px;
+    width: 450px;
     max-width: 100%;
+    height: 500px;
 }
 
-.exit-bar__image_edit {
+.exit-bar__comment_edit {
     height: 50px;
     border-bottom: 1px solid rgb(182, 182, 182);
     display: flex;
@@ -12,7 +13,7 @@
     align-items: center;
 }
 
-.modal-header__image_edit {
+.modal-header__comment_edit {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 200;
     font-size: 20px;
@@ -50,21 +51,21 @@
     margin-bottom: 50px;
 }
 
-.container__image_edit {
+.container__comment_edit {
     width: 935px;
-    height: 550px;
+    height: 300px;
     max-width: 100%;
     display: flex;
 }
 
-.image-select-container__image_edit {
+.image-select-container__comment_edit {
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.select-button__image_edit,
-.share-button__image_edit {
+.select-button__comment_edit,
+.share-button__comment_edit {
     color: white;
     cursor: pointer;
     border: none;
@@ -75,43 +76,43 @@
     border-radius: 5px;
 }
 
-.image-post-container__image_edit {
+.image-post-container__comment_edit {
     justify-content: space-between;
 }
 
-.display-container__image_edit {
+.display-container__comment_edit {
     width: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.image-to-upload__image_edit {
+.image-to-upload__comment_edit {
     max-width: 85%;
     max-height: 85%;
 }
 
-.caption-share-container__image_edit {
-    width: 35%;
+.caption-share-container__comment_edit {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     border-left: 1px solid rgb(182, 182, 182);
 }
 
-.share-container-user-info__image_edit {
+.share-container-user-info__comment_edit {
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
 }
-.share-container-user-info__image_edit p {
+.share-container-user-info__comment_edit p {
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.user-profile-thumb__image_edit {
+.user-profile-thumb__comment_edit {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -122,7 +123,7 @@
     margin-right: 20px;
 }
 
-.caption-share-form__image_edit {
+.caption-share-form__comment_edit {
     height: 100%;
     padding: 15px;
     display: flex;
@@ -130,7 +131,7 @@
     flex-direction: column;
 }
 
-.share-button-container__image_edit {
+.share-button-container__comment_edit {
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
@@ -139,15 +140,15 @@
     justify-content: center;
 }
 
-.share-button__image_edit {
+.share-button__comment_edit {
     width: 100%;
 }
 
-.image-caption-container__image_edit {
+.image-caption-container__comment_edit {
     height: 50%;
 }
 
-.caption-input__image_edit {
+.caption-input__comment_edit {
     border: none;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
@@ -155,31 +156,8 @@
     resize: none;
 }
 
-.caption-input__image_edit:focus {
+.caption-input__comment_edit:focus {
     /* border: 1px solid grey; */
     outline: none !important;
 }
 
-@media screen and (max-width: 535px) {
-    .image-post-container__image_edit {
-        flex-direction: column;
-    }
-
-    .display-container__image_edit {
-        margin: 0 auto;
-        height: 50%;
-    }
-
-    .caption-share-container__image_edit {
-        height: 50%;
-        width: 100%;
-    }
-    .select-button__image_edit,
-    .share-button__image_edit {
-        max-width: 100%;
-    }
-
-    .image-select-container__image_edit div {
-        max-width: 90%;
-    }
-}
