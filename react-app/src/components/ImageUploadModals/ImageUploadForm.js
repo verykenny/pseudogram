@@ -45,7 +45,6 @@ const ImageUploadForm = ({ setShowModal }) => {
     const handleClickSelect = (e) => {
         e.preventDefault()
         imageInput.current.click()
-
     }
 
     return (
