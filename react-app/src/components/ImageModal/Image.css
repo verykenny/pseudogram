@@ -73,7 +73,7 @@
 .image-post-container__image_modal {
     justify-content: space-between;
     width: 935px;
-    height: 550px;
+    height: 600px;
     max-width: 100%;
     display: flex;
 }
@@ -98,6 +98,7 @@
 
 .caption-share-container__image_modal {
     width: 35%;
+    max-height: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -130,8 +131,34 @@
     margin-right: 20px;
 }
 
+
+
+
+
+
+
+
+.like-info__image_modal {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgb(182, 182, 182);
+}
+
+.like-button-container__image_modal{
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    }
+
+
+
+
+
+
+
 .comments_container__image_modal {
-    height: 100%;
+    flex: 1 1 350px;
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -139,7 +166,7 @@
 }
 
 .comment-section__image_modal {
-    flex: 1 1 393px;
+    flex: 1 1 300px;
     box-sizing: border-box;
     overflow: hidden auto;
 }
@@ -165,6 +192,12 @@
     font-weight: bold;
     padding-right: 5px
 }
+
+
+
+
+
+
 
 
 .comment-button-container__image_modal {

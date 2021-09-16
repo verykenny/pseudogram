@@ -27,12 +27,6 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
 
     return (
         <>
-            <div className='exit-bar__image_upload'>
-                <i className="far fa-image"></i>
-                <h2 className='modal-header__image_upload'>{`${user.username}'s Post`}</h2>
-                <i onClick={() => closeModal()} className="far fa-window-close"></i>
-
-            </div>
             <div className='image-post-container__image_modal'>
                 <div className='display-container__image_modal'>
                     <div className='image__image_modal' style={
@@ -53,6 +47,11 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                                 return <CommentCard comment={comment} />
                             })}
                         </div>
+                        <div className='like-info__image_modal'>
+                            <div className="like-button-container__image_modal" >
+                                <i class="far fa-heart"></i>
+                            </div>
+                        </div>
                         <div className='comment-button-container__image_modal'>
                             <textarea
                                 value={comment}
@@ -62,9 +61,9 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                             ></textarea>
                             <div className='share-button-container__image_modal'>
                                 <button
-                                disabled={(comment.length === 0) ? true : false}
-                                className='comment-button__image_modal'
-                                onClick={handleCommentSubmit}
+                                    disabled={(comment.length === 0) ? true : false}
+                                    className='comment-button__image_modal'
+                                    onClick={handleCommentSubmit}
                                 >Post</button>
                             </div>
                         </div>
