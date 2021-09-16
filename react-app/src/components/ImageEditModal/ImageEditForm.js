@@ -27,7 +27,7 @@ const ImageEditForm = ({ setShowModal, imageId }) => {
     return (
         <div className='image-edit-modal__image_edit'>
                     <div className='exit-bar__image_edit'>
-                        <i className="fas fa-arrow-left"></i>
+                        <i onClick={() => setShowModal(false)} className="fas fa-arrow-left"></i>
                         <h2 className='modal-header__image_edit'>Update your caption</h2>
                         <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
                     </div>
