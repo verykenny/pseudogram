@@ -24,6 +24,11 @@
     visibility: visible;
 }
 
+.image-display-modal-container__image_modal .fa-ellipsis-h {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
 .image-post-container__image_modal {
     justify-content: space-between;
     width: 950px;
@@ -136,16 +141,21 @@
     margin-right: 10px;
 }
 
+.comment__image_modal {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
 .comment-card__image_modal p {
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 0;
-    max-width: 100%;
+    max-width: 90%;
     font-size: 14px;
+    display: block;
 }
 
-.comment__image_modal {
-    max-width: 85%;
-}
 
 .username__image_modal {
     font-weight: bold;

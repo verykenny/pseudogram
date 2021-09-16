@@ -7,6 +7,7 @@ import { get_followings } from "../../store/following"
 import { Modal } from "../../context/Modal"
 import UsersWhoLiked from "../UsersWhoLikedModal/UsersWhoLikedModal";
 import './ImageFeed.css'
+import ThreeDotsModal from "../ThreeDotsModal";
 
 
 const ImageFeed = () => {
@@ -38,9 +39,18 @@ const ImageFeed = () => {
         dispatch(delete_image(imgId))
     }
 
+
     const handleLike = (imgId) => {
         dispatch(set_new_like(imgId))
     }
+
+    useEffect(() => {
+        (async () => {
+            await dispatch(get_followings(user.id));
+        })();
+    }, [dispatch, user.id]);
+
+
 
     let arrayOfId = []
     users.forEach(element => {
@@ -67,6 +77,7 @@ const ImageFeed = () => {
                             }>
                         </div>
                     <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
+                        <ThreeDotsModal imageId={image?.id} />
                         </div>
                         <div className="image-container__image" style={
                         { backgroundImage: `url(${image.imgUrl})` }
@@ -128,5 +139,3 @@ const ImageFeed = () => {
 
 
 export default ImageFeed;
-
-

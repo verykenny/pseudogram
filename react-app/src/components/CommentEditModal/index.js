@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import ThreeDotsMenu from './ThreeDotsMenu';
+import CommentEditForm from './CommentEditForm';
 
-function ThreeDotsModal({ imageId }) {
+function CommentEditModal({ commentId }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -10,11 +10,11 @@ function ThreeDotsModal({ imageId }) {
             <i className="fas fa-ellipsis-h" onClick={() => setShowModal(true)}></i>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ThreeDotsMenu setShowModal={setShowModal} imageId={imageId} />
+                    <CommentEditForm setShowModal={setShowModal} commentId={commentId}/>
                 </Modal>
             )}
         </>
     );
 }
 
-export default ThreeDotsModal;
+export default CommentEditModal;

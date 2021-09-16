@@ -1,11 +1,14 @@
 .profile-page-img {
-    max-width: 100px;
+  max-width: 100px;
 }
 
-
 .images_container__profile {
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profile-container {
+  margin-top: 15%;
 }
