@@ -1,12 +1,15 @@
-import React, { useDebugValue, useEffect } from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_comments } from "../../store/comment";
+import { get_comments, set_new_comment } from "../../store/comment";
+import { get_feed } from "../../store/feed";
 
 import './Image.css'
 
 
 const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     const image = useSelector(state => state.feed.images[imageId])
+    const [comment, setComment] = useState('')
+    const dispatch = useDispatch()
 
     const closeModal = () => {
         if (setShowModal) setShowModal(false);
@@ -14,18 +17,21 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
         return;
     }
 
+    const handleCommentSubmit = (e) => {
+        e.preventDefault()
+
+        dispatch(set_new_comment(comment, image.id))
+        dispatch(get_feed())
+        setComment('')
+    }
+
     return (
-        <>
-
-            <div className='exit-bar__image_upload'>
-                <i className="far fa-image"></i>
-                <h2 className='modal-header__image_upload'>{`${user.username}'s Post`}</h2>
-                <i onClick={() => closeModal()} className="far fa-window-close"></i>
-
-            </div>
+        <div className='image-display-modal-container__image_modal'>
             <div className='image-post-container__image_modal'>
                 <div className='display-container__image_modal'>
-                    <img className='image__image_modal' src={image?.imgUrl} alt='to be uploaded'></img>
+                    <div className='image__image_modal' style={
+                        { backgroundImage: `url(${image?.imgUrl})` }
+                    }></div>
                     <p>{image.caption}</p>
                 </div>
                 <div className='caption-share-container__image_modal'>
@@ -41,13 +47,31 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                                 return <CommentCard comment={comment} />
                             })}
                         </div>
-                        <div className='share-button-container__image_modal'>
+                        <div className='like-info__image_modal'>
+                            <div className="like-button-container__image_modal" >
+                                <i class="far fa-heart"></i>
+                            </div>
+                        </div>
+                        <div className='comment-button-container__image_modal'>
+                            <textarea
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                className='comment-input__image_modal'
+                                placeholder='Leave a comment...'
+                            ></textarea>
+                            <div className='share-button-container__image_modal'>
+                                <button
+                                    disabled={(comment.length === 0) ? true : false}
+                                    className='comment-button__image_modal'
+                                    onClick={handleCommentSubmit}
+                                >Post</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </>
+        </div>
     )
 }
 
@@ -57,12 +81,12 @@ const CommentCard = ({ comment }) => {
     return (
         <>
             <div className='comment-card__image_modal'>
-                <div className='user-profile-thumb__image_modal' style={
+                <div className='commenter-profile-thumb__image_modal' style={
                     { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
                 }></div>
-                    <div>
-                        <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
-                    </div>
+                <div className='comment__image_modal'>
+                    <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
+                </div>
             </div>
         </>
     )

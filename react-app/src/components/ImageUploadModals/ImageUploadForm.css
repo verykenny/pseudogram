@@ -1,7 +1,7 @@
-#modal-content {
+.image-upload-modal__image-upload {
     border-radius: 5px;
     width: 950px;
-    max-width: 95%;
+    max-width: 100%;
 }
 
 .exit-bar__image_upload {

@@ -7,7 +7,6 @@ import ImageUploadModal from "../ImageUploadModals";
 import ImageModal from "../ImageModal";
 
 import './Profile.css'
-import { get_likes } from "../../store/like";
 
 const Profile = () => {
     const user = useSelector(state => state.session.user);
