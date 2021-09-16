@@ -7,7 +7,7 @@ function ThreeDotsModal() {
 
     return (
         <>
-            <button className='add-new-image' onClick={() => setShowModal(true)}>ThreeDots</button>
+            <i className="fas fa-ellipsis-h" onClick={() => setShowModal(true)}></i>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <ThreeDotsMenu setShowModal={setShowModal} />

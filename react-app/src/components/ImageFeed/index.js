@@ -7,6 +7,7 @@ import { Modal } from "../../context/Modal"
 import UsersWhoLiked from "../UsersWhoLikedModal/UsersWhoLikedModal";
 // import { get_likes } from "../../store/like"
 import './ImageFeed.css'
+import ThreeDotsModal from "../ThreeDotsModal";
 
 
 const ImageFeed = () => {
@@ -62,7 +63,7 @@ const ImageFeed = () => {
     //     })();
     // }, [dispatch]);
 
-   
+
 
     let arrayOfId = []
     users.forEach(element => {
@@ -101,6 +102,7 @@ const ImageFeed = () => {
                             { backgroundImage: `url(${following.users[image?.userId].profileImgUrl})` }
                             }>
                         </div>
+                        <ThreeDotsModal />
                     <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
                         </div>
                         <div className="image-container__image" style={
@@ -163,5 +165,3 @@ const ImageFeed = () => {
 
 
 export default ImageFeed;
-
-
