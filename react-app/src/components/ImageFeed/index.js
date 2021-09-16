@@ -5,7 +5,6 @@ import { delete_image, get_feed } from "../../store/feed";
 import { get_followings } from "../../store/following"
 import { Modal } from "../../context/Modal"
 import UsersWhoLiked from "../UsersWhoLikedModal/UsersWhoLikedModal";
-// import { get_likes } from "../../store/like"
 import './ImageFeed.css'
 import ThreeDotsModal from "../ThreeDotsModal";
 
@@ -55,7 +54,7 @@ const ImageFeed = () => {
         (async () => {
             await dispatch(get_followings(user.id));
         })();
-    }, [dispatch]);
+    }, [dispatch, user.id]);
 
     // useEffect(() => {
     //     (async () => {
