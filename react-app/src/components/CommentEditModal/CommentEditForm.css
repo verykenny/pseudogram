@@ -64,16 +64,20 @@
     flex-direction: column;
 }
 
-.select-button__comment_edit,
-.share-button__comment_edit {
+.update-button__comment_edit,
+.delete-button__comment_edit {
     color: white;
     cursor: pointer;
     border: none;
     background-color: #24a0ed;
-    width: 240px;
+    width: 100%;
     height: 30px;
     font-weight: 600;
     border-radius: 5px;
+}
+
+.delete-button__comment_edit {
+    background-color: darkred;
 }
 
 .image-post-container__comment_edit {
@@ -133,7 +137,7 @@
 
 .share-button-container__comment_edit {
     width: 100%;
-    padding: 15px;
+    padding: 5px 15px;
     box-sizing: border-box;
     display: flex;
     align-items: center;

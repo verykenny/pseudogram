@@ -60,10 +60,10 @@ const CommentEditForm = ({ setShowModal, commentId }) => {
                                     ></textarea>
                                 </div>
                                 <div className='share-button-container__comment_edit'>
-                                    <button className='share-button__comment_edit' type='submit'>Update</button>
+                                    <button className='update-button__comment_edit' type='submit'>Update</button>
                                 </div>
                                 <div className='share-button-container__comment_edit'>
-                                    <button className='share-button__comment_edit' onClick={handleDeleteComment}>Delete</button>
+                                    <button className='delete-button__comment_edit' onClick={handleDeleteComment}>Delete</button>
                                 </div>
                             </form>
                         </div>
