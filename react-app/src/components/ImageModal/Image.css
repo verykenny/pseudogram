@@ -24,8 +24,6 @@
     visibility: visible;
 }
 
-
-
 .image-post-container__image_modal {
     justify-content: space-between;
     width: 950px;
@@ -90,25 +88,27 @@
 
 
 
-
-
-
-
 .like-info__image_modal {
     padding: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     border-top: 1px solid rgb(182, 182, 182);
 }
 
-.like-button-container__image_modal{
+.like-button-container__image_modal {
     height: 30px;
-    width: 30px;
+    width: 100%;
     display: inline-block;
-    }
+}
 
-
-
+.users-who-liked__image_modal {
+    font-size: 15px;
+    width: 100%;
+}
+.users-who-liked__image_modal p {
+    margin: 5px 0px;
+}
 
 
 
@@ -129,7 +129,7 @@
 
 .comment-card__image_modal {
     display: flex;
-    
+    margin-bottom: 10px;
 }
 
 .commenter-profile-thumb__image_modal {
@@ -141,7 +141,6 @@
     margin-top: 0;
     max-width: 100%;
     font-size: 14px;
-
 }
 
 .comment__image_modal {
@@ -150,15 +149,8 @@
 
 .username__image_modal {
     font-weight: bold;
-    padding-right: 5px
+    padding-right: 5px;
 }
-
-
-
-
-
-
-
 
 .comment-button-container__image_modal {
     width: 100%;
@@ -167,8 +159,7 @@
     align-items: center;
     justify-content: center;
     padding-top: 10px;
-    border-top: 1px solid rgb(182, 182, 182)
-
+    border-top: 1px solid rgb(182, 182, 182);
 }
 
 .comment-button__image_modal {
@@ -180,7 +171,6 @@
     color: lightblue;
 }
 
-
 .comment-button__image_modal:enabled {
     color: rgb(8, 178, 235);
     font-weight: bold;
@@ -190,13 +180,13 @@
     cursor: pointer;
 }
 
-
 .comment-input__image_modal {
     border: none;
     width: 100%;
     height: 100%;
     resize: none;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .comment-input__image_modal:focus {
