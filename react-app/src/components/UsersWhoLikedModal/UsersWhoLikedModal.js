@@ -3,7 +3,6 @@ import './UsersWhoLiked.css'
 
 function UsersWhoLiked(showProp) {
     let newArray = showProp.props.likes
-    console.log('new',newArray)
 
     newArray.forEach(element => {
         console.log(element.user.username)

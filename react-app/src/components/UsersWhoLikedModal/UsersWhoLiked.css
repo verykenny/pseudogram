@@ -17,11 +17,12 @@
     width: 100%;
 }
 
+
 .top-menu{
     display:block;
     height: 30px;
     width: 450px;
-    margin-top: 10px;
+    padding-top: 10px;
     position: fixed;
     border-bottom: 1px solid #D4D4D4;
     border-radius: 5px;

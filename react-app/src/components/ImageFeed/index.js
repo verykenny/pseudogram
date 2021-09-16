@@ -6,7 +6,6 @@ import { set_new_like } from "../../store/like"
 import { get_followings } from "../../store/following"
 import { Modal } from "../../context/Modal"
 import UsersWhoLiked from "../UsersWhoLikedModal/UsersWhoLikedModal";
-import ImageFeedContainer from "../FeedImageContainer";
 import './ImageFeed.css'
 
 
@@ -75,7 +74,7 @@ const ImageFeed = () => {
                         </div>
                         <div className="like-comment-container" >
                         <div className="like-button-container" >
-                        <i className="far fa-heart" onClick={() => handleLike(image.id)}> </i>
+                        <i className="far fa-heart" onClick={() => handleLike(image.id)}></i>
                         </div>
                         <div className="like-button-container">
                             <i className="far fa-comment"></i>
@@ -122,7 +121,6 @@ const ImageFeed = () => {
                 </div>
                 ))}
                 </div>
-                <ImageFeedContainer />
             </div>
         </>
     )
