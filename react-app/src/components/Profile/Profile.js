@@ -13,6 +13,7 @@ import ProfileCommentModal from "../ProfileCommentModal";
 import './Profile.css'
 import { get_followers } from "../../store/follower";
 import { get_comments } from "../../store/comment";
+import ProfileEditModal from "../ProfileEditModal";
 
 
 const Profile = () => {
@@ -69,6 +70,7 @@ const Profile = () => {
 
     return (
         <div className='profile-container'>
+            <ProfileEditModal />
             <div className='user-profile-info'>
                 <img src={`${userProfile?.profileImgUrl}`}></img>
                 <h3>{`${userProfile?.username}`}</h3>
