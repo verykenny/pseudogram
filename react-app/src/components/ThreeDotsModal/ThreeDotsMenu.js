@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import FollowUnfollow from "../FollowUnfollowButton";
+import ImageEditModal from "../ImageEditModal";
 
 
 import './ThreeDotsMenu.css'
@@ -17,7 +18,7 @@ const ThreeDotsMenu = ({ setShowModal, imageId }) => {
             <h2>Menu</h2>
             {image?.userId === user?.id && (
                 <>
-                    <div>Edit</div>
+                    <ImageEditModal imageId={image?.id}/>
                     <div>Delete</div>
                     <div></div>
                     <div></div>
