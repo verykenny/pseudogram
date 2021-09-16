@@ -26,7 +26,7 @@ const CommentEditForm = ({ setShowModal, commentId }) => {
     }
 
     return (
-        <div className='image-edit-modal__comment_edit'>
+        <div className='comment-edit-modal__comment_edit'>
                     <div className='exit-bar__comment_edit'>
                         <i onClick={() => setShowModal(false)} className="fas fa-arrow-left"></i>
                         <h2 className='modal-header__comment_edit'>Update your comment</h2>
