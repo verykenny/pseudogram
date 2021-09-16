@@ -23,6 +23,7 @@ function ImageModal({ imageId, user, display = false }) {
                     <Image setShowModal={setShowModal} imageId={imageId} user={user} />
                 </Modal>
             )}
+
         </>
     );
 }

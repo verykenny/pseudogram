@@ -6,7 +6,7 @@ import { delete_following, get_followings, set_new_following } from "../../store
 const FollowUnfollow = ({ userId }) => {
     const user = useSelector(state => state.session.user)
     const followings = useSelector(state => state.following)
-    const following = useSelector(state => state.following.users[userId] !== 'undefined')
+    const following = useSelector(state => state.following.users[userId] !== undefined)
 
     const dispatch = useDispatch()
 
