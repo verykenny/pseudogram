@@ -1,9 +1,8 @@
-import React, { useDebugValue, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_comments, set_new_comment } from "../../store/comment";
+import { set_new_comment } from "../../store/comment";
 import { get_feed } from "../../store/feed";
-import { delete_like, get_likes, set_new_like } from "../../store/like";
+import CommentEditModal from "../CommentEditModal";
 import LikeUnlikeComponent from "../LikeUnlikeComponent";
 import ThreeDotsModal from "../ThreeDotsModal";
 
@@ -92,7 +91,7 @@ const CommentCard = ({ comment }) => {
                     { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
                 }></div>
                 <div className='comment__image_modal'>
-                    <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
+                    <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p><CommentEditModal commentId={comment.id}/>
                 </div>
             </div>
         </>
