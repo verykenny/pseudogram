@@ -84,6 +84,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
 
 
 const CommentCard = ({ comment }) => {
+    const user = useSelector(state => state.session.user)
     return (
         <>
             <div className='comment-card__image_modal'>
@@ -91,7 +92,10 @@ const CommentCard = ({ comment }) => {
                     { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
                 }></div>
                 <div className='comment__image_modal'>
-                    <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p><CommentEditModal commentId={comment.id}/>
+                    <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
+                    {comment.userId === user.id && (
+                        <CommentEditModal commentId={comment.id}/>
+                    )}
                 </div>
             </div>
         </>
