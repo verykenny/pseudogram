@@ -2,6 +2,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { get_comments, set_new_comment } from "../../store/comment";
 import { get_feed } from "../../store/feed";
+import { delete_like, set_new_like } from "../../store/like";
 
 import './Image.css'
 
@@ -10,6 +11,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     const image = useSelector(state => state.feed.images[imageId])
     const [comment, setComment] = useState('')
     const dispatch = useDispatch()
+    const [liked, setLiked] = useState(Object.values(image.likes).some(like => like.userId === user.id))
 
     const closeModal = () => {
         if (setShowModal) setShowModal(false);
@@ -24,6 +26,18 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
         dispatch(get_feed())
         setComment('')
     }
+
+    const handleLiked = (e) => {
+        e.preventDefault()
+        if (!liked) {
+            dispatch(set_new_like(Number(imageId)))
+        } else {
+            dispatch(delete_like(Number(imageId)))
+        }
+        setLiked(prev => !prev)
+        dispatch(get_feed())
+    }
+
 
     return (
         <div className='image-display-modal-container__image_modal'>
@@ -49,7 +63,15 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                         </div>
                         <div className='like-info__image_modal'>
                             <div className="like-button-container__image_modal" >
-                                <i class="far fa-heart"></i>
+
+                                {liked && (
+                                    <i className="fas fa-heart" onClick={handleLiked}></i>
+                                )}
+
+                                {!liked &&(
+                                    <i className="far fa-heart" onClick={handleLiked}></i>
+                                )}
+
                             </div>
                         </div>
                         <div className='comment-button-container__image_modal'>
