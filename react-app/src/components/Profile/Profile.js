@@ -24,17 +24,17 @@ const Profile = () => {
     const [showModal, setShowModal] = useState(false)
     const [showCommentModal, setShowCommentModal] = useState(false)
     const [userProfile, setUserProfile] = useState([])
+    const [users, setUsers] = useState([])
     const [props, setProps] = useState([])
     const [title, setTitle] = useState('')
-    const [users, setUsers] = useState([])
     const dispatch = useDispatch()
 
     useEffect(() => {
         (async () => {
             await dispatch(get_feed());
             await dispatch(get_comments())
-            await dispatch(get_followers(user.id))
-            await dispatch(get_followings(user.id))
+            await dispatch(get_followers(userId))
+            await dispatch(get_followings(userId))
         })();
     }, [dispatch]);
 
@@ -85,7 +85,7 @@ const Profile = () => {
                 <div>{`${images.length}`} posts</div>
                 <div onClick={() => handleModal(followers, 'Followers')}>{`${followers.length}`} followers</div>
                 <div onClick={() => handleModal(following, 'Following')}>{`${following.length}`} following</div>
-                <div onClick={() => commentModal(comments, 'Comments')}>{`${comments.length}`} comments</div>
+                {user.id === Number(userId) && (<div onClick={() => commentModal(comments, 'Comments')}>{`${comments.length}`} comments</div>)}
 
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
@@ -94,7 +94,7 @@ const Profile = () => {
                 )}
                 {showCommentModal && (
                     <Modal onClose={() => setShowCommentModal(false)}>
-                        <ProfileCommentModal comments={props} title={title} setShowCommentModal={setShowCommentModal} />
+                        <ProfileCommentModal comments={props} title={title} setShowCommentModal={setShowCommentModal} users={users} />
                     </Modal>
                 )}
 

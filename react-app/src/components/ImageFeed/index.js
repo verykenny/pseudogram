@@ -5,8 +5,8 @@ import { delete_image, get_feed } from "../../store/feed";
 import { get_followings } from "../../store/following"
 import { Modal } from "../../context/Modal"
 import UsersWhoLiked from "../UsersWhoLikedModal/UsersWhoLikedModal";
-// import { get_likes } from "../../store/like"
 import './ImageFeed.css'
+import ThreeDotsModal from "../ThreeDotsModal";
 
 
 const ImageFeed = () => {
@@ -54,7 +54,7 @@ const ImageFeed = () => {
         (async () => {
             await dispatch(get_followings(user.id));
         })();
-    }, [dispatch]);
+    }, [dispatch, user.id]);
 
     // useEffect(() => {
     //     (async () => {
@@ -62,7 +62,7 @@ const ImageFeed = () => {
     //     })();
     // }, [dispatch]);
 
-   
+
 
     let arrayOfId = []
     users.forEach(element => {
@@ -73,7 +73,7 @@ const ImageFeed = () => {
 
     let arrayOfImageId = []
     likesArray.forEach(element => {
-        arrayOfImageId.push(element.imgId)
+        arrayOfImageId.push(element.imgId.id)
     })
 
     let arrayForLikes = []
@@ -102,6 +102,7 @@ const ImageFeed = () => {
                             }>
                         </div>
                     <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
+                        <ThreeDotsModal imageId={image?.id} />
                         </div>
                         <div className="image-container__image" style={
                         { backgroundImage: `url(${image.imgUrl})` }
@@ -163,5 +164,3 @@ const ImageFeed = () => {
 
 
 export default ImageFeed;
-
-
