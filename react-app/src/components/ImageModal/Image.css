@@ -139,10 +139,10 @@
 }
 
 .comment-section__image_modal {
-    height: 100%;
+    height: 400px;
     padding-bottom: 20px;
     box-sizing: border-box;
-
+    overflow: hidden auto;
 }
 
 .comment-card__image_modal {
