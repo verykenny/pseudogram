@@ -45,7 +45,7 @@ function UsersWhoLiked(showProp){
     
     let arrayOfImageLikes = []
     likesArray.forEach(element => {
-        if(element.imgId === imageId){
+        if(element.imgId.id === imageId){
             arrayOfImageLikes.push(element.user)
         }
     })
