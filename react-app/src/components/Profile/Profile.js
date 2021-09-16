@@ -11,6 +11,7 @@ import { Modal } from "../../context/Modal";
 import ProfileCommentModal from "../ProfileCommentModal";
 
 import './Profile.css'
+
 import { get_followers } from "../../store/follower";
 import { get_comments } from "../../store/comment";
 

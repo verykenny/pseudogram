@@ -1,0 +1,28 @@
+.menu-container__three_dots_modal {
+    border-radius: 5px;
+    width: fit-content;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+
+.menu-container__three_dots_modal button {
+    color: white;
+    cursor: pointer;
+    border: none;
+    background-color: #24a0ed;
+    width: 240px;
+    max-width: 100%;
+    height: 30px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin: 5px 10px;
+}
+
+.menu-container__three_dots_modal h2 {
+    font-weight: normal;
+    margin: 10px;
+}

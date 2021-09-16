@@ -4,7 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 import { get_followings } from "../../store/following"
 import './UsersWhoLiked.css'
 
-function UsersWhoLiked(showProp){
+function UsersWhoLiked(showProp) {
     const user = useSelector(state => state.session.user)
     const following = useSelector(state => state.following)
     const [users, setUsers] = useState([]);
@@ -42,40 +42,42 @@ function UsersWhoLiked(showProp){
     })
 
     let imageId = showProp.props
-    
+
     let arrayOfImageLikes = []
     likesArray.forEach(element => {
-        if(element.imgId === imageId){
+        if (element.imgId.id === imageId) {
             arrayOfImageLikes.push(element.user)
         }
     })
-    
 
-    return(
-        <div className="users-who-liked-container">
-            {arrayOfImageLikes.length === 0 &&
-        <div>
-            <div className="top-menu">Likes</div>
-            <div className="users-who-liked-loading">
-            </div>
-            </div>
-            }
-        {arrayOfImageLikes.length !==0 &&
-        <div>
-                <div className="top-menu">Likes</div>
-                <div className="users-who-liked-loading">
-                </div>
-                {arrayOfImageLikes.map(element => (
-                    <div className="users-who-liked-loading">
-                        <div className="modal-profile-pic" style={
-                            { backgroundImage: `url(${element.profileImgUrl})` }
-                        }></div>
-                        <div className="modal-profile-username">{element.username}</div>
+
+    return (
+        <div className="user-who-liked__liked_modal">
+            <div className="users-who-liked-container">
+                {arrayOfImageLikes.length === 0 &&
+                    <div>
+                        <div className="top-menu">Likes</div>
+                        <div className="users-who-liked-loading">
+                        </div>
                     </div>
-                ))}
-        </div>
-        }
+                }
+                {arrayOfImageLikes.length !== 0 &&
+                    <div>
+                        <div className="top-menu">Likes</div>
+                        <div className="users-who-liked-loading">
+                        </div>
+                        {arrayOfImageLikes.map(element => (
+                            <div className="users-who-liked-loading">
+                                <div className="modal-profile-pic" style={
+                                    { backgroundImage: `url(${element.profileImgUrl})` }
+                                }></div>
+                                <div className="modal-profile-username">{element.username}</div>
+                            </div>
+                        ))}
+                    </div>
+                }
+            </div>
         </div>
     )
 }
- export default UsersWhoLiked
+export default UsersWhoLiked

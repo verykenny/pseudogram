@@ -23,4 +23,5 @@
     position: absolute;
     background-color: white;
     border-radius: 2px;
+    max-width: 95%;
 }
