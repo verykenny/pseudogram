@@ -10,7 +10,6 @@ import ImageFeed from './components/ImageFeed';
 import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
 import { authenticate } from './store/session';
-import ImageEditForm from './components/ImageEditForm';
 
 
 function App() {
@@ -47,11 +46,8 @@ function App() {
                 <ProtectedRoute path='/home' exact={true} >
                     <ImageFeed />
                 </ProtectedRoute>
-                <ProtectedRoute path='/images/:imageId' exact={true} >
-                    <ImageEditForm />
-                </ProtectedRoute>
                 <ProtectedRoute path='/' exact={true} >
-                    <h1>My Home Page</h1>
+                    <ImageFeed />
                 </ProtectedRoute>
                 <Route path='/image-upload'>
                     <ImageUploadModal />
