@@ -35,7 +35,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     return (
         <div className='image-display-modal-container__image_modal'>
             <div className='exit-bar__image_upload'>
-                <ThreeDotsModal imageId={image?.id} />
+                <ThreeDotsModal imageId={image?.id}/>
                 <h2 className='modal-header__image_upload'>Post</h2>
                 <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
             </div>
