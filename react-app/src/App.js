@@ -5,7 +5,6 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Navbar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
 import ImageFeed from './components/ImageFeed';
 import Profile from './components/Profile/Profile';
 import ImageUploadModal from './components/ImageUploadModals/ImageUploadForm';
@@ -37,9 +36,6 @@ function App() {
                 <Route path='/sign-up' exact={true}>
                     <SignUpForm />
                 </Route>
-                <ProtectedRoute path='/users' exact={true} >
-                    <UsersList />
-                </ProtectedRoute>
                 <ProtectedRoute path='/users/:userId' exact={true} >
                     <Profile />
                 </ProtectedRoute>
