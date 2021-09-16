@@ -73,7 +73,7 @@ const ImageFeed = () => {
 
     let arrayOfImageId = []
     likesArray.forEach(element => {
-        arrayOfImageId.push(element.imgId)
+        arrayOfImageId.push(element.imgId.id)
     })
 
     let arrayForLikes = []
