@@ -41,7 +41,7 @@ const ImageEditForm = ({ setShowModal, imageId }) => {
                             <form className='caption-share-form__image_upload' onSubmit={handleImagePost}>
                                 <div className='image-caption-container__image_upload'>
                                     <textarea
-                                        value={image?.caption}
+                                        value={caption}
                                         onChange={(e) => setCaption(e.target.value)}
                                         className='caption-input__image_upload'
                                         placeholder='Write a caption...'
