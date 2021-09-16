@@ -25,9 +25,7 @@ const ThreeDotsMenu = ({ setShowModal, imageId }) => {
             {image?.userId === user?.id && (
                 <>
                     <ImageEditModal imageId={image?.id}/>
-                    <div><button onClick={handleDeleteImage}>Delete</button></div>
-                    <div></div>
-                    <div></div>
+                    <button onClick={handleDeleteImage}>Delete</button>
                 </>
             )}
             {(user?.id !== image?.userId && image.userId) && (
