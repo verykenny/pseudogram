@@ -26,3 +26,8 @@
     font-weight: normal;
     margin: 10px;
 }
+
+
+.fa-ellipsis-h:hover {
+    cursor: pointer;
+}
