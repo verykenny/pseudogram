@@ -4,16 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { get_comments, set_new_comment } from "../../store/comment";
 import { get_feed } from "../../store/feed";
 import { delete_like, get_likes, set_new_like } from "../../store/like";
+import LikeUnlikeComponent from "../LikeUnlikeComponent";
 
 import './Image.css'
 
 
 const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     const image = useSelector(state => state.feed.images[imageId])
-    const likes = useSelector(state => state.likes)
     const [comment, setComment] = useState('')
     const dispatch = useDispatch()
-    const [liked, setLiked] = useState(Object.values(image.likes).some(like => like.userId === user.id))
 
     const closeModal = () => {
         if (setShowModal) setShowModal(false);
@@ -29,21 +28,6 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
         }
         update_comment()
         setComment('')
-    }
-
-    const handleLiked = (e) => {
-        e.preventDefault()
-        const update_like = async () => {
-            if (!liked) {
-                await dispatch(set_new_like(Number(imageId)))
-            } else {
-                await dispatch(delete_like(Number(imageId)))
-            }
-            setLiked(prev => !prev)
-
-            await dispatch(get_feed())
-        }
-        update_like()
     }
 
 
@@ -69,31 +53,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                                 return <CommentCard comment={comment} />
                             })}
                         </div>
-                        <div className='like-info__image_modal'>
-                            {!likes.loading && (
-                                <>
-                                    <div className="like-button-container__image_modal" >
-
-                                        {liked && (
-                                            <i className="fas fa-heart" onClick={handleLiked}></i>
-                                        )}
-
-                                        {!liked && (
-                                            <i className="far fa-heart" onClick={handleLiked}></i>
-                                        )}
-                                    </div>
-                                    <div className="users-who-liked__image_modal">
-                                        {Object.values(image.likes).length > 0 && (
-                                            <p>Liked by {(liked) ? 'you' : 'username'} and {`${(image?.totalLikes) - 1} others`}</p>
-                                        )}
-                                        {Object.values(image.likes).length === 0 && (
-                                            <p>No likes yet</p>
-                                        )}
-                                    </div>
-
-                                </>
-                            )}
-                        </div>
+                        <LikeUnlikeComponent imageId={imageId}/>
                         <div className='comment-button-container__image_modal'>
                             <textarea
                                 value={comment}
@@ -118,7 +78,6 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
 }
 
 
-
 const CommentCard = ({ comment }) => {
     return (
         <>
@@ -132,8 +91,6 @@ const CommentCard = ({ comment }) => {
             </div>
         </>
     )
-
-
 }
 
 
