@@ -102,8 +102,8 @@ const ImageFeed = () => {
                             { backgroundImage: `url(${following.users[image?.userId].profileImgUrl})` }
                             }>
                         </div>
-                        <ThreeDotsModal imageId={image?.id} />
                     <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
+                        <ThreeDotsModal imageId={image?.id} />
                         </div>
                         <div className="image-container__image" style={
                         { backgroundImage: `url(${image.imgUrl})` }

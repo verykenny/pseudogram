@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FollowUnfollow from "../FollowUnfollowButton";
 import ImageEditModal from "../ImageEditModal";
+import { delete_image } from "../../store/feed";
 
 
 import './ThreeDotsMenu.css'
@@ -11,7 +12,12 @@ import './ThreeDotsMenu.css'
 const ThreeDotsMenu = ({ setShowModal, imageId }) => {
     const user = useSelector(state => state.session.user)
     const image = useSelector(state => state.feed.images[imageId])
-    console.log(image?.userId);
+    const dispatch = useDispatch()
+
+    const handleDeleteImage = (e) => {
+        e.preventDefault()
+        dispatch(delete_image(image.id))
+    }
 
     return (
         <div className='menu-container__three_dots_modal'>
@@ -19,7 +25,7 @@ const ThreeDotsMenu = ({ setShowModal, imageId }) => {
             {image?.userId === user?.id && (
                 <>
                     <ImageEditModal imageId={image?.id}/>
-                    <div>Delete</div>
+                    <div><button onClick={handleDeleteImage}>Delete</button></div>
                     <div></div>
                     <div></div>
                 </>
