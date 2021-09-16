@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { update_comment } from "../../store/comment";
+import { delete_comment, update_comment } from "../../store/comment";
 import { get_feed } from "../../store/feed";
 
 
@@ -23,6 +23,16 @@ const CommentEditForm = ({ setShowModal, commentId }) => {
         }
         setShowModal(false)
         new_content()
+    }
+
+    const handleDeleteComment = (e) => {
+        e.preventDefault()
+        const delete_content = async () => {
+            await dispatch(delete_comment(commentId))
+            await dispatch(get_feed())
+        }
+        setShowModal(false)
+        delete_content()
     }
 
     return (
@@ -51,6 +61,9 @@ const CommentEditForm = ({ setShowModal, commentId }) => {
                                 </div>
                                 <div className='share-button-container__comment_edit'>
                                     <button className='share-button__comment_edit' type='submit'>Update</button>
+                                </div>
+                                <div className='share-button-container__comment_edit'>
+                                    <button className='share-button__comment_edit' onClick={handleDeleteComment}>Delete</button>
                                 </div>
                             </form>
                         </div>
