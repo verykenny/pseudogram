@@ -21,20 +21,13 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
         return;
     }
 
-    // useEffect(() => {
-    //     const update = async () => {
-    //         await dispatch(get_feed())
-    //         await dispatch(get_likes())
-    //     }
-
-    //     update()
-    // }, [dispatch])
-
     const handleCommentSubmit = (e) => {
         e.preventDefault()
-
-        dispatch(set_new_comment(comment, image.id))
-        dispatch(get_feed())
+        const update_comment = async () => {
+            await dispatch(set_new_comment(comment, image.id))
+            await dispatch(get_feed())
+        }
+        update_comment()
         setComment('')
     }
 
@@ -77,8 +70,6 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                             })}
                         </div>
                         <div className='like-info__image_modal'>
-                            {/* {likes.loading && <p>Loading...</p>} */}
-
                             {!likes.loading && (
                                 <>
                                     <div className="like-button-container__image_modal" >

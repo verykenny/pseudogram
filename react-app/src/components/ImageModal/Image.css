@@ -129,6 +129,7 @@
 
 .comment-card__image_modal {
     display: flex;
+    margin-bottom: 10px;
 }
 
 .commenter-profile-thumb__image_modal {
