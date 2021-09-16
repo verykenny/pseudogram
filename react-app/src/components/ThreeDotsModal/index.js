@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import ThreeDotsMenu from './ThreeDotsMenu';
 
-function ThreeDotsModal() {
+function ThreeDotsModal({ imageId }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -10,7 +10,7 @@ function ThreeDotsModal() {
             <i className="fas fa-ellipsis-h" onClick={() => setShowModal(true)}></i>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ThreeDotsMenu setShowModal={setShowModal} />
+                    <ThreeDotsMenu setShowModal={setShowModal} imageId={imageId} />
                 </Modal>
             )}
         </>
