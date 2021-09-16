@@ -139,8 +139,7 @@
 }
 
 .comment-section__image_modal {
-    height: 400px;
-    padding-bottom: 20px;
+    flex: 1 1 393px;
     box-sizing: border-box;
     overflow: hidden auto;
 }
