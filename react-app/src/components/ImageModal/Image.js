@@ -1,14 +1,16 @@
 import React, { useDebugValue, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { get_comments, set_new_comment } from "../../store/comment";
 import { get_feed } from "../../store/feed";
-import { delete_like, set_new_like } from "../../store/like";
+import { delete_like, get_likes, set_new_like } from "../../store/like";
 
 import './Image.css'
 
 
 const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     const image = useSelector(state => state.feed.images[imageId])
+    const likes = useSelector(state => state.likes)
     const [comment, setComment] = useState('')
     const dispatch = useDispatch()
     const [liked, setLiked] = useState(Object.values(image.likes).some(like => like.userId === user.id))
@@ -18,6 +20,15 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
         if (setImageModalShow) setImageModalShow(false);
         return;
     }
+
+    // useEffect(() => {
+    //     const update = async () => {
+    //         await dispatch(get_feed())
+    //         await dispatch(get_likes())
+    //     }
+
+    //     update()
+    // }, [dispatch])
 
     const handleCommentSubmit = (e) => {
         e.preventDefault()
@@ -29,13 +40,17 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
 
     const handleLiked = (e) => {
         e.preventDefault()
-        if (!liked) {
-            dispatch(set_new_like(Number(imageId)))
-        } else {
-            dispatch(delete_like(Number(imageId)))
+        const update_like = async () => {
+            if (!liked) {
+                await dispatch(set_new_like(Number(imageId)))
+            } else {
+                await dispatch(delete_like(Number(imageId)))
+            }
+            setLiked(prev => !prev)
+
+            await dispatch(get_feed())
         }
-        setLiked(prev => !prev)
-        dispatch(get_feed())
+        update_like()
     }
 
 
@@ -62,17 +77,31 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                             })}
                         </div>
                         <div className='like-info__image_modal'>
-                            <div className="like-button-container__image_modal" >
+                            {/* {likes.loading && <p>Loading...</p>} */}
 
-                                {liked && (
-                                    <i className="fas fa-heart" onClick={handleLiked}></i>
-                                )}
+                            {!likes.loading && (
+                                <>
+                                    <div className="like-button-container__image_modal" >
 
-                                {!liked &&(
-                                    <i className="far fa-heart" onClick={handleLiked}></i>
-                                )}
+                                        {liked && (
+                                            <i className="fas fa-heart" onClick={handleLiked}></i>
+                                        )}
 
-                            </div>
+                                        {!liked && (
+                                            <i className="far fa-heart" onClick={handleLiked}></i>
+                                        )}
+                                    </div>
+                                    <div className="users-who-liked__image_modal">
+                                        {Object.values(image.likes).length > 0 && (
+                                            <p>Liked by {(liked) ? 'you' : 'username'} and {`${(image?.totalLikes) - 1} others`}</p>
+                                        )}
+                                        {Object.values(image.likes).length === 0 && (
+                                            <p>No likes yet</p>
+                                        )}
+                                    </div>
+
+                                </>
+                            )}
                         </div>
                         <div className='comment-button-container__image_modal'>
                             <textarea
