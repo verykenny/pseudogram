@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux"
 
 import { uploadFile } from 'react-s3'
+import { update_user } from "../../store/session";
 
 
 import './ProfileEditForm.css'
@@ -37,9 +38,9 @@ const ProfileEditForm = ({ setShowModal, commentId }) => {
         upload()
     }
 
-    const handleImagePost = (e) => {
+    const handleUserUpdate = (e) => {
         e.preventDefault()
-        // dispatch(update_user(profileImgUrl, username, email))
+        dispatch(update_user(username, email, profileImgUrl))
         setShowModal(false)
     }
 
@@ -56,10 +57,11 @@ const ProfileEditForm = ({ setShowModal, commentId }) => {
                 <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
             </div>
             <div className='container__comment_edit image-post-container__comment_edit'>
-                <form className='caption-share-form__image_upload' onSubmit={handleImagePost}>
+                <form className='caption-share-form__image_upload' onSubmit={handleUserUpdate}>
                     <div>
                         <button className='select-button__image_upload' onClick={handleClickSelect}>Select an image (PNG, JPG)</button>
                         <input ref={imageInput} style={{ display: 'none' }} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
+                        <p>Current file: {profileImgUrl.split('/')[3]}</p>
                     </div>
                     <div className='image-caption-container__image_upload'>
                         <input

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
 from app.models import db, User
+from app.forms import UserUpdateForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,6 +18,22 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
+    return user.to_dict()
+
+
+@user_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def update_user(id):
+    form = UserUpdateForm()
+
+    if form.validate_on_submit():
+        user = User.query.get(id)
+        form.populate_obj(user)
+        user.profileImgUrl = form['profileImgUrl'].data
+
+        db.session.add(user)
+        db.session.commit(user)
+
     return user.to_dict()
 
 
