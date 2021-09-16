@@ -26,7 +26,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
     }
 
     return (
-        <>
+        <div className='image-display-modal-container__image_modal'>
             <div className='image-post-container__image_modal'>
                 <div className='display-container__image_modal'>
                     <div className='image__image_modal' style={
@@ -71,7 +71,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                 </div>
             </div>
 
-        </>
+        </div>
     )
 }
 

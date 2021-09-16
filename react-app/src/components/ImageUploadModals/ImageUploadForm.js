@@ -49,7 +49,7 @@ const ImageUploadForm = ({ setShowModal }) => {
     }
 
     return (
-        <>
+        <div className='image-upload-modal__image-upload'>
             {!imageProvided && (
                 <>
                     <div className='exit-bar__image_upload'>
@@ -101,7 +101,7 @@ const ImageUploadForm = ({ setShowModal }) => {
                     </div>
                 </>
             )}
-        </>
+        </div>
     )
 }
 
