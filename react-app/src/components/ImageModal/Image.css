@@ -129,7 +129,11 @@
 
 .comment-card__image_modal {
     display: flex;
-    justify-content: space-between;
+    
+}
+
+.commenter-profile-thumb__image_modal {
+    margin-right: 10px;
 }
 
 .comment-card__image_modal p {
