@@ -59,7 +59,6 @@ const initialState = {
 export const get_likes = () => async (dispatch) => {
     dispatch(setLikesBegin());
     const response = await fetch(`/api/likes`)
-
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
