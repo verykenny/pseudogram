@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { update_image } from "../../store/feed";
+import { delete_image, update_image } from "../../store/feed";
 
 import './ImageEditForm.css'
 
@@ -17,6 +17,11 @@ const ImageEditForm = ({ setShowModal, imageId }) => {
         e.preventDefault()
         dispatch(update_image(image.id, caption))
         setShowModal(false)
+    }
+
+    const handleDeleteImage = (e) => {
+        e.preventDefault()
+        dispatch(delete_image(image.id))
     }
 
 
@@ -49,6 +54,9 @@ const ImageEditForm = ({ setShowModal, imageId }) => {
                                 </div>
                                 <div className='share-button-container__image_upload'>
                                     <button className='share-button__image_upload' type='submit'>Update</button>
+                                </div>
+                                <div className='share-button-container__image_upload'>
+                                    <button className='share-button__image_upload' onClick={handleDeleteImage} >Delete</button>
                                 </div>
                             </form>
                         </div>
