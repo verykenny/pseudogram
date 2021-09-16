@@ -14,6 +14,7 @@ import './Profile.css'
 import { get_followers } from "../../store/follower";
 import { get_comments } from "../../store/comment";
 
+
 const Profile = () => {
     const { userId } = useParams();
     const user = useSelector(state => state.session.user);
