@@ -24,6 +24,11 @@
     visibility: visible;
 }
 
+.image-display-modal-container__image_modal .fa-ellipsis-h {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
 .image-post-container__image_modal {
     justify-content: space-between;
     width: 950px;

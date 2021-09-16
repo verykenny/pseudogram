@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import ThreeDotsMenu from './ThreeDotsMenu';
+import ImageEditForm from './ImageEditForm';
 
-function ThreeDotsModal({ imageId }) {
+function ImageEditModal({ imageId }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <i className="fas fa-ellipsis-h" onClick={() => setShowModal(true)}></i>
+            <button className='edit-image' onClick={() => setShowModal(true)}>Edit Image</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ThreeDotsMenu setShowModal={setShowModal} imageId={imageId} />
+                    <ImageEditForm setShowModal={setShowModal} imageId={imageId}/>
                 </Modal>
             )}
         </>
     );
 }
 
-export default ThreeDotsModal;
+export default ImageEditModal;

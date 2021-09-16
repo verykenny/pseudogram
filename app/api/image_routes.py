@@ -55,7 +55,7 @@ def upload_image():
         db.session.add(image)
         db.session.commit()
 
-        return {'image': image.to_dict()}
+        return {'image': image.to_dict_extended()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -73,7 +73,7 @@ def update_image(imgId):
         image.caption = form['caption'].data
         db.session.add(image)
         db.session.commit()
-        return {'image': image.to_dict()}
+        return {'image': image.to_dict_extended()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
