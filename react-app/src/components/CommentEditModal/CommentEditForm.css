@@ -2,7 +2,7 @@
     border-radius: 5px;
     width: 450px;
     max-width: 100%;
-    height: 500px;
+    height: fit-content;
 }
 
 .exit-bar__comment_edit {
@@ -160,4 +160,3 @@
     /* border: 1px solid grey; */
     outline: none !important;
 }
-
