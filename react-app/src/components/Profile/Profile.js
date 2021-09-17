@@ -80,9 +80,6 @@ const Profile = () => {
                     </div>
                     {user.id === Number(userId) && (
                         <div className='profile-button-div'>
-
-                            <button>Edit Profile</button>
-
                             <ProfileEditModal />
 
                             <ImageUploadModal />

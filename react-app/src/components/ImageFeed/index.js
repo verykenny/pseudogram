@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 import { get_feed } from "../../store/feed";
+import { get_likes } from "../../store/like";
 
 import { get_followings } from "../../store/following"
 
@@ -34,6 +35,7 @@ const ImageFeed = () => {
     useEffect(() => {
         (async () => {
             await dispatch(get_feed());
+            await dispatch(get_likes(user.id))
         })();
     }, [dispatch]);
 
