@@ -99,7 +99,7 @@ const Profile = () => {
                 </div>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <FollowModal setShowModal={setShowModal} friends={props} title={title} setShowModal={setShowModal} />
+                        <FollowModal setShowModal={setShowModal} friends={props} title={title} />
                     </Modal>
                 )}
                 {showCommentModal && (
@@ -111,7 +111,7 @@ const Profile = () => {
             </div>
 
             <div className='images_container__profile'>
-                {images.length > 0 && images.map(image => (
+                {images.length > 0 && images.sort((a, b) => b.id - a.id).map(image => (
                     <ImageModal key={image.id} imageId={image.id} user={userProfile} />
                 ))}
             </div>

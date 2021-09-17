@@ -45,7 +45,7 @@ const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
                 </div>
                 <div className="users-who-liked__like_component">
                     {image?.totalLikes > 0 && (
-                        <p>Liked by {(liked) ? 'you' : 'username'} and {`${(image?.totalLikes) - 1} others`}</p>
+                        <p>Liked by {(liked) ? 'you' : image?.likes[0].user.username} and {`${(image?.totalLikes) - 1} others`}</p>
                     )}
                     {image?.totalLikes === 0 && (
                         <p>No likes yet</p>
