@@ -21,7 +21,7 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>', methods=['PUT'])
+@user_routes.route('/', methods=['PUT'])
 @login_required
 def update_user(id):
     form = UserUpdateForm()

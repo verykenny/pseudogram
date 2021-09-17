@@ -100,8 +100,8 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 
 export const update_user = (username, email, profileImgUrl) => async (dispatch) => {
-    const response = await fetch('/api/auth/login', {
-        method: 'POST',
+    const response = await fetch('/api/users/', {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
