@@ -55,7 +55,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                     <div className='comments_container__image_modal'>
                         <div className='comment-section__image_modal'>
                             {Object.values(image?.comments).map(comment => {
-                                return <CommentCard comment={comment} />
+                                return <CommentCard key={comment.id} comment={comment} />
                             })}
                         </div>
                         <LikeUnlikeComponent imageId={imageId} />

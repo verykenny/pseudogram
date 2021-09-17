@@ -186,7 +186,7 @@ const NavBar = () => {
                             )}
 
 
-                            <img className='activity-nav-img' src={activityImg} onClick={openActivity}></img>
+                            <img className='activity-nav-img' src={activityImg} onClick={openActivity} alt='activity icon'></img>
                             {showActivity && (
                                 <ul className='activity-dropdown'>
                                     {!activityFeed.length && (
@@ -196,11 +196,8 @@ const NavBar = () => {
                                         <li className='act-likes'>Recent Likes </li>
                                     )}
                                     {activityFeed.length > 0 && activityFeed.map(likes =>
-                                        <>
-                                            <li><NavLink to={`/users/${likes.user.id}`}> <img className='profile-img-nav' src={`${likes.user.profileImgUrl}`}></img></NavLink><NavLink to={`/users/${likes.user.id}`}> {`${likes.user.username}`}  </NavLink>
-                                                <img onClick={(e) => imageModalHandler(likes.imgId.id)} src={`${likes.imgId.imgUrl}`} className='activity-img'></img></li>
-
-                                        </>
+                                        <li key={likes.id}><NavLink to={`/users/${likes.user.id}`}> <img className='profile-img-nav' alt='profile icon' src={`${likes.user.profileImgUrl}`}></img></NavLink><NavLink to={`/users/${likes.user.id}`}> {`${likes.user.username}`}  </NavLink>
+                                            <img onClick={(e) => imageModalHandler(likes.imgId.id)} alt='user profile icon icon' src={`${likes.imgId.imgUrl}`} className='activity-img'></img></li>
 
                                     )}
 

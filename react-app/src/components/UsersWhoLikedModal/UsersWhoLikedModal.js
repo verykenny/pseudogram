@@ -20,7 +20,7 @@ function UsersWhoLiked(showProp) {
                         <div className="users-who-liked-loading">
                         </div>
                         {newArray.map(element => (
-                            <div className="users-who-liked-loading">
+                            <div key={element.id} className="users-who-liked-loading">
                                 <div className="modal-profile-pic" style={
                                     { backgroundImage: `url(${element.user.profileImgUrl})` }
                                 }></div>
