@@ -19,3 +19,7 @@
 .users-who-liked__like_component p {
     margin: 5px 0px;
 }
+
+.like-info__like_component .fa-comment {
+    margin-left: 15px;
+}
