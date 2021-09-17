@@ -80,11 +80,7 @@ const Profile = () => {
                     </div>
                     {user.id === Number(userId) && (
                         <div className='profile-button-div'>
-
-                            <button>Edit Profile</button>
-
                             <ProfileEditModal />
-
                             <ImageUploadModal />
                         </div>
                     )}
@@ -96,9 +92,9 @@ const Profile = () => {
                 </div>
                 <div className='bottom-profile-info'>
                     <div>{`${images.length}`} posts</div>
-                    <div onClick={() => handleModal(followers, 'Followers')}>{`${followers.length}`} followers</div>
-                    <div onClick={() => handleModal(following, 'Following')}>{`${following.length}`} following</div>
-                    {user.id === Number(userId) && (<div onClick={() => commentModal(comments, 'Comments')}>{`${comments.length}`} comments</div>)}
+                    <div className='hover' onClick={() => handleModal(followers, 'Followers')}>{`${followers.length}`} followers</div>
+                    <div className='hover' onClick={() => handleModal(following, 'Following')}>{`${following.length}`} following</div>
+                    {user.id === Number(userId) && (<div className='hover' onClick={() => commentModal(comments, 'Comments')}>{`${comments.length}`} comments</div>)}
                 </div>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>

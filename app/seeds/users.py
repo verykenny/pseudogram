@@ -58,6 +58,20 @@ def seed_users():
                following=[bobbie, kenny, curtis, arath, u1, u2, u3, u4, u5, u6, u7, u8, u9, u11, u12, u15, u16, u17, u18, u19])
     demo = User(
         username='Demo', email='demo@aa.io', password='password', following=[bobbie, u1, u2, u3, u4, u5, u6, u7, u8, u9, u11, u12, u15, u16, u17, u18, u19, u20])
+    u7.following.append(demo)
+    u8.following.append(demo)
+    u9.following.append(demo)
+    u10.following.append(demo)
+    u11.following.append(demo)
+    u12.following.append(demo)
+    u13.following.append(demo)
+    u14.following.append(demo)
+    u15.following.append(demo)
+    u16.following.append(demo)
+    u17.following.append(demo)
+    u18.following.append(demo)
+    u19.following.append(demo),
+
     seeds = [marnie, bobbie, demo, kenny, curtis, arath, u1, u2, u3, u4, u5,
              u6, u7, u8, u9, u10, u11, u12, u13, u14, u15, u16, u17, u18, u19, u20]
 
