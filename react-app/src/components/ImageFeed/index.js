@@ -23,7 +23,10 @@ const ImageFeed = () => {
         async function fetchData() {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
-            setUsers(responseData.users);
+            const allUsers = responseData.users;
+            const suggestedUsers = allUsers;
+            console.log(suggestedUsers);
+            setUsers(suggestedUsers);
         }
         fetchData();
     }, []);
@@ -48,27 +51,52 @@ const ImageFeed = () => {
                 <div className="feed-subcontainer">
                     {feed.images && Object.values(feed.images).map(image => (
                         <div key={image?.id} className="image-container">
-                            <>
-                                <div className="image-top-padding">
-                                    <div className='profile-info__feed'>
-                                        <div className="profile-picture__feed" style={{ backgroundImage: `url(${image?.user.profileImgUrl})` }}></div>
-                                        <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{image?.user.username}</Link></div>
-                                    </div>
-                                    <ThreeDotsModal imageId={image?.id} />
-                                </div>
-                                <div className="image-container__feed" style={{ backgroundImage: `url(${image?.imgUrl})` }}></div>
-                                <div className="like-comment-container__feed" >
-                                    <LikeUnlikeComponent imageId={image?.id} feedpage={true} />
-                                </div>
-                                <div className='caption-container__feed'>
-
-                                    <p>{image?.caption}</p>
-                                </div>
-                            </>
+                            <ImageContainer image={image}/>
                         </div>
                     ))}
                 </div>
+                <div className="feed-suggested-user-container">
+                    <SuggestedUsers users={users} />
+                </div>
             </div>
+        </>
+    )
+}
+
+
+const ImageContainer = ({ image }) => {
+    return (
+        <>
+            <div className="image-top-padding">
+                <div className='profile-info__feed'>
+                    <div className="profile-picture__feed" style={{ backgroundImage: `url(${image?.user.profileImgUrl})` }}></div>
+                    <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{image?.user.username}</Link></div>
+                </div>
+                <ThreeDotsModal imageId={image?.id} />
+            </div>
+            <div className="image-container__feed" style={{ backgroundImage: `url(${image?.imgUrl})` }}></div>
+            <div className="like-comment-container__feed" >
+                <LikeUnlikeComponent imageId={image?.id} feedpage={true} />
+            </div>
+            <div className='caption-container__feed'>
+
+                <p>{image?.caption}</p>
+            </div>
+        </>
+    )
+}
+
+
+
+const SuggestedUsers = ({users}) => {
+
+    return (
+        <>
+            {users && users.map(user => (
+                <div key={user.id} className="user-card__feed">
+                    {user.username}
+                </div>
+            ))}
         </>
     )
 }
