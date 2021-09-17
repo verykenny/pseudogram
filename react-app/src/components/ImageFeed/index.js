@@ -11,6 +11,19 @@ import ThreeDotsModal from "../ThreeDotsModal";
 import LikeUnlikeComponent from "../LikeUnlikeComponent";
 
 
+const timeAgo = (date) => {
+    const seconds = Math.floor((new Date() - new Date(date).valueOf()) / 1000);
+    if (seconds < 60) return `${seconds} seconds ago`
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return (minutes > 1) ? `${minutes} minutes ago` : `1 minute ago`
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return (hours > 1) ? `${hours} hours ago` : `1 hour ago`
+    const days = Math.floor(hours / 24);
+    if (days < 30) return (days > 1) ? `${days} days ago` : `1 day ago`
+    const months = Math.floor(days / 30);
+    return (months > 1) ? `${months} months ago` : `1 month ago`
+}
+
 const ImageFeed = () => {
     const feed = useSelector(state => state.feed)
     const user = useSelector(state => state.session.user)
@@ -44,6 +57,8 @@ const ImageFeed = () => {
             await dispatch(get_followings(user.id));
         })();
     }, [dispatch, user.id]);
+
+
 
 
     return (
@@ -81,7 +96,8 @@ const ImageContainer = ({ image }) => {
                 <LikeUnlikeComponent imageId={image?.id} feedpage={true} />
             </div>
             <div className='caption-container__feed'>
-
+                <p>{timeAgo(image?.createdAt)}</p>
+                <p>{image?.createdAt}</p>
                 <p>{image?.caption}</p>
             </div>
         </>
