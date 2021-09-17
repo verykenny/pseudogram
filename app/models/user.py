@@ -45,7 +45,15 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'profileImgUrl': self.profileImgUrl,
-            # 'following': [user.to_dict() for user in self.following]
+            'following': [user.to_dict_small() for user in self.following]
+        }
+
+    def to_dict_small(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'profileImgUrl': self.profileImgUrl,
         }
 
 
