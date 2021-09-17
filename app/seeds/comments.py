@@ -27,21 +27,21 @@ def seed_comments():
                   edited=False, createdAt=f'{now}')
     c11 = Comment(userId=14, imgId=1, content='"What we\'ve got here is failure to communicate." - Cool Hand Luke',
                   edited=False, createdAt=f'{now}')
-    c12 = Comment(userId=2, imgId=13, content='"I love the smell of napalm in the morning." - Apocalypse Now',
+    c12 = Comment(userId=2, imgId=24, content='"I love the smell of napalm in the morning." - Apocalypse Now',
                   edited=False, createdAt=f'{now}')
     c13 = Comment(userId=3, imgId=23, content='"E.T. phone home." - E.T. The Extra-Terrestrial',
                   edited=False, createdAt=f'{now}')
-    c14 = Comment(userId=4, imgId=21, content='"Rosebud." - Citizen Kane',
+    c14 = Comment(userId=4, imgId=23, content='"Rosebud." - Citizen Kane',
                   edited=False, createdAt=f'{now}')
-    c15 = Comment(userId=5, imgId=11, content='"Made it, Ma! Top of the world!" - White Heat',
+    c15 = Comment(userId=5, imgId=26, content='"Made it, Ma! Top of the world!" - White Heat',
                   edited=False, createdAt=f'{now}')
-    c16 = Comment(userId=6, imgId=4, content='"Bond. James Bond." - Dr. No',
+    c16 = Comment(userId=6, imgId=33, content='"Bond. James Bond." - Dr. No',
                   edited=False, createdAt=f'{now}')
-    c17 = Comment(userId=7, imgId=16, content='"There\'s no place like home." - The Wizard of Oz',
+    c17 = Comment(userId=7, imgId=31, content='"There\'s no place like home." - The Wizard of Oz',
                   edited=False, createdAt=f'{now}')
-    c18 = Comment(userId=12, imgId=1, content='"I\'m walking here! I\'m walking here!" - Midnight Cowboy',
+    c18 = Comment(userId=12, imgId=32, content='"I\'m walking here! I\'m walking here!" - Midnight Cowboy',
                   edited=False, createdAt=f'{now}')
-    c19 = Comment(userId=4, imgId=1, content='"You can\'t handle the truth!" - A Few Good Men',
+    c19 = Comment(userId=4, imgId=32, content='"You can\'t handle the truth!" - A Few Good Men',
                   edited=False, createdAt=f'{now}')
     c20 = Comment(userId=7, imgId=1, content='"You\'re gonna need a bigger boat." - Jaws',
                   edited=False, createdAt=f'{now}')
