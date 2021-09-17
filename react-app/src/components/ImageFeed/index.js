@@ -54,41 +54,37 @@ const ImageFeed = () => {
         return feed.images[imageId].totalLikes
     }
 
-    console.log('feed images',feed.images)
+    console.log('feed images', feed.images)
 
     return (
         <>
             <div className="feed-container">
-            <div className="feed-subcontainer">
-                {feed.loading === true && <h2>Loading</h2>}
-                {feed.images && Object.values(feed.images).map(image => (
-                    <div key={image.id} className="image-container">
-                        <>
-                    <div className="image-top-padding">
-                        <div className="profile-picture__feed" style={
-                                    { backgroundImage: `url(${users[arrayOfId.indexOf(image.userId)]?.profileImgUrl})` }
-                            }>
+                <div className="feed-subcontainer">
+                    {feed.loading === true && <h2>Loading</h2>}
+                    {feed.images && Object.values(feed.images).map(image => (
+                        <div key={image.id} className="image-container">
+                            <>
+                                <div className="image-top-padding">
+                                    <div className="profile-picture__feed" style={
+                                        { backgroundImage: `url(${users[arrayOfId.indexOf(image.userId)]?.profileImgUrl})` }
+                                    }>
+                                    </div>
+                                    <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
+                                    <ThreeDotsModal imageId={image?.id} />
+                                </div>
+                                <div className="image-container__image" style={
+                                    { backgroundImage: `url(${image.imgUrl})` }
+                                }>
+                                </div>
+                                <div className="like-comment-container" >
+                                    <LikeUnlikeComponent imageId={image?.id} feedpage={true}/>
+                                </div>
+                                <div className="liked-container" >
+                                </div>
+                                <p>{image.caption}</p>
+                            </>
                         </div>
-                    <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
-                        <ThreeDotsModal imageId={image?.id} />
-                        </div>
-                        <div className="image-container__image" style={
-                        { backgroundImage: `url(${image.imgUrl})` }
-                            }>
-                        </div>
-                        <div className="like-comment-container" >
-                        <LikeUnlikeComponent imageId={image?.id}/>
-                        <div className="like-button-container">
-                            <i className="far fa-comment"></i>
-                        </div>
-                        </div>
-                        <div className="liked-container" >
-                        </div>
-                    <p>{image.caption}</p>
-                    <p>{image.userId}</p>
-                </>
-                </div>
-                ))}
+                    ))}
                 </div>
             </div>
         </>

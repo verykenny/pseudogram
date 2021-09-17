@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { get_feed } from "../../store/feed";
 import { delete_like, set_new_like } from "../../store/like";
+import ImageModalComment from "./ImageModal_ext";
 
 
-const LikeUnlikeComponent = ({imageId}) => {
+const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
     const user = useSelector(state => state.session.user)
     const image = useSelector(state => state.feed.images[imageId])
     const likes = useSelector(state => state.likes)
@@ -39,6 +40,8 @@ const LikeUnlikeComponent = ({imageId}) => {
                     {!liked && (
                         <i className="far fa-heart" onClick={handleLiked}></i>
                     )}
+                    {feedpage && <ImageModalComment imageId={image?.id} user={user}/>}
+
                 </div>
                 <div className="users-who-liked__image_modal">
                     {image?.totalLikes > 0 && (
