@@ -39,7 +39,7 @@ const Profile = () => {
             await dispatch(get_followers(userId))
             await dispatch(get_followings(userId))
         })();
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
     useEffect(() => {
         async function fetchData() {
@@ -74,7 +74,7 @@ const Profile = () => {
             <div className='user-profile-info'>
                 <div className='top-profile-info'>
 
-                    <img className='profile-img-pfp' src={`${userProfile?.profileImgUrl}`}></img>
+                    <img className='profile-img-pfp' src={`${userProfile?.profileImgUrl}`} alt='user-pfp'></img>
                     <div className="profile-username-div">
                         <h3>{`${userProfile?.username}`}</h3>
                     </div>

@@ -17,7 +17,7 @@ class Image(db.Model):
     imgUrl = db.Column(db.String, nullable=False)
     caption = db.Column(db.String(255))
     totalLikes = db.Column(db.Integer, nullable=False)
-    createdAt = db.Column(db.Time, nullable=False)
+    createdAt = db.Column(db.DateTime, nullable=False)
 
     images = db.relationship("User", back_populates='image')
     likes = db.relationship("Like", back_populates='imageLiked')
