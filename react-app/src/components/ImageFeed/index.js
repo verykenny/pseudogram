@@ -46,28 +46,24 @@ const ImageFeed = () => {
         <>
             <div className="feed-container">
                 <div className="feed-subcontainer">
-                    {feed.loading === true && <h2>Loading</h2>}
                     {feed.images && Object.values(feed.images).map(image => (
                         <div key={image?.id} className="image-container">
                             <>
                                 <div className="image-top-padding">
-                                    <div className="profile-picture__feed" style={
-                                        { backgroundImage: `url(${image?.user.profileImgUrl})` }
-                                    }>
+                                    <div className='profile-info__feed'>
+                                        <div className="profile-picture__feed" style={{ backgroundImage: `url(${image?.user.profileImgUrl})` }}></div>
+                                        <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{image?.user.username}</Link></div>
                                     </div>
-                                    <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{image?.user.username}</Link></div>
                                     <ThreeDotsModal imageId={image?.id} />
                                 </div>
-                                <div className="image-container__image" style={
-                                    { backgroundImage: `url(${image?.imgUrl})` }
-                                }>
+                                <div className="image-container__feed" style={{ backgroundImage: `url(${image?.imgUrl})` }}></div>
+                                <div className="like-comment-container__feed" >
+                                    <LikeUnlikeComponent imageId={image?.id} feedpage={true} />
                                 </div>
-                                <div className="like-comment-container" >
-                                    <LikeUnlikeComponent imageId={image?.id} feedpage={true}/>
+                                <div className='caption-container__feed'>
+
+                                    <p>{image?.caption}</p>
                                 </div>
-                                <div className="liked-container" >
-                                </div>
-                                <p>{image?.caption}</p>
                             </>
                         </div>
                     ))}

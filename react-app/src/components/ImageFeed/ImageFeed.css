@@ -1,11 +1,5 @@
-.feed-container{
-    border: 1px solid black;
-    font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-}
-
 .feed-subcontainer{
-    border: 1px solid black;
-    margin-top: 45px;
+    padding-top: 45px;
 }
 
 .image-container{
@@ -18,9 +12,16 @@
     border-radius: 5px;
 }
 
-.image-top-padding{
+.image-top-padding {
     width:100%;
     height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-top-padding .fa-ellipsis-h {
+    margin-right: 15px;
 }
 
 .profile-picture__feed{
@@ -29,18 +30,21 @@
     height: 30px;
     border-radius: 50%;
     display: inline-block;
-    margin-top: 12px;
-    margin-left: 10px;
+    margin-left: 15px;
     background-size: 150%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.profile-info__feed {
+    display: flex;
+    align-items: center;
+}
+
 .profile-username__feed{
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 15px;
     vertical-align: top;
-    margin-top: 20px;
     font-weight: 500;
     font-size: 15px;
 }
@@ -50,7 +54,7 @@
     color: black;
 }
 
-.image-container__image{
+.image-container__feed{
     width:100%;
     height: 600px;
     /* border: 1px solid black; */
@@ -59,18 +63,13 @@
     background-position: center;
 }
 
-.like-comment-container{
+.like-comment-container__feed{
 width:100%;
-height: 30px;
 }
 
-.like-button-container{
-text-align: center;
-height: 30px;
-width: 30px;
-margin-top: 6px;
-margin-left: 10px;
-display: inline-block;
+.caption-container__feed p {
+    margin: 0 15px;
+    text-align: center;
 }
 
 .fa-heart{
@@ -83,12 +82,6 @@ font-size: 24px;
 cursor: pointer;
 }
 
-.liked-container{
-width:100%;
-margin-top:5px;
-height: 30px;
-}
-
 .three-image-container{
 width: 19px;
 height: 19px;
@@ -99,24 +92,4 @@ margin-top: 2px;
 background-size: 150%;
 background-repeat: no-repeat;
 background-position: center;
-}
-
-.users-who-liked{
-    height: 20px;
-    display: inline-block;
-    width: 250px;
-    margin-left: 10px;
-    font-size: 15px;
-    vertical-align: top;
-    margin-top: 3px;
-}
-
-.link_liked{
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-}
-
-text{
-    display: none;
 }
