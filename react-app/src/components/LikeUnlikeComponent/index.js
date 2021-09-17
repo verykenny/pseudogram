@@ -8,7 +8,7 @@ const LikeUnlikeComponent = ({imageId}) => {
     const user = useSelector(state => state.session.user)
     const image = useSelector(state => state.feed.images[imageId])
     const likes = useSelector(state => state.likes)
-    const [liked, setLiked] = useState(Object.values(image.likes).some(like => like.userId === user.id))
+    const [liked, setLiked] = useState(Object.values(image.likes).some(like => (like.userId === user.id)))
     const dispatch = useDispatch()
 
     const handleLiked = (e) => {
@@ -41,10 +41,10 @@ const LikeUnlikeComponent = ({imageId}) => {
                     )}
                 </div>
                 <div className="users-who-liked__image_modal">
-                    {Object.values(image.likes).length > 0 && (
+                    {image?.totalLikes > 0 && (
                         <p>Liked by {(liked) ? 'you' : 'username'} and {`${(image?.totalLikes) - 1} others`}</p>
                     )}
-                    {Object.values(image.likes).length === 0 && (
+                    {image?.totalLikes === 0 && (
                         <p>No likes yet</p>
                     )}
                 </div>
