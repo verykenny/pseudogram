@@ -62,5 +62,5 @@ user_following = db.Table(
     db.Column('user_id', db.Integer, db.ForeignKey(User.id), primary_key=True),
     db.Column('following_id', db.Integer,
               db.ForeignKey(User.id), primary_key=True),
-    db.Column('createdAt', db.Time, default=f'{now}')
+    db.Column('createdAt', db.DateTime, default=f'{now}')
 )

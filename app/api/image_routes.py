@@ -128,7 +128,6 @@ def like_image(imageId):
 
     image = Image.query.get(imageId)
     image.totalLikes += 1
-    print('LIKED:', image.totalLikes)
 
     db.session.add(like)
     db.session.add(image)
@@ -145,7 +144,6 @@ def un_like(imgId):
 
     image = Image.query.get(imgId)
     image.totalLikes -= 1
-    print('UNLIKED:', image.totalLikes)
 
     db.session.delete(like)
     db.session.commit()

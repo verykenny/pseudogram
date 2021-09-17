@@ -17,7 +17,7 @@ class Image(db.Model):
     imgUrl = db.Column(db.String, nullable=False)
     caption = db.Column(db.String(255))
     totalLikes = db.Column(db.Integer, nullable=False)
-    createdAt = db.Column(db.Time, nullable=False)
+    createdAt = db.Column(db.DateTime, nullable=False)
 
     images = db.relationship("User", back_populates='image')
     likes = db.relationship("Like", back_populates='imageLiked')
@@ -31,10 +31,11 @@ class Image(db.Model):
             'imgUrl': self.imgUrl,
             'caption': self.caption,
             'totalLikes': self.totalLikes,
-            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
+            'createdAt': self.createdAt.strftime('%H:%M:%S')
         }
 
     def to_dict_extended(self):
+
         image = {
             'comments': [comm.to_dict_extended() for comm in self.comment],
             'likes':  [like.to_dict_extended() for like in self.likes]
@@ -46,6 +47,6 @@ class Image(db.Model):
             'imgUrl': self.imgUrl,
             'caption': self.caption,
             'totalLikes': self.totalLikes,
-            'createdAt': self.createdAt.strftime('%m/%d/%Y %H:%M:%S')
+            'createdAt': self.createdAt.strftime('%H:%M:%S')
         }
         return {**image, **rest_of_image}
