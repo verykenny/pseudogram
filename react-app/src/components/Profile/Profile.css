@@ -3,12 +3,57 @@
 }
 
 .images_container__profile {
-  width: 90%;
+  width: 50%;
+  min-height: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .profile-container {
-  margin-top: 15%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-profile-info {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.profile-img-pfp {
+  height: 25%;
+  width: 25%;
+  border-radius: 50%;
+  margin-right: 1%;
+}
+.top-profile-info {
+  display: flex;
+}
+.profile-button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+.profile-button-div > * {
+  margin-top: 14%;
+  margin-left: 5%;
+}
+.bottom-profile-info {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  border-bottom: 1px solid rgba(219, 219, 219);
+}
+.bottom-profile-info > * {
+  margin-left: 5%;
+  padding-bottom: 5%;
+}
+.profile-username-div {
+  width: 100%;
+  margin-left: 5%;
 }

@@ -119,9 +119,7 @@ const NavBar = () => {
     }, [debouncedSearch])
 
     useEffect(async () => {
-        if (!user) {
-            return;
-        }
+        if (!user) return;
         await dispatch(get_likes(user.id))
 
     }, [dispatch])
@@ -187,10 +185,13 @@ const NavBar = () => {
                                     {!activityFeed.length && (
                                         <li>No one has liked any of your photos</li>
                                     )}
-                                    {activityFeed.length && activityFeed.map(likes =>
+                                    {activityFeed.length > 0 && (
+                                        <li className='act-likes'>Recent Likes </li>
+                                    )}
+                                    {activityFeed.length > 0 && activityFeed.map(likes =>
                                         <>
                                             <li><NavLink to={`/users/${likes.user.id}`}> <img className='profile-img-nav' src={`${likes.user.profileImgUrl}`}></img></NavLink><NavLink to={`/users/${likes.user.id}`}> {`${likes.user.username}`}  </NavLink>
-                                                <img onClick={(e) => imageModalHandler(likes.imgId.id)} src={`${likes.imgId.imgUrl}`} className='activity-img'></img><img height='12px' width='12px' src={blackHeart}></img></li>
+                                                <img onClick={(e) => imageModalHandler(likes.imgId.id)} src={`${likes.imgId.imgUrl}`} className='activity-img'></img></li>
 
                                         </>
 

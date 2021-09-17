@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Link } from "react-router-dom";
 import { delete_image, get_feed } from "../../store/feed";
+import { set_new_like } from "../../store/like"
 import { get_followings } from "../../store/following"
 import { Modal } from "../../context/Modal"
 import UsersWhoLiked from "../UsersWhoLikedModal/UsersWhoLikedModal";
@@ -12,12 +13,9 @@ import ThreeDotsModal from "../ThreeDotsModal";
 const ImageFeed = () => {
     const feed = useSelector(state => state.feed)
     const user = useSelector(state => state.session.user)
-    const following = useSelector(state => state.following)
-    // const likes = useSelector(state => state.likes)
     const [users, setUsers] = useState([]);
-    const [likesArray, setLikesArray] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [showProp, setShowProp] = useState('')
+    const [idForModal, setIdForModal] = useState('')
 
 
     const dispatch = useDispatch()
@@ -32,15 +30,6 @@ const ImageFeed = () => {
     }, []);
 
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('/api/likes');
-            const responseData = await response.json();
-            setLikesArray(responseData.likes);
-        }
-        fetchData();
-    }, []);
-
-    useEffect(() => {
         (async () => {
             await dispatch(get_feed());
         })();
@@ -50,17 +39,16 @@ const ImageFeed = () => {
         dispatch(delete_image(imgId))
     }
 
+
+    const handleLike = (imgId) => {
+        dispatch(set_new_like(imgId))
+    }
+
     useEffect(() => {
         (async () => {
             await dispatch(get_followings(user.id));
         })();
     }, [dispatch, user.id]);
-
-    // useEffect(() => {
-    //     (async () => {
-    //         await dispatch(get_likes());
-    //     })();
-    // }, [dispatch]);
 
 
 
@@ -69,23 +57,11 @@ const ImageFeed = () => {
         arrayOfId.push(element.id)
     })
 
-    console.log(likesArray)
-
-    let arrayOfImageId = []
-    likesArray.forEach(element => {
-        arrayOfImageId.push(element.imgId.id)
-    })
-
-    let arrayForLikes = []
     let getLikeAmount = (imageId) => {
-        arrayForLikes = []
-        arrayOfImageId.forEach(element => {
-            if(element === imageId){
-                arrayForLikes.push(element)
-            }
-        })
-        return arrayForLikes.length-1
+        return feed.images[imageId].totalLikes
     }
+
+    console.log('feed images',feed.images)
 
     return (
         <>
@@ -93,12 +69,11 @@ const ImageFeed = () => {
             <div className="feed-subcontainer">
                 {feed.loading === true && <h2>Loading</h2>}
                 {feed.images && Object.values(feed.images).map(image => (
-                    following.users[image?.userId] &&
                     <div key={image.id} className="image-container">
                         <>
                     <div className="image-top-padding">
                         <div className="profile-picture__feed" style={
-                            { backgroundImage: `url(${following.users[image?.userId].profileImgUrl})` }
+                                    { backgroundImage: `url(${users[arrayOfId.indexOf(image.userId)]?.profileImgUrl})` }
                             }>
                         </div>
                     <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{users[arrayOfId.indexOf(image.userId)]?.username}</Link></div>
@@ -110,23 +85,23 @@ const ImageFeed = () => {
                         </div>
                         <div className="like-comment-container" >
                         <div className="like-button-container" >
-                        <i className="far fa-heart" > </i>
+                        <i className="far fa-heart" onClick={() => handleLike(image.id)}></i>
                         </div>
                         <div className="like-button-container">
-                            <i className="far fa-comment" > </i>
+                            <i className="far fa-comment"></i>
                         </div>
                         </div>
                         <div className="liked-container" >
-                        {getLikeAmount(image.id)>1 &&
+                        {getLikeAmount(image.id) >1 &&
                         <>
                             <div className="three-image-container" style={
                                 { backgroundImage: `url(${image.imgUrl})` }
                             }>
                             </div>
-                                    <div className="users-who-liked">Liked by <Link className="link_liked">username</Link> and <Link onClick={() => {setShowModal(true); setShowProp(image.id);}}className="link_liked">{`${getLikeAmount(image.id)} others`}</Link>
+                                    <div className="users-who-liked">Liked by <Link className="link_liked">username</Link> and <Link onClick={() => {setShowModal(true); setIdForModal(image.id);}}className="link_liked">{`${getLikeAmount(image.id)-1} others`}</Link>
                                         {(showModal) && (
                                             <Modal onClose={() => setShowModal(false)}>
-                                                <UsersWhoLiked props={showProp} />
+                                                <UsersWhoLiked props={feed.images[idForModal]} />
                                             </Modal>
                                         )}
                                     </div>
