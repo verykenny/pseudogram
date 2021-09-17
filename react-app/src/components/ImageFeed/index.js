@@ -8,6 +8,7 @@ import { Modal } from "../../context/Modal"
 import UsersWhoLiked from "../UsersWhoLikedModal/UsersWhoLikedModal";
 import './ImageFeed.css'
 import ThreeDotsModal from "../ThreeDotsModal";
+import LikeUnlikeComponent from "../LikeUnlikeComponent";
 
 
 const ImageFeed = () => {
@@ -35,14 +36,6 @@ const ImageFeed = () => {
         })();
     }, [dispatch]);
 
-    const handleDeleteImage = (imgId) => {
-        dispatch(delete_image(imgId))
-    }
-
-
-    const handleLike = (imgId) => {
-        dispatch(set_new_like(imgId))
-    }
 
     useEffect(() => {
         (async () => {
@@ -84,50 +77,15 @@ const ImageFeed = () => {
                             }>
                         </div>
                         <div className="like-comment-container" >
-                        <div className="like-button-container" >
-                        <i className="far fa-heart" onClick={() => handleLike(image.id)}></i>
-                        </div>
+                        <LikeUnlikeComponent imageId={image?.id}/>
                         <div className="like-button-container">
                             <i className="far fa-comment"></i>
                         </div>
                         </div>
                         <div className="liked-container" >
-                        {getLikeAmount(image.id) >1 &&
-                        <>
-                            <div className="three-image-container" style={
-                                { backgroundImage: `url(${image.imgUrl})` }
-                            }>
-                            </div>
-                                    <div className="users-who-liked">Liked by <Link className="link_liked">username</Link> and <Link onClick={() => {setShowModal(true); setIdForModal(image.id);}}className="link_liked">{`${getLikeAmount(image.id)-1} others`}</Link>
-                                        {(showModal) && (
-                                            <Modal onClose={() => setShowModal(false)}>
-                                                <UsersWhoLiked props={feed.images[idForModal]} />
-                                            </Modal>
-                                        )}
-                                    </div>
-                        </>
-                        }
-                        {getLikeAmount(image.id) === 1 &&
-                        <>
-                            <div className="three-image-container" style={
-                                { backgroundImage: `url(${image.imgUrl})` }
-                            }>
-                            </div>
-                            <div className="users-who-liked">Liked by <Link className="link_liked">username</Link></div>
-                        </>
-                        }
-                        {getLikeAmount(image.id) < 1 &&
-                            <div className="users-who-liked">0 Likes</div>
-                        }
                         </div>
                     <p>{image.caption}</p>
                     <p>{image.userId}</p>
-                    {user?.id === image.userId && (
-                <>
-                <button onClick={() => handleDeleteImage(image.id)}>Delete Image</button>
-                        <NavLink to={`/images/${image.id}`}>edit</NavLink>
-                    </>
-                )}
                 </>
                 </div>
                 ))}
