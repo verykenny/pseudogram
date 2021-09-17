@@ -24,7 +24,8 @@ class User(db.Model, UserMixin):
         'User', lambda: user_following,
         primaryjoin=lambda: User.id == user_following.c.user_id,
         secondaryjoin=lambda: User.id == user_following.c.following_id,
-        backref='followers'
+        backref='followers',
+        cascade='all, delete'
     )
 
     @property
