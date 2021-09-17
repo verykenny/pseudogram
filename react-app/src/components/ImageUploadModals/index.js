@@ -7,7 +7,7 @@ function ImageUploadModal() {
 
     return (
         <>
-            <button className='add-new-image' onClick={() => setShowModal(true)}>Add New Image</button>
+            <button className='add-new-image' onClick={() => setShowModal(true)}>Post</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <ImageUploadForm setShowModal={setShowModal} />

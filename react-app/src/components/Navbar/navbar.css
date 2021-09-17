@@ -198,3 +198,6 @@
 
   color: rgba(38, 38, 38);
 }
+.act-likes {
+  align-self: flex-start;
+}

@@ -35,9 +35,13 @@ const ProfileCommentModal = ({ comments, title, setShowCommentModal }) => {
               <Image setImageModalShow={setImageModalShow} user={userOfImage} imageId={imageId} />
             </Modal>
           )}
+
         </>
         ))
       }
+      {!comments.length && (
+        <div>No Comments Yet</div>
+      )}
     </>
   )
 

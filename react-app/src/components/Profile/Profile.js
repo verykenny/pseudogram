@@ -9,6 +9,7 @@ import ImageModal from "../ImageModal";
 import FollowModal from '../FollowModal'
 import { Modal } from "../../context/Modal";
 import ProfileCommentModal from "../ProfileCommentModal";
+import FollowUnfollow from "../FollowUnfollowButton";
 
 import './Profile.css'
 import { get_followers } from "../../store/follower";
@@ -70,24 +71,30 @@ const Profile = () => {
     return (
         <div className='profile-container'>
             <div className='user-profile-info'>
-                <img src={`${userProfile?.profileImgUrl}`}></img>
-                <h3>{`${userProfile?.username}`}</h3>
-                {user.id === Number(userId) && (
-                    <>
-                        <button>Edit Profile</button>
-                        <ImageUploadModal />
-                    </>
-                )}
-                {user.id !== Number(userId) && (
-                    <>
-                        <button>Unfollow</button>
-                    </>
-                )}
-                <div>{`${images.length}`} posts</div>
-                <div onClick={() => handleModal(followers, 'Followers')}>{`${followers.length}`} followers</div>
-                <div onClick={() => handleModal(following, 'Following')}>{`${following.length}`} following</div>
-                {user.id === Number(userId) && (<div onClick={() => commentModal(comments, 'Comments')}>{`${comments.length}`} comments</div>)}
+                <div className='top-profile-info'>
 
+                    <img className='profile-img-pfp' src={`${userProfile?.profileImgUrl}`}></img>
+                    <div className="profile-username-div">
+                        <h3>{`${userProfile?.username}`}</h3>
+                    </div>
+                    {user.id === Number(userId) && (
+                        <div className='profile-button-div'>
+                            <button>Edit Profile</button>
+                            <ImageUploadModal />
+                        </div>
+                    )}
+                    {user.id !== Number(userId) && (
+                        <div className='profile-button-div'>
+                            <FollowUnfollow userId={userProfile?.id} />
+                        </div>
+                    )}
+                </div>
+                <div className='bottom-profile-info'>
+                    <div>{`${images.length}`} posts</div>
+                    <div onClick={() => handleModal(followers, 'Followers')}>{`${followers.length}`} followers</div>
+                    <div onClick={() => handleModal(following, 'Following')}>{`${following.length}`} following</div>
+                    {user.id === Number(userId) && (<div onClick={() => commentModal(comments, 'Comments')}>{`${comments.length}`} comments</div>)}
+                </div>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                         <FollowModal setShowModal={setShowModal} friends={props} title={title} setShowModal={setShowModal} />
@@ -102,12 +109,12 @@ const Profile = () => {
             </div>
 
             <div className='images_container__profile'>
-                {images.length && images.map(image => (
+                {images.length > 0 && images.map(image => (
                     <ImageModal key={image.id} imageId={image.id} user={userProfile} />
                 ))}
-
-
             </div>
+
+
 
         </div >
     )
