@@ -34,7 +34,7 @@ const ProfileCommentModal = ({ comments, title, setShowCommentModal }) => {
 
         comments && comments.map(comment => (
           <div>
-            <img className='comment-modal-img' src={`${allImages[comment.imgId].imgUrl}`} onClick={() => handleClickedComment(allImages[comment.imgId].user, comment.imgId)}></img>
+            <img alt='img-commented-on' className='comment-modal-img' src={`${allImages[comment.imgId].imgUrl}`} onClick={() => handleClickedComment(allImages[comment.imgId].user, comment.imgId)}></img>
             <p>{`${comment.content}`}</p>
 
             {imageModalShow && (

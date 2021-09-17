@@ -94,7 +94,7 @@ const CommentCard = ({ comment }) => {
                 <div className='comment__image_modal'>
                     <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
                     {comment.userId === user.id && (
-                        <CommentEditModal commentId={comment.id}/>
+                        <CommentEditModal commentId={comment.id} />
                     )}
                 </div>
             </div>

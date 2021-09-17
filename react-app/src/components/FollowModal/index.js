@@ -15,7 +15,7 @@ const ImageModal = ({ friends, title, setShowModal }) => {
         friends && friends.map(friend => (
           <ul>
             <li>
-              <img className='profile-img-nav' src={`${friend.profileImgUrl}`}></img>
+              <img className='profile-img-nav' src={`${friend.profileImgUrl}`} alt='user-pfp'></img>
               <NavLink to={`/users/${friend.id}`} onClick={() => setShowModal(false)}>{`${friend.username}`}</NavLink>            </li>
           </ul>
 

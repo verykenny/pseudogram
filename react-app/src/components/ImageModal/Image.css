@@ -91,7 +91,6 @@
 
 .user-profile-thumb__image_modal {
   margin-right: 20px;
-
 }
 
 .like-info__image_modal {
@@ -115,7 +114,6 @@
 .users-who-liked__image_modal p {
   margin: 5px 0px;
 }
-
 
 .comments_container__image_modal {
   flex: 1 1 350px;
@@ -224,7 +222,6 @@
   .image-select-container__image_modal div {
     max-width: 90%;
   }
-
 }
 .image_likes_comments__profile {
   display: flex;
@@ -241,5 +238,4 @@
 .image_likes_comments__profile > * > p {
   margin-left: 10%;
   width: 100%;
-
 }
