@@ -1,15 +1,30 @@
+.feed-container {
+    padding: 90px 10px 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 1025px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
 .feed-subcontainer{
-    padding-top: 45px;
+    /* padding-top: 45px; */
 }
 
 .image-container{
     border: 1px solid #D4D4D4;
     display: block;
-    margin: 50px 100px;
     max-width: 600px;
-    max-height: 800px;
-    min-height: 799px;
+    height: 800px;
     border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.feed-suggested-user-container {
+    border: 1px solid #D4D4D4;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 25px;
 }
 
 .image-top-padding {
