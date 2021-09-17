@@ -15,7 +15,7 @@ class Like(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'))
     imgId = db.Column(db.Integer, db.ForeignKey('images.id'))
-    createdAt = db.Column(db.Time, default=f'{now}')
+    createdAt = db.Column(db.DateTime, default=f'{now}')
 
     like = db.relationship("User", back_populates='likes')
     imageLiked = db.relationship("Image", back_populates='likes')
