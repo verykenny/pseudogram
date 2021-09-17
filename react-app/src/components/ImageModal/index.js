@@ -15,7 +15,14 @@ function ImageModal({ imageId, user, display = false }) {
                 onClick={() => setShowModal(true)}
             >
                 <div className='image_likes_comments__profile'>
-                    <p>{image.totalLikes}</p>
+                    <div>
+                        <i className="fas fa-heart"></i>
+                        <p>{image.totalLikes}</p>
+                    </div>
+                    <div>
+                        <i className="fas fa-comment"></i>
+                        <p>{image.comments.length}</p>
+                    </div>
                 </div>
             </div>
             {showModal && (

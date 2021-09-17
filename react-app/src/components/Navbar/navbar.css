@@ -25,9 +25,11 @@
 
 .nav-logo {
   font-family: "Billabong", sans-serif;
-  font-size: 30px;
+  font-size: 35px;
   align-self: center;
   justify-self: center;
+  text-decoration: none;
+  color: rgba(38, 38, 38);
 }
 
 .search-bar-div {

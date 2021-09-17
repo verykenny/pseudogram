@@ -1,0 +1,29 @@
+.comment-modal-wrapper {
+  border-radius: 5px;
+  width: 400px;
+  max-width: 100%;
+  height: 500px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: scroll;
+}
+
+.comment-modal-wrapper > * {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 2%;
+}
+.comment-modal-img {
+  height: 55px;
+  width: 55px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+.comment-modal-wrapper > div > p {
+  text-align: center;
+  margin-right: 5%;
+}

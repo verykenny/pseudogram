@@ -145,7 +145,7 @@ const NavBar = () => {
             {location.pathname !== '/login' && location.pathname !== '/sign-up' &&
                 <div className='nav-bar'>
                     <div className='inner-nav'>
-                        <h2 className='nav-logo'>Pseudogram</h2>
+                        <NavLink to='/home' className='nav-logo'>Pseudogram</NavLink>
                         <div className='search-bar-div'><input
                             className='search-bar'
                             placeholder='Search'

@@ -222,3 +222,19 @@
     max-width: 90%;
   }
 }
+.image_likes_comments__profile {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.image_likes_comments__profile > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8%;
+  color: white;
+}
+.image_likes_comments__profile > * > p {
+  margin-left: 10%;
+  width: 100%;
+}
