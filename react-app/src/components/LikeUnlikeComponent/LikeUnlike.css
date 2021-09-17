@@ -1,0 +1,21 @@
+.like-info__like_component {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 1px solid rgb(182, 182, 182);
+}
+
+.like-button-container__like_component {
+    height: 30px;
+    width: 100%;
+    display: inline-block;
+}
+
+.users-who-liked__like_component {
+    font-size: 15px;
+    width: 100%;
+}
+.users-who-liked__like_component p {
+    margin: 5px 0px;
+}
