@@ -11,6 +11,7 @@
   margin-bottom: 1%;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain !important;
 }
 
 .image_likes_comments__profile {
