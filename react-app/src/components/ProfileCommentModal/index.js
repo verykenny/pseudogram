@@ -31,6 +31,7 @@ const ProfileCommentModal = ({ comments, title, setShowCommentModal }) => {
       <h4>{title}</h4>
 
       {
+
         comments && comments.map(comment => (
           <div>
             <img className='comment-modal-img' src={`${allImages[comment.imgId].imgUrl}`} onClick={() => handleClickedComment(allImages[comment.imgId].user, comment.imgId)}></img>
@@ -43,12 +44,15 @@ const ProfileCommentModal = ({ comments, title, setShowCommentModal }) => {
             )}
 
           </div>
+
         ))
       }
       {!comments.length && (
         <div>No Comments Yet</div>
       )}
+
     </div>
+
   )
 
 }

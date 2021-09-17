@@ -14,6 +14,7 @@ import FollowUnfollow from "../FollowUnfollowButton";
 import './Profile.css'
 import { get_followers } from "../../store/follower";
 import { get_comments } from "../../store/comment";
+import ProfileEditModal from "../ProfileEditModal";
 
 
 const Profile = () => {
@@ -79,7 +80,11 @@ const Profile = () => {
                     </div>
                     {user.id === Number(userId) && (
                         <div className='profile-button-div'>
+
                             <button>Edit Profile</button>
+
+                            <ProfileEditModal />
+
                             <ImageUploadModal />
                         </div>
                     )}
