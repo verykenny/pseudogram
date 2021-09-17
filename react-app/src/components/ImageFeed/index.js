@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { get_feed } from "../../store/feed";
 import { get_likes } from "../../store/like";
 
@@ -25,19 +25,18 @@ const ImageFeed = () => {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
             const allUsers = responseData.users;
-            const suggestedUsers = allUsers;
-            console.log(suggestedUsers);
-            setUsers(suggestedUsers);
+            const suggestedUsers = allUsers.filter(usr => !user.following.includes(usr.id));
+            setUsers(suggestedUsers.slice(0, 5));
         }
         fetchData();
-    }, []);
+    }, [user.following]);
 
     useEffect(() => {
         (async () => {
             await dispatch(get_feed());
             await dispatch(get_likes(user.id))
         })();
-    }, [dispatch]);
+    }, [dispatch, user.id]);
 
 
     useEffect(() => {
@@ -58,6 +57,7 @@ const ImageFeed = () => {
                     ))}
                 </div>
                 <div className="feed-suggested-user-container">
+                    <h2>Suggested friends</h2>
                     <SuggestedUsers users={users} />
                 </div>
             </div>
@@ -96,7 +96,8 @@ const SuggestedUsers = ({users}) => {
         <>
             {users && users.map(user => (
                 <div key={user.id} className="user-card__feed">
-                    {user.username}
+                    <NavLink className='profile-link__feed' to={`/users/${user.id}`} ><img className='profile-img-nav profile-img__feed' src={`${user.profileImgUrl}`} alt={user.id}></img></NavLink>
+                    <NavLink className='profile-link__feed' to={`/users/${user.id}`} >{`${user.username}`}</NavLink>
                 </div>
             ))}
         </>

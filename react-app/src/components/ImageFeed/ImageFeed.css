@@ -108,3 +108,21 @@ background-size: 150%;
 background-repeat: no-repeat;
 background-position: center;
 }
+
+
+.user-card__feed {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.user-card__feed .profile-img__feed {
+    margin-right: 10px;
+}
+
+.user-card__feed .profile-link__feed {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+}
