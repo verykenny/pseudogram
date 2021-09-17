@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { delete_following, set_new_following } from "../../store/following";
 import { useHistory } from 'react-router-dom'
@@ -33,21 +32,15 @@ const FollowUnfollow = ({ userId }) => {
     }
 
     return (
-
         <>
-                <div >
-                    {following.toString()}
             {following === true && (
 
-                    <button onClick={handleFollow}>Unfollow</button>
-                    )}
+                <button onClick={handleFollow}>Unfollow</button>
+            )}
             {!following && (
                 <button onClick={handleFollow}>Follow</button>
-                )}
-
-                </div>
+            )}
         </>
-
     )
 }
 

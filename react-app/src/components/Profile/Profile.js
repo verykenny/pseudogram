@@ -99,7 +99,7 @@ const Profile = () => {
                 </div>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <FollowModal setShowModal={setShowModal} friends={props} title={title} setShowModal={setShowModal} />
+                        <FollowModal setShowModal={setShowModal} friends={props} title={title} />
                     </Modal>
                 )}
                 {showCommentModal && (

@@ -75,7 +75,7 @@ const NavBar = () => {
         document.addEventListener('click', closeActivity);
 
         return () => document.removeEventListener("click", closeActivity);
-    }, [openActivity]);
+    }, [showActivity]);
     useEffect(() => {
         if (!showSearch) return;
 
@@ -85,7 +85,7 @@ const NavBar = () => {
         document.addEventListener('click', closeActivity);
 
         return () => document.removeEventListener("click", closeActivity);
-    }, [openSearchDropdown]);
+    }, [showSearch]);
 
     useEffect(() => {
         async function fetchData() {
@@ -115,13 +115,15 @@ const NavBar = () => {
     useEffect(() => {
         if (!user) return;
         searchUsers(search, user.id)
-    }, [debouncedSearch])
+    }, [debouncedSearch, search])
 
-    useEffect(async () => {
-        if (!user) return;
-        await dispatch(get_likes(user.id))
-
-    }, [dispatch])
+    useEffect(() => {
+        const runMe = async () => {
+            if (!user) return;
+            await dispatch(get_likes(user.id))
+        }
+        runMe()
+    }, [dispatch, user])
 
 
     const sortingLikes = (() => {
@@ -139,6 +141,12 @@ const NavBar = () => {
         setImgIdForModal(image)
         setImageModalShow(true)
     }
+
+    const handleSearchChange = (e) => {
+        setSearch(e.target.value)
+        openSearchDropdown()
+    }
+
     return (
 
         <nav>
@@ -151,11 +159,11 @@ const NavBar = () => {
                             placeholder='Search'
                             value={search}
                             onKeyDown={_handleKeyDown}
-                            onChange={(e) => (setSearch(e.target.value), openSearchDropdown())}
+                            onChange={handleSearchChange}
                         ></input>
                             {filteredSearch && showSearch && (<ul className='search-dropdown'>
                                 {filteredSearch && showSearch && filteredSearch.map(user =>
-                                    <li key={`${user.id}`}><NavLink to={`/users/${user?.id}`}><img className='profile-img-nav' src={`${user.profileImgUrl}`}></img></NavLink><NavLink to={`/users/${user?.id}`}>{`${user.username}`}</NavLink></li>
+                                    <li key={`${user.id}`}><NavLink to={`/users/${user?.id}`}><img className='profile-img-nav' src={`${user.profileImgUrl}`} alt={user.username}></img></NavLink><NavLink to={`/users/${user?.id}`}>{`${user.username}`}</NavLink></li>
                                 )}
                             </ul>)}
 
@@ -165,12 +173,12 @@ const NavBar = () => {
 
                         <div className='right-side-nav'>
 
-                            <NavLink to='/home' exact={true} activeClassName='active'><img className='nav-home-img' src={home}></img></NavLink>
+                            <NavLink to='/home' exact={true} activeClassName='active'><img className='nav-home-img' src={home} alt='home icon'></img></NavLink>
 
 
 
 
-                            <img size='24px' className='nav-add-btn' onClick={() => setShowModal(true)} src={add}></img>
+                            <img size='24px' className='nav-add-btn' alt='post icon' onClick={() => setShowModal(true)} src={add}></img>
                             {showModal && (
                                 <Modal onClose={() => setShowModal(false)}>
                                     <ImageUploadForm setShowModal={setShowModal} />
