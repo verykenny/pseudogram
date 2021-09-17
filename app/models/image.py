@@ -42,6 +42,7 @@ class Image(db.Model):
         rest_of_image = {
             'id': self.id,
             'userId': self.userId,
+            'user': self.images.to_dict(),
             'imgUrl': self.imgUrl,
             'caption': self.caption,
             'totalLikes': self.totalLikes,

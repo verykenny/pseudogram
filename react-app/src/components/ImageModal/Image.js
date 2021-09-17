@@ -43,7 +43,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                     <div className='image__image_modal' style={
                         { backgroundImage: `url(${image?.imgUrl})` }
                     }></div>
-                    <p>{image.caption}</p>
+                    <p>{image?.caption}</p>
                 </div>
                 <div className='caption-share-container__image_modal'>
                     <div className='share-container-user-info__image_modal'>
@@ -54,7 +54,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                     </div>
                     <div className='comments_container__image_modal'>
                         <div className='comment-section__image_modal'>
-                            {Object.values(image.comments).map(comment => {
+                            {Object.values(image?.comments).map(comment => {
                                 return <CommentCard comment={comment} />
                             })}
                         </div>
