@@ -53,13 +53,13 @@ const ProfileEditForm = ({ setShowModal, commentId }) => {
         <div className='comment-edit-modal__comment_edit'>
             <div className='exit-bar__comment_edit'>
                 <i onClick={() => setShowModal(false)} className="fas fa-arrow-left"></i>
-                <h2 className='modal-header__comment_edit'>Update your profile</h2>
+                <h2 className='modal-header__comment_edit'>Feature In Progress</h2>
                 <i onClick={() => setShowModal(false)} className="far fa-window-close"></i>
             </div>
             <div className='container__comment_edit image-post-container__comment_edit'>
-                <form className='caption-share-form__image_upload' onSubmit={handleUserUpdate}>
+                {/* <form className='caption-share-form__image_upload' onSubmit={handleUserUpdate}>
                     <div>
-                        <button className='select-button__image_upload' onClick={handleClickSelect}>Select an image (PNG, JPG)</button>
+                        <button  className='select-button__image_upload' onClick={handleClickSelect}>Select an image (PNG, JPG)</button>
                         <input ref={imageInput} style={{ display: 'none' }} type='file' accept='.png,.jpeg,.jpg,' onChange={handleUrlSubmit} />
                         <p>Current file: {profileImgUrl.split('/')[3]}</p>
                     </div>
@@ -82,7 +82,7 @@ const ProfileEditForm = ({ setShowModal, commentId }) => {
                     <div className='share-button-container__image_upload'>
                         <button className='share-button__image_upload' type='submit'>Update</button>
                     </div>
-                </form>
+                </form> */}
             </div>
         </div>
     )

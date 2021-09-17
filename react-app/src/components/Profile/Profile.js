@@ -71,7 +71,6 @@ const Profile = () => {
 
     return (
         <div className='profile-container'>
-            <ProfileEditModal />
             <div className='user-profile-info'>
                 <div className='top-profile-info'>
 
@@ -81,7 +80,7 @@ const Profile = () => {
                     </div>
                     {user.id === Number(userId) && (
                         <div className='profile-button-div'>
-                            <button>Edit Profile</button>
+                            <ProfileEditModal />
                             <ImageUploadModal />
                         </div>
                     )}
