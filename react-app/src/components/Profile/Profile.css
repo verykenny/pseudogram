@@ -57,3 +57,20 @@
   width: 100%;
   margin-left: 5%;
 }
+button {
+  color: blue;
+  background: transparent;
+  border: 1px solid rgba(219, 219, 219);
+  border-radius: 2rem;
+  padding: 4px;
+}
+button:hover {
+  cursor: pointer;
+}
+
+a:hover {
+  cursor: pointer;
+}
+.hover:hover {
+  cursor: pointer;
+}

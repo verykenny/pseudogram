@@ -207,7 +207,6 @@ const NavBar = () => {
                             {showMenu && (
                                 <ul className="nav-profile-dropdown">
                                     <li><NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>Profile</NavLink></li>
-                                    <li><NavLink to={'/'}>Profile settings</NavLink></li>
                                     <li>
                                         <LogoutButton />
                                     </li>

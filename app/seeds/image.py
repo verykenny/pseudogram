@@ -50,28 +50,28 @@ def seed_images():
                   caption='Don’t study me, you won’t graduate', totalLikes=0, createdAt=f'{now}')
     img22 = Image(userId=9, imgUrl='https://images.unsplash.com/photo-1464278533981-50106e6176b1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80',
                   caption='The secret ingredient is always cheese', totalLikes=0, createdAt=f'{now}')
-    img23 = Image(userId=7, imgUrl='https://images.unsplash.com/photo-1501822810445-bba370e517ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
-                  caption='What happened to me? I grew up.', totalLikes=0, createdAt=f'{now}')
-    img24 = Image(userId=8, imgUrl='https://images.unsplash.com/photo-1579846321882-45cf6140c2ee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-                  caption='Nothing is gone forever, only out of place -Mary Poppins', totalLikes=0, createdAt=f'{now}')
-    img25 = Image(userId=5, imgUrl='https://images.unsplash.com/photo-1538947151057-dfe933d688d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-                  caption='Yeah working is great, but have you tried travelling?', totalLikes=0, createdAt=f'{now}')
-    img26 = Image(userId=4, imgUrl='https://images.unsplash.com/photo-1472791108553-c9405341e398?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1108&q=80',
-                  caption='In most cases, being a good boss means hiring talented people and then getting out of their way. -Tina Fey', totalLikes=0, createdAt=f'{now}')
-    img27 = Image(userId=7, imgUrl='https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80',
-                  caption='Why do we fall, sir? So that we can learn to pick ourselves up. -Batman Begins', totalLikes=0, createdAt=f'{now}')
-    img28 = Image(userId=5, imgUrl='https://images.unsplash.com/photo-1443632864897-14973fa006cf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-                  caption='Vacation calories don’t count', totalLikes=0, createdAt=f'{now}')
-    img29 = Image(userId=9, imgUrl='https://images.unsplash.com/photo-1456066775592-f14f4ea694a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80',
-                  caption='As someone who has a long history of not understanding anything, I feel confident in my ability to continue not knowing what is going on.', totalLikes=0, createdAt=f'{now}')
-    img30 = Image(userId=5, imgUrl='https://images.unsplash.com/photo-1508913449378-01b9b8174e46?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    img23 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1501822810445-bba370e517ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80',
+                  caption='What happened to me? I grew up.', totalLikes=2, createdAt=f'{now}')
+    img24 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1579846321882-45cf6140c2ee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                  caption='Nothing is gone forever, only out of place -Mary Poppins', totalLikes=4, createdAt=f'{now}')
+    img25 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1538947151057-dfe933d688d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+                  caption='Yeah working is great, but have you tried travelling?', totalLikes=2, createdAt=f'{now}')
+    img26 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1472791108553-c9405341e398?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1108&q=80',
+                  caption='In most cases, being a good boss means hiring talented people and then getting out of their way. -Tina Fey', totalLikes=1, createdAt=f'{now}')
+    img27 = Image(userId=26, imgUrl='https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80',
+                  caption='Why do we fall, sir? So that we can learn to pick ourselves up. -Batman Begins', totalLikes=1, createdAt=f'{now}')
+    img28 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1443632864897-14973fa006cf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+                  caption='Vacation calories don’t count', totalLikes=1, createdAt=f'{now}')
+    img29 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1456066775592-f14f4ea694a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80',
+                  caption='As someone who has a long history of not understanding anything, I feel confident in my ability to continue not knowing what is going on.', totalLikes=1, createdAt=f'{now}')
+    img30 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1508913449378-01b9b8174e46?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                   caption='Houston, we have a problem.', totalLikes=0, createdAt=f'{now}')
-    img31 = Image(userId=2, imgUrl='https://images.unsplash.com/photo-1444065707204-12decac917e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80',
+    img31 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1444065707204-12decac917e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80',
                   caption='There\'s no place like home - The Wizard of Oz', totalLikes=0, createdAt=f'{now}')
-    img32 = Image(userId=4, imgUrl='https://images.unsplash.com/photo-1604537529586-87ac173f4310?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    img32 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1604537529586-87ac173f4310?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
                   caption='boxed water is better', totalLikes=0, createdAt=f'{now}')
     img33 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1515735543535-12664d2453f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-                  caption='big ole cat fishy', totalLikes=0, createdAt=f'{now}')
+                  caption='big ole cat fishy', totalLikes=5, createdAt=f'{now}')
     seeds = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13,
              img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33]
 
