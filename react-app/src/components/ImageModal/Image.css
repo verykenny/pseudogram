@@ -92,27 +92,7 @@
   margin-right: 20px;
 }
 
-.like-info__image_modal {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-top: 1px solid rgb(182, 182, 182);
-}
 
-.like-button-container__image_modal {
-  height: 30px;
-  width: 100%;
-  display: inline-block;
-}
-
-.users-who-liked__image_modal {
-  font-size: 15px;
-  width: 100%;
-}
-.users-who-liked__image_modal p {
-  margin: 5px 0px;
-}
 
 .comments_container__image_modal {
   flex: 1 1 350px;

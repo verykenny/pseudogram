@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { delete_following, get_followings, set_new_following } from "../../store/following";
 import { useHistory } from 'react-router-dom'
