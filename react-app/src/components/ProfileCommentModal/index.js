@@ -18,20 +18,11 @@ const ProfileCommentModal = ({ comments, title, setShowCommentModal }) => {
         setUserOfImage(user)
         setImageModalShow(true)
     }
-    const closeModal = () => {
-        setImageModalShow(false)
-        setShowCommentModal(false)
-    }
-
-
 
     return (
         <div className='comment-modal-wrapper'>
             <h4>{title}</h4>
-
-            {
-
-                comments && comments.map(comment => (
+            {comments && comments.map(comment => (
                     <div key={comment.id}>
                         <img alt='img-commented-on' className='comment-modal-img' src={`${allImages[comment.imgId].imgUrl}`} onClick={() => handleClickedComment(allImages[comment.imgId].user, comment.imgId)}></img>
                         <p>{`${comment.content}`}</p>

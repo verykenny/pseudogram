@@ -20,8 +20,8 @@ class Image(db.Model):
     createdAt = db.Column(db.DateTime, nullable=False)
 
     images = db.relationship("User", back_populates='image')
-    likes = db.relationship("Like", back_populates='imageLiked')
-    comment = db.relationship("Comment", back_populates='image')
+    likes = db.relationship("Like", back_populates='imageLiked', cascade='all, delete')
+    comment = db.relationship("Comment", back_populates='image', cascade='all, delete')
     tag = db.relationship("ImageTag", back_populates='taggedImg')
 
     def to_dict(self):

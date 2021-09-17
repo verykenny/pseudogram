@@ -25,6 +25,7 @@
     border-radius: 5px;
     padding: 10px;
     margin-left: 25px;
+    height: fit-content;
 }
 
 .image-top-padding {
@@ -136,4 +137,23 @@ background-position: center;
     color: black;
     font-weight: 500;
     font-size: 15px;
+}
+
+
+@media screen and (max-width: 850px) {
+    .feed-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feed-suggested-user-container {
+        order: -1;
+        margin: 0;
+        margin-bottom: 20px;
+        width: 90%;
+        align-items: center;
+    }
+    .user-card__feed {
+        width: fit-content;
+    }
 }
