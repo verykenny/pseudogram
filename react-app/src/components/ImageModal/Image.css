@@ -90,8 +90,30 @@
 
 .user-profile-thumb__image_modal {
   margin-right: 20px;
+
 }
 
+.like-info__image_modal {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 1px solid rgb(182, 182, 182);
+}
+
+.like-button-container__image_modal {
+  height: 30px;
+  width: 100%;
+  display: inline-block;
+}
+
+.users-who-liked__image_modal {
+  font-size: 15px;
+  width: 100%;
+}
+.users-who-liked__image_modal p {
+  margin: 5px 0px;
+}
 
 
 .comments_container__image_modal {
@@ -201,4 +223,22 @@
   .image-select-container__image_modal div {
     max-width: 90%;
   }
+
+}
+.image_likes_comments__profile {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.image_likes_comments__profile > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8%;
+  color: white;
+}
+.image_likes_comments__profile > * > p {
+  margin-left: 10%;
+  width: 100%;
+
 }

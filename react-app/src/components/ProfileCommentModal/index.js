@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useState } from "react"
 import { Modal } from "../../context/Modal"
 import Image from "../ImageModal/Image"
+import './profile-comment-modal.css'
 
 
 
@@ -18,31 +19,40 @@ const ProfileCommentModal = ({ comments, title, setShowCommentModal }) => {
     setUserOfImage(user)
     setImageModalShow(true)
   }
+  const closeModal = () => {
+    setImageModalShow(false)
+    setShowCommentModal(false)
+  }
 
 
 
   return (
-    <>
+    <div className='comment-modal-wrapper'>
       <h4>{title}</h4>
 
       {
-        comments && comments.map(comment => (<>
-          <img className='activity-img' src={`${allImages[comment.imgId].imgUrl}`} onClick={() => handleClickedComment(allImages[comment.imgId].user, comment.imgId)}></img>
-          <div>{`${comment.content}`}</div>
 
-          {imageModalShow && (
-            <Modal onClose={() => setImageModalShow(false)}>
-              <Image setImageModalShow={setImageModalShow} user={userOfImage} imageId={imageId} />
-            </Modal>
-          )}
+        comments && comments.map(comment => (
+          <div>
+            <img className='comment-modal-img' src={`${allImages[comment.imgId].imgUrl}`} onClick={() => handleClickedComment(allImages[comment.imgId].user, comment.imgId)}></img>
+            <p>{`${comment.content}`}</p>
 
-        </>
+            {imageModalShow && (
+              <Modal onClose={() => closeModal()}>
+                <Image setImageModalShow={setImageModalShow} user={userOfImage} imageId={imageId} />
+              </Modal>
+            )}
+
+          </div>
+
         ))
       }
       {!comments.length && (
         <div>No Comments Yet</div>
       )}
-    </>
+
+    </div>
+
   )
 
 }

@@ -1,35 +1,38 @@
 import { NavLink } from "react-router-dom"
+import './follow-modal.css'
 
 
 
 
 const ImageModal = ({ friends, title, setShowModal }) => {
 
-  return (<>
-    <h4>{title}</h4>
-    {
-      friends && friends.map(friend => (
-        <div>
+  return (
+    <div className='follow-modal-wrapper'>
+      <div className='title-div'>
+        <h4>{title}</h4>
+      </div>
+      {
+        friends && friends.map(friend => (
           <ul>
             <li>
               <img className='profile-img-nav' src={`${friend.profileImgUrl}`}></img>
               <NavLink to={`/users/${friend.id}`} onClick={() => setShowModal(false)}>{`${friend.username}`}</NavLink>            </li>
           </ul>
-        </div>
-      ))
-    }
-    {
-      !friends.length && (
-        <div>
+
+        ))
+      }
+      {
+        !friends.length && (
+
           <ul>
             <li>
               Nothing to show here
             </li>
           </ul>
-        </div>
-      )
-    }
-  </>
+
+        )
+      }
+    </div>
   )
 
 }
