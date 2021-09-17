@@ -1,30 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { delete_following, get_followings, set_new_following } from "../../store/following";
+import { delete_following, set_new_following } from "../../store/following";
 import { useHistory } from 'react-router-dom'
+import { get_feed } from "../../store/feed";
 
 
 const FollowUnfollow = ({ userId }) => {
     const user = useSelector(state => state.session.user)
-    const followings = useSelector(state => state.following)
 
     const history = useHistory()
-    const following = useSelector(state => state.following.users[userId] !== undefined)
 
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        const update_followings = () => {
-            dispatch(get_followings(user.id))
-        }
-        update_followings()
-
-
-    }, [dispatch, user.id])
-
-
-
+    const following = user?.following.map(user => user.id).includes(Number(userId))
     const handleFollow = (e) => {
         e.preventDefault()
         const update_following = async () => {
@@ -36,26 +25,27 @@ const FollowUnfollow = ({ userId }) => {
                     history.push('/')
                 }
             }
-
-            await dispatch(get_followings(user.id))
+            await dispatch(get_feed())
         }
         update_following()
     }
 
     return (
-        <>
-            {!followings.loading && (
-                <>
-                    {following && (
-                        <button onClick={handleFollow}>Unfollow</button>
-                    )}
-                    {!following && (
-                        <button onClick={handleFollow}>Follow</button>
-                    )}
 
-                </>
-            )}
+        <>
+                <div >
+                    {following.toString()}
+            {following === true && (
+
+                    <button onClick={handleFollow}>Unfollow</button>
+                    )}
+            {!following && (
+                <button onClick={handleFollow}>Follow</button>
+                )}
+
+                </div>
         </>
+
     )
 }
 

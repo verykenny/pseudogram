@@ -25,7 +25,7 @@ const ImageFeed = () => {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
             const allUsers = responseData.users;
-            const suggestedUsers = allUsers.filter(usr => !user.following.includes(usr.id));
+            const suggestedUsers = allUsers.filter(usr => !user.following.map(user => user.id).includes(usr.id));
             setUsers(suggestedUsers.slice(0, 5));
         }
         fetchData();
@@ -66,7 +66,6 @@ const ImageFeed = () => {
         </>
     )
 }
-
 
 const ImageContainer = ({ image }) => {
     return (
