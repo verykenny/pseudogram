@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { get_feed } from "../../store/feed";
 import { get_likes } from "../../store/like";
 
@@ -25,19 +25,18 @@ const ImageFeed = () => {
             const response = await fetch('/api/users/');
             const responseData = await response.json();
             const allUsers = responseData.users;
-            const suggestedUsers = allUsers;
-            console.log(suggestedUsers);
-            setUsers(suggestedUsers);
+            const suggestedUsers = allUsers.filter(usr => !user.following.map(user => user.id).includes(usr.id));
+            setUsers(suggestedUsers.slice(0, 5));
         }
         fetchData();
-    }, []);
+    }, [user.following]);
 
     useEffect(() => {
         (async () => {
             await dispatch(get_feed());
             await dispatch(get_likes(user.id))
         })();
-    }, [dispatch]);
+    }, [dispatch, user.id]);
 
 
     useEffect(() => {
@@ -47,24 +46,26 @@ const ImageFeed = () => {
     }, [dispatch, user.id]);
 
 
+
+
     return (
         <>
             <div className="feed-container">
                 <div className="feed-subcontainer">
-                    {feed.images && Object.values(feed.images).map(image => (
+                    {feed.images && Object.values(feed.images).sort((a, b) => b.id - a.id).map(image => (
                         <div key={image?.id} className="image-container">
                             <ImageContainer image={image}/>
                         </div>
                     ))}
                 </div>
                 <div className="feed-suggested-user-container">
+                    <h2>Suggested friends</h2>
                     <SuggestedUsers users={users} />
                 </div>
             </div>
         </>
     )
 }
-
 
 const ImageContainer = ({ image }) => {
     return (
@@ -81,7 +82,6 @@ const ImageContainer = ({ image }) => {
                 <LikeUnlikeComponent imageId={image?.id} feedpage={true} />
             </div>
             <div className='caption-container__feed'>
-
                 <p>{image?.caption}</p>
             </div>
         </>
@@ -96,7 +96,8 @@ const SuggestedUsers = ({users}) => {
         <>
             {users && users.map(user => (
                 <div key={user.id} className="user-card__feed">
-                    {user.username}
+                    <NavLink className='profile-link__feed' to={`/users/${user.id}`} ><img className='profile-img-nav profile-img__feed' src={`${user.profileImgUrl}`} alt={user.id}></img></NavLink>
+                    <NavLink className='profile-link__feed' to={`/users/${user.id}`} >{`${user.username}`}</NavLink>
                 </div>
             ))}
         </>

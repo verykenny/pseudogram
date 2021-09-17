@@ -108,3 +108,32 @@ background-size: 150%;
 background-repeat: no-repeat;
 background-position: center;
 }
+
+
+
+
+.feed-suggested-user-container h2 {
+    color: grey;
+    font-size: 14px;
+    height: 50px;
+    box-sizing: content-box;
+    margin: 0;
+
+}
+
+.user-card__feed {
+    display: flex;
+    align-items: center;
+    padding: 0 5px 15px;
+}
+
+.user-card__feed .profile-img__feed {
+    margin-right: 10px;
+}
+
+.user-card__feed .profile-link__feed {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+}

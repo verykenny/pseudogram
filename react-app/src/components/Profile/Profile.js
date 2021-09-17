@@ -39,7 +39,8 @@ const Profile = () => {
             await dispatch(get_followers(userId))
             await dispatch(get_followings(userId))
         })();
-    }, [dispatch, userId]);
+
+    }, [dispatch, user, userId]);
 
     useEffect(() => {
         async function fetchData() {
@@ -86,7 +87,7 @@ const Profile = () => {
                     )}
                     {user.id !== Number(userId) && (
                         <div className='profile-button-div'>
-                            <FollowUnfollow userId={userProfile?.id} />
+                            <FollowUnfollow userId={userId} />
                         </div>
                     )}
                 </div>

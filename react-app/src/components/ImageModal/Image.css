@@ -11,6 +11,7 @@
   margin-bottom: 1%;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain !important;
 }
 
 .image_likes_comments__profile {
@@ -52,7 +53,7 @@
   height: 100%;
   width: 100%;
   display: inline-block;
-  background-size: fill;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }

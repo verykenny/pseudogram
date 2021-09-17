@@ -17,7 +17,7 @@ class Comment(db.Model):
     imgId = db.Column(db.Integer, db.ForeignKey('images.id'))
     content = db.Column(db.String(255), nullable=False)
     edited = db.Column(db.Boolean)
-    createdAt = db.Column(db.Time)
+    createdAt = db.Column(db.DateTime)
 
     commenter = db.relationship("User", back_populates='comment')
     image = db.relationship("Image", back_populates='comment')
