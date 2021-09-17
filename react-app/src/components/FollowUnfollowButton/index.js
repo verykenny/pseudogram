@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { delete_following, set_new_following } from "../../store/following";
 import { useHistory } from 'react-router-dom'
 import { get_feed } from "../../store/feed";
+import { authenticate } from "../../store/session";
 
 
 const FollowUnfollow = ({ userId }) => {
@@ -26,6 +27,7 @@ const FollowUnfollow = ({ userId }) => {
                 }
             }
             await dispatch(get_feed())
+            await dispatch(authenticate())
         }
         update_following()
     }

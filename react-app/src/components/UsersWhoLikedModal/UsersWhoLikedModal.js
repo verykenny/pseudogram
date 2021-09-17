@@ -4,11 +4,6 @@ import './UsersWhoLiked.css'
 function UsersWhoLiked(showProp) {
     let newArray = showProp.props.likes
 
-    newArray.forEach(element => {
-        console.log(element.user.username)
-    })
-
-
     return (
         <div className="user-who-liked__liked_modal">
             <div className="users-who-liked-container">
