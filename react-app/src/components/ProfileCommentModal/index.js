@@ -18,12 +18,6 @@ const ProfileCommentModal = ({ comments, title, setShowCommentModal }) => {
         setUserOfImage(user)
         setImageModalShow(true)
     }
-    const closeModal = () => {
-        setImageModalShow(false)
-        setShowCommentModal(false)
-    }
-
-
 
     return (
         <div className='comment-modal-wrapper'>
