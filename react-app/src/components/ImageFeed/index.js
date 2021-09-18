@@ -14,8 +14,6 @@ import { get_comments } from "../../store/comment";
 
 const ImageFeed = () => {
     const feed = useSelector(state => state.feed)
-    const likes = useSelector(state => state.likes)
-    const comments = useSelector(state => state.comments)
     const user = useSelector(state => state.session.user)
     const [users, setUsers] = useState([]);
 
@@ -82,7 +80,9 @@ const ImageContainer = ({ image }) => {
         <>
             <div className="image-top-padding">
                 <div className='profile-info__feed'>
-                    <div className="profile-picture__feed" style={{ backgroundImage: `url(${image?.user.profileImgUrl})` }}></div>
+                    <Link to={`users/${image?.user.id}`} className="feed-profile__link">
+                        <div className="profile-picture__feed" style={{ backgroundImage: `url(${image?.user.profileImgUrl})` }}></div>
+                    </Link>
                     <div className="profile-username__feed"><Link to={`users/${image?.userId}`} className="feed-profile__link">{image?.user.username}</Link></div>
                 </div>
                 <ThreeDotsModal imageId={image?.id} />

@@ -5,6 +5,7 @@ import { get_feed } from "../../store/feed";
 import CommentEditModal from "../CommentEditModal";
 import LikeUnlikeComponent from "../LikeUnlikeComponent";
 import ThreeDotsModal from "../ThreeDotsModal";
+import { Link } from "react-router-dom";
 
 import './Image.css'
 
@@ -53,10 +54,10 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                 </div>
                 <div className='caption-share-container__image_modal'>
                     <div className='share-container-user-info__image_modal'>
-                        <div className='user-profile-thumb__image_modal' style={
-                            { backgroundImage: `url(${user.profileImgUrl})` }
-                        }></div>
-                        <p>{user.username}</p>
+                        <Link to={`users/${image?.userId}`} className="feed-profile__link"><div className='user-profile-thumb__image_modal' style={
+                            { backgroundImage: `url(${image?.user.profileImgUrl})` }
+                        }></div></Link>
+                        <Link to={`users/${image?.userId}`} className="feed-profile__link">{image?.user.username}</Link>
                     </div>
                     <div className='comments_container__image_modal'>
                         <div className='comment-section__image_modal'>
@@ -95,11 +96,13 @@ const CommentCard = ({ comment }) => {
     return (
         <>
             <div className='comment-card__image_modal'>
-                <div className='commenter-profile-thumb__image_modal' style={
-                    { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
-                }></div>
+                <Link to={`users/${comment.commenter.id}`} className="feed-profile__link">
+                    <div className='commenter-profile-thumb__image_modal' style={
+                        { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
+                    }></div>
+                </Link>
                 <div className='comment__image_modal'>
-                    <p><span className='username__image_modal'>{comment.commenter.username}</span> {comment.content}</p>
+                    <p><span className='username__image_modal'><Link to={`users/${comment.commenter.id}`} className="feed-profile__link">{comment.commenter.username}</Link></span> {comment.content}</p>
                     {comment.userId === user.id && (
                         <CommentEditModal commentId={comment.id} />
                     )}
