@@ -44,10 +44,21 @@
     cursor: pointer;
 }
 
-.fa-images {
+.fa-images,
+.fa-circle-notch {
     font-size: 50px;
     color: grey;
     margin-bottom: 50px;
+}
+
+.fa-circle-notch {
+    animation: 3s linear 0s infinite rotate;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .container__image_upload {
@@ -73,6 +84,16 @@
     height: 30px;
     font-weight: 600;
     border-radius: 5px;
+}
+
+.select-button__image_upload:hover {
+    background-color: #047bc5;
+}
+
+
+.select-button__image_upload:disabled {
+    background-color: rgb(71, 71, 71);
+    cursor: auto;
 }
 
 .image-post-container__image_upload {
