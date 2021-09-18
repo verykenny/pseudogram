@@ -9,6 +9,7 @@ import { get_followings } from "../../store/following"
 import './ImageFeed.css'
 import ThreeDotsModal from "../ThreeDotsModal";
 import LikeUnlikeComponent from "../LikeUnlikeComponent";
+import { get_comments } from "../../store/comment";
 
 
 const ImageFeed = () => {
@@ -34,7 +35,8 @@ const ImageFeed = () => {
     useEffect(() => {
         (async () => {
             await dispatch(get_feed());
-            await dispatch(get_likes(user.id))
+            await dispatch(get_likes(user.id));
+            await dispatch(get_comments(user.id));
         })();
     }, [dispatch, user.id]);
 

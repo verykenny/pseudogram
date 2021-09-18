@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { delete_comment, update_comment } from "../../store/comment";
+import { delete_comment, get_comments, update_comment } from "../../store/comment";
 import { get_feed } from "../../store/feed";
 
 
@@ -11,9 +11,15 @@ import './CommentEditForm.css'
 const CommentEditForm = ({ setShowModal, commentId }) => {
     const user = useSelector(state => state.session.user)
     const comment = useSelector(state => state.comments.comments[commentId])
-    const [content, setContent] = useState(comment.content)
+    const [content, setContent] = useState((comment) ? comment.content : '')
     const dispatch = useDispatch()
 
+
+    useEffect(() => {
+        (async () => {
+            await dispatch(get_comments(user?.id))
+        })()
+    }, [dispatch, user.id])
 
     const handleCommentUpdate = (e) => {
         e.preventDefault()
@@ -34,6 +40,14 @@ const CommentEditForm = ({ setShowModal, commentId }) => {
         setShowModal(false)
         delete_content()
     }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleCommentUpdate(e)
+        }
+    }
+
+
 
     return (
         <div className='comment-edit-modal__comment_edit'>
@@ -57,6 +71,7 @@ const CommentEditForm = ({ setShowModal, commentId }) => {
                                         onChange={(e) => setContent(e.target.value)}
                                         className='caption-input__comment_edit'
                                         placeholder='Write a caption...'
+                                        onKeyDown={handleKeyDown}
                                     ></textarea>
                                 </div>
                                 <div className='share-button-container__comment_edit'>
