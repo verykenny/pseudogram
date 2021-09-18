@@ -71,9 +71,15 @@ def seed_comments():
                   edited=False, createdAt=f'{now}')
     c33 = Comment(userId=4, imgId=3, content='Is everybody okay?',
                   edited=False, createdAt=f'{now}')
+    c34 = Comment(userId=26, imgId=37, content='I saw this place in a movie once!',
+                  edited=False, createdAt=f'{now}')
+    c35 = Comment(userId=22, imgId=34, content='I feel ya! Let me know if you need to talk!',
+                  edited=False, createdAt=f'{now}')
+    c36 = Comment(userId=19, imgId=37, content='I have actually been here for a wedding with my family!',
+                  edited=False, createdAt=f'{now}')
 
     seeds = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15,
-             c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33]
+             c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36]
 
     for i in seeds:
         db.session.add(i)
