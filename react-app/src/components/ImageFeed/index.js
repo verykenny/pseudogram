@@ -14,6 +14,8 @@ import { get_comments } from "../../store/comment";
 
 const ImageFeed = () => {
     const feed = useSelector(state => state.feed)
+    const likes = useSelector(state => state.likes)
+    const comments = useSelector(state => state.comments)
     const user = useSelector(state => state.session.user)
     const [users, setUsers] = useState([]);
 
@@ -48,15 +50,13 @@ const ImageFeed = () => {
     }, [dispatch, user.id]);
 
 
-
-
-    return (
-        <>
-            <div className="feed-container">
+    const content = () => {
+        return (
+            <>
                 <div className="feed-subcontainer">
                     {feed.images && Object.values(feed.images).sort((a, b) => b.id - a.id).map(image => (
                         <div key={image?.id} className="image-container">
-                            <ImageContainer image={image}/>
+                            <ImageContainer image={image} />
                         </div>
                     ))}
                 </div>
@@ -64,6 +64,14 @@ const ImageFeed = () => {
                     <h2>Suggested friends</h2>
                     <SuggestedUsers users={users} />
                 </div>
+            </>
+        )
+    }
+
+    return (
+        <>
+            <div className="feed-container">
+                {content()}
             </div>
         </>
     )
@@ -92,7 +100,7 @@ const ImageContainer = ({ image }) => {
 
 
 
-const SuggestedUsers = ({users}) => {
+const SuggestedUsers = ({ users }) => {
 
     return (
         <>
