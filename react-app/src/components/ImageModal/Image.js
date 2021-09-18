@@ -30,6 +30,12 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
         setComment('')
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleCommentSubmit(e)
+        }
+    }
+
 
     return (
         <div className='image-display-modal-container__image_modal'>
@@ -65,6 +71,7 @@ const Image = ({ setShowModal, imageId, user, setImageModalShow }) => {
                                 onChange={(e) => setComment(e.target.value)}
                                 className='comment-input__image_modal'
                                 placeholder='Leave a comment...'
+                                onKeyDown={handleKeyDown}
                             ></textarea>
                             <div className='share-button-container__image_modal'>
                                 <button

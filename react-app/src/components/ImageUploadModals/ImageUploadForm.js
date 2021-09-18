@@ -47,6 +47,12 @@ const ImageUploadForm = ({ setShowModal }) => {
         imageInput.current.click()
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleImagePost(e)
+        }
+    }
+
     return (
         <div className='image-upload-modal__image-upload'>
             {!imageProvided && (
@@ -90,6 +96,7 @@ const ImageUploadForm = ({ setShowModal }) => {
                                         onChange={(e) => setCaption(e.target.value)}
                                         className='caption-input__image_upload'
                                         placeholder='Write a caption...'
+                                        onKeyDown={handleKeyDown}
                                     ></textarea>
                                 </div>
                                 <div className='share-button-container__image_upload'>
