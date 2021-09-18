@@ -45,6 +45,7 @@ Pseudogram is a web application that allows users to post images and view/commen
 ### Wiki Pages
 #### [API Documentation](https://github.com/verykenny/pseudogram/wiki/API-Route-Documentation)
 #### [Database Schema](https://github.com/verykenny/pseudogram/wiki/Database-Schema)
+#### [Wireframes](https://github.com/verykenny/pseudogram/wiki/WireFrames)
 <img src="https://github.com/verykenny/pseudogram/blob/main/planning/pseudogram-database-schema.png" alt="pseudogram database schema" height="300">
 
 #### [Feature List](https://github.com/verykenny/pseudogram/wiki/MVP-Feature-List)
