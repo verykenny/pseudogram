@@ -72,8 +72,16 @@ def seed_images():
                   caption='boxed water is better', totalLikes=0, createdAt=f'{now}')
     img33 = Image(userId=26, imgUrl='https://images.unsplash.com/photo-1515735543535-12664d2453f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
                   caption='big ole cat fishy', totalLikes=5, createdAt=f'{now}')
+    img34 = Image(userId=25, imgUrl='https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2000&q=80',
+                  caption='I have a lot to do this week...', totalLikes=0, createdAt=f'{now}')
+    img35 = Image(userId=24, imgUrl='https://images.unsplash.com/photo-1611424564056-65b8f1403ba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                  caption='awwww, alice...', totalLikes=0, createdAt=f'{now}')
+    img36 = Image(userId=23, imgUrl='https://images.unsplash.com/photo-1631749860812-9cb1bf3d312c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
+                  caption='Found this in my backyard last night', totalLikes=0, createdAt=f'{now}')
+    img37 = Image(userId=25, imgUrl='https://images.unsplash.com/photo-1629090970758-05e6903db132?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80',
+                  caption='What a place...', totalLikes=0, createdAt=f'{now}')
     seeds = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13,
-             img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33]
+             img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33, img34, img35, img36, img37]
 
     for i in seeds:
         db.session.add(i)
