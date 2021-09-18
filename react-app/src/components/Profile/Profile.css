@@ -3,7 +3,8 @@
 }
 
 .images_container__profile {
-  width: 50%;
+  width: 500px;
+  max-width: 90%;
   min-height: 100%;
   display: flex;
   flex-wrap: wrap;
