@@ -4,4 +4,35 @@ footer {
     background-color: black;
     color: white;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: -1px -1px 10px;
+}
+
+footer div p {
+    font-size: 12px;
+}
+
+
+.about-us__footer {
+    display: flex;
+    align-items: center;
+}
+
+.about-us__footer div {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.about-us__footer .icon {
+    font-size: 24px;
+    padding-left: 15px;
+}
+
+
+.about-us__footer .icon:hover {
+    cursor: pointer;
+    color: grey;
 }
