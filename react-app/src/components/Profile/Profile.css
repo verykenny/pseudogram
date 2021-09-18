@@ -76,3 +76,15 @@ a:hover {
 .hover:hover {
   cursor: pointer;
 }
+
+.profile-link__feed:hover,
+.image-top-padding .fa-ellipsis-h:hover,
+.feed-profile__link:hover {
+    color: rgb(82, 82, 82) !important;
+}
+
+.image-top-padding .fa-ellipsis-h:hover,
+.image-display-modal-container__image_modal .fa-ellipsis-h:hover {
+    font-size: 20px;
+    color: rgb(82, 82, 82) !important;
+}
