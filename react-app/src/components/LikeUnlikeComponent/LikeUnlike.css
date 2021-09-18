@@ -23,3 +23,7 @@
 .like-info__like_component .fa-comment {
     margin-left: 15px;
 }
+
+.username__like_component {
+    font-weight: bold !important;
+}

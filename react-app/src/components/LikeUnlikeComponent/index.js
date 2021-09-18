@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { get_feed } from "../../store/feed";
 import { delete_like, set_new_like } from "../../store/like";
 import ImageModalComment from "./ImageModal_ext";
+import { Link } from "react-router-dom";
 
 import './LikeUnlike.css'
 
@@ -45,7 +46,7 @@ const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
                 </div>
                 <div className="users-who-liked__like_component">
                     {image?.totalLikes > 0 && (
-                        <p>Liked by {(liked) ? 'you' : image?.likes[0].user.username} and {`${(image?.totalLikes) - 1} others`}</p>
+                        <p>Liked by {(liked) ? 'you' : <Link to={`users/${image?.likes[0].user.id}`} className="feed-profile__link username__like_component">{image?.likes[0].user.username}</Link>} and {`${(image?.totalLikes) - 1} others`}</p>
                     )}
                     {image?.totalLikes === 0 && (
                         <p>No likes yet</p>
@@ -56,6 +57,5 @@ const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
     </div>
     )
 }
-
 
 export default LikeUnlikeComponent;
