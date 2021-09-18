@@ -4,10 +4,18 @@ footer {
     background-color: black;
     color: white;
     width: 100%;
+    box-shadow: -1px -1px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer > div {
+    width: 1025px;
+    max-width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    box-shadow: -1px -1px 10px;
 }
 
 footer div p {
@@ -35,4 +43,17 @@ footer div p {
 .about-us__footer .icon:hover {
     cursor: pointer;
     color: grey;
+}
+
+
+@media screen and (max-width: 649px) {
+    footer > div {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 435px) {
+    .about-us__footer {
+        flex-direction: column;
+    }
 }
