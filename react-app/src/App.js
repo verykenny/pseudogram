@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Navbar/index.js';
+import Footer from './components/Footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ImageFeed from './components/ImageFeed';
 import Profile from './components/Profile/Profile';
@@ -29,6 +30,7 @@ function App() {
     return (
         <BrowserRouter>
             <NavBar />
+            <main>
             <Switch>
                 <Route path='/login' exact={true}>
                     <LoginForm />
@@ -49,6 +51,8 @@ function App() {
                     <ImageUploadModal />
                 </Route>
             </Switch>
+            </main>
+            <Footer />
         </BrowserRouter>
     );
 }
