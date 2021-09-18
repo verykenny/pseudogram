@@ -38,6 +38,7 @@ Pseudogram is a web application that allows users to post images and view/commen
 - Flask-Login used to authorize users when trying to view shelves and read/update their reviews
 - Logged in users can create own image posts, like and comment on images posted by users they follow, and edit those comments and images that they post.
 - Redux Store State is used to manage data on the front end
+- Image hosting on AWS
 
 ***
 
