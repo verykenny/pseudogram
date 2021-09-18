@@ -47,9 +47,17 @@ def seed_likes():
     l40 = Like(userId=2, imgId=16)
     l41 = Like(userId=3, imgId=17)
     l42 = Like(userId=4, imgId=19)
+    l43 = Like(userId=19, imgId=37)
+    l44 = Like(userId=20, imgId=37)
+    l45 = Like(userId=25, imgId=37)
+    l46 = Like(userId=24, imgId=36)
+    l47 = Like(userId=25, imgId=36)
+    l48 = Like(userId=26, imgId=35)
+    l49 = Like(userId=19, imgId=34)
+    l50 = Like(userId=20, imgId=34)
 
     seed = [like1, like2, like3, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18,
-            l19, l20, l21, l22, l23, l24, l25, l26, l27, l28, l29, l30, l31, l32, l33, l34, l35, l36, l37, l38, l39, l40, l41, l42]
+            l19, l20, l21, l22, l23, l24, l25, l26, l27, l28, l29, l30, l31, l32, l33, l34, l35, l36, l37, l38, l39, l40, l41, l42, l43, l44, l45, l46, l47, l48, l49, l50]
     for i in seed:
         db.session.add(i)
 
