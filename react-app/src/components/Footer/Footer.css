@@ -39,6 +39,10 @@ footer div p {
     padding-left: 15px;
 }
 
+.about-us__footer a {
+    color: white;
+}
+
 
 .about-us__footer .icon:hover {
     cursor: pointer;

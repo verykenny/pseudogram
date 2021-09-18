@@ -1,5 +1,4 @@
 
-
 import './Footer.css'
 
 const Footer = () => {
@@ -12,13 +11,21 @@ const Footer = () => {
                 <div className="about-us__footer">
                     <div>
                         <p>Curtis Bridge</p>
-                        <i className="fab fa-github-square icon"></i>
-                        <i className="fab fa-linkedin icon"></i>
+                        <a href='https://github.com/C-Bridge17' target='blank'>
+                            <i className="fab fa-github-square icon"></i>
+                        </a>
+                        <a href='https://github.com/C-Bridge17' target='blank'>
+                            <i className="fab fa-linkedin icon"></i>
+                        </a>
                     </div>
                     <div>
                         <p>Kenneth Donahue</p>
-                        <i className="fab fa-github-square icon"></i>
-                        <i className="fab fa-linkedin icon"></i>
+                        <a href='https://github.com/veryKenny' target='blank'>
+                            <i className="fab fa-github-square icon"></i>
+                        </a>
+                        <a href='https://www.linkedin.com/in/kenneth-donahue/' target='blank'>
+                            <i className="fab fa-linkedin icon"></i>
+                        </a>
                     </div>
                 </div>
             </div>
