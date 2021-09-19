@@ -96,13 +96,13 @@ const CommentCard = ({ comment }) => {
     return (
         <>
             <div className='comment-card__image_modal'>
-                <Link to={`users/${comment.commenter.id}`} className="feed-profile__link">
+                <Link to={`/users/${comment.commenter.id}`} className="feed-profile__link">
                     <div className='commenter-profile-thumb__image_modal' style={
                         { backgroundImage: `url(${comment.commenter.profileImgUrl})` }
                     }></div>
                 </Link>
                 <div className='comment__image_modal'>
-                    <p><span className='username__image_modal'><Link to={`users/${comment.commenter.id}`} className="feed-profile__link">{comment.commenter.username}</Link></span> {comment.content}</p>
+                    <p><span className='username__image_modal'><Link to={`/users/${comment.commenter.id}`} className="feed-profile__link">{comment.commenter.username}</Link></span> {comment.content}</p>
                     {comment.userId === user.id && (
                         <CommentEditModal commentId={comment.id} />
                     )}

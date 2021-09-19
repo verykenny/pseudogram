@@ -46,7 +46,7 @@ const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
                 </div>
                 <div className="users-who-liked__like_component">
                     {image?.totalLikes > 0 && (
-                        <p>Liked by {(liked) ? 'you' : <Link to={`users/${image?.likes[0].user.id}`} className="feed-profile__link username__like_component">{image?.likes[0].user.username}</Link>} and {`${(image?.totalLikes) - 1} others`}</p>
+                        <p>Liked by {(liked) ? 'you' : <Link to={`/users/${image?.likes[0].user.id}`} className="feed-profile__link username__like_component">{image?.likes[0].user.username}</Link>} and {`${(image?.totalLikes) - 1} others`}</p>
                     )}
                     {image?.totalLikes === 0 && (
                         <p>No likes yet</p>
