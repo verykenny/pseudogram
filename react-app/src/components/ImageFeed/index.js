@@ -52,7 +52,7 @@ const ImageFeed = () => {
         return (
             <>
                 <div className="feed-subcontainer">
-                    {feed.images && Object.values(feed.images).sort((a, b) => b.id - a.id).map(image => (
+                    {feed.images && Object.values(feed.images).slice(0,3).sort((a, b) => b.id - a.id).map(image => (
                         <div key={image?.id} className="image-container">
                             <ImageContainer image={image} />
                         </div>

@@ -9,15 +9,17 @@
 
 .feed-subcontainer{
     /* padding-top: 45px; */
+    max-width: 100%;
 }
 
 .image-container{
     border: 1px solid #D4D4D4;
     display: block;
-    max-width: 600px;
+    width: 600px;
     height: 800px;
     border-radius: 5px;
     margin-bottom: 40px;
+    max-width: 100%;
 }
 
 .feed-suggested-user-container {
@@ -140,7 +142,7 @@ background-position: center;
 }
 
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 911px) {
     .feed-container {
         flex-direction: column;
         align-items: center;
@@ -155,5 +157,8 @@ background-position: center;
     }
     .user-card__feed {
         width: fit-content;
+    }
+    .image-container__feed {
+        height: 350px;
     }
 }
