@@ -161,4 +161,9 @@ background-position: center;
     .image-container__feed {
         height: 350px;
     }
+
+    .image-container {
+        height: fit-content;
+        padding-bottom: 10px;
+    }
 }
