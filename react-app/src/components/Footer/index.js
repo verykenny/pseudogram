@@ -15,7 +15,7 @@ const Footer = () => {
                             <i className="fab fa-github-square icon"></i>
                         </a>
                         {/* Update This Link to LinkedIn */}
-                        <a href='https://github.com/C-Bridge17' target='blank'>
+                        <a href='https://www.linkedin.com/in/curtis-bridge-b126b121a/' target='blank'>
                             <i className="fab fa-linkedin icon"></i>
                         </a>
                     </div>
