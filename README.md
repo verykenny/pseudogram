@@ -1,6 +1,13 @@
 # Welcome to Pseudogram!
 
 Pseudogram is a web application that allows users to post images and view/comment on the images posted by their friends. This project is inspired by [Instagram](https://instagram.com/), a website where individuals can upload their images, like and leave comments on other's images.
+
+<p align="center">
+  <img src="https://github.com/verykenny/pseudogram/blob/main/planning/pseudogram.png?raw=true" alt="pseudogram home page">
+</p>
+
+
+
 #### Live link: [Pseudogram](https://pseudogram2021.herokuapp.com/)
 ***
 
@@ -52,6 +59,18 @@ Pseudogram is a web application that allows users to post images and view/commen
 ***
 
 ### Key Features
+- Using AWS to store images, users are able to upload an image with a caption.
+
+<p align="center">
+  <img src="https://github.com/verykenny/pseudogram/blob/main/planning/pseudogram_create.gif?raw=true" alt="pseudogram create image">
+</p>
+
+- Reusable modals that were used to speed up development time, allow users to comment on an image, update their comment, and delete their comment.
+
+<p align="center">
+  <img src="https://github.com/verykenny/pseudogram/blob/main/planning/pseudogram_comment.gif?raw=true" alt="pseudogram create comment">
+</p>
+
 - CSRUF library used to prevent csrf attacks
 - Flask-Login used to authorize users when trying to view shelves and read/update their reviews
 - Logged in users can create own image posts, like and comment on images posted by users they follow, and edit those comments and images that they post.
