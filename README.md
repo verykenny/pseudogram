@@ -60,6 +60,37 @@ Pseudogram is a web application that allows users to post images and view/commen
 
 ***
 
+### Code Snippets
+#### Example 1
+
+Route with authorization and FlaskForm validation to confirm if user is allowed to make the update and to confirm that the information provided to create the image is valid. A custom to_dict() method on the Alembic model allows for nested information to be loaded as an object to be returned as a json response:
+
+````python
+@image_routes.route('/create', methods=['POST'])
+@login_required
+def upload_image():
+    """
+    Add image to the database and return the image
+    """
+    form = ImageUploadForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        image = Image()
+        form.populate_obj(image)
+        image.userId = current_user.get_id()
+        image.totalLikes = 0
+        image.createdAt = datetime.now()
+        db.session.add(image)
+        db.session.commit()
+
+        return {'image': image.to_dict_extended()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+````
+
+***
+
 ### Wiki Pages
 #### [API Documentation](https://github.com/verykenny/pseudogram/wiki/API-Route-Documentation)
 #### [Wireframes](https://github.com/verykenny/pseudogram/wiki/WireFrames)
