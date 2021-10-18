@@ -5,6 +5,8 @@ Pseudogram is a web application that allows users to post images and view/commen
 ***
 
 ### Index
+[Launch](#launch)
+
 [Technologies](#technologies)
 
 [Key Features](#key-features)
@@ -16,7 +18,23 @@ Pseudogram is a web application that allows users to post images and view/commen
 [Future Goals](#future-goals)
 
 ***
+### Launch
+- You can read more about the project using the wiki located at: https://github.com/verykenny/pseudogram/wiki
+- To start a development environment:
+  - Clone the repository at: https://github.com/verykenny/pseudogram
+  - Install front-end locally using npm from the react-app directory:
+    ```
+    npm install
+    npm start
+    ```
+  - Install back-end locally using pipenv "pipenv install" from the root directory:
+    ```
+    pipenv install
+    pipenv run flask run
+    ```
+  - Navigate to the localhost port specified in config/index.js
 
+***
 ### Technologies
 #### Front End
 - JavaScript
