@@ -307,6 +307,7 @@ export default function reducer(state = initialState, action) {
                 }
                 return like
             })
+            newState.images[action.payload.imgId].totalLikes = newState.images[action.payload.imgId].totalLikes + 1
             return newState;
 
 
@@ -333,6 +334,8 @@ export default function reducer(state = initialState, action) {
             newState.images[action.payload.imgId].likes.filter(like => {
                 return like.id !== action.payload.id
             })
+
+            newState.images[action.payload.imgId].totalLikes = newState.images[action.payload.imgId].totalLikes - 1
 
             return newState
 
