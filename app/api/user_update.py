@@ -23,8 +23,6 @@
 # def update_user():
 #     form = UserUpdateForm()
 #     user = User.query.get(current_user.get_id())
-#     print(form.validate_on_submit())
-#     print('**************************')
 #     if form.validate_on_submit():
 #         # user.username = form['username'].data
 #         # user.email = form['email'].data
