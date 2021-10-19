@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import './LikeUnlike.css'
 
 
-const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
+const LikeUnlikeComponent = ({ imageId, feedpage = false }) => {
     const user = useSelector(state => state.session.user)
     const image = useSelector(state => state.feed.images[imageId])
     const [liked, setLiked] = useState(Object.values(image.likes).some(like => (like.userId === user.id)))
@@ -45,7 +45,7 @@ const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
                     {!liked && (
                         <i className="far fa-heart" onClick={handleLiked}></i>
                     )}
-                    {feedpage && <ImageModalComment imageId={image?.id} user={user}/>}
+                    {feedpage && <ImageModalComment imageId={image?.id} user={user} />}
 
                 </div>
                 <div className="users-who-liked__like_component">
@@ -58,7 +58,7 @@ const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
                 </div>
 
             </>
-    </div>
+        </div>
     )
 }
 
