@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_feed } from "../../store/feed";
-import { delete_like, set_new_like } from "../../store/like";
+import { set_new_like, delete_like } from "../../store/feed";
 import ImageModalComment from "./ImageModal_ext";
 import { Link } from "react-router-dom";
 
@@ -22,7 +21,7 @@ const LikeUnlikeComponent = ({ imageId, feedpage = false }) => {
             } else {
                 await dispatch(delete_like(Number(imageId)))
             }
-            await dispatch(get_feed())
+            setLiked(value => !value)
         }
         update_like()
     }
