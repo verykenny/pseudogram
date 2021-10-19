@@ -82,12 +82,15 @@
 }
 
 .like-comment-container__feed{
-width:100%;
+    width:100%;
 }
 
 .caption-container__feed p {
     margin: 0 15px;
-    text-align: center;
+}
+
+.caption-container__feed a {
+    font-weight: bold;
 }
 
 .fa-heart{

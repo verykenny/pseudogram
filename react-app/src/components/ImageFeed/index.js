@@ -93,7 +93,7 @@ const ImageContainer = ({ image }) => {
                 <LikeUnlikeComponent imageId={image?.id} feedpage={true} />
             </div>
             <div className='caption-container__feed'>
-                <p>{image?.caption}</p>
+                <p><Link to={`users/${image?.userId}`} className="feed-profile__link">{image?.user.username}</Link> {image?.caption}</p>
             </div>
         </>
     )
