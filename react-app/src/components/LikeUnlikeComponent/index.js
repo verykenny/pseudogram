@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { get_feed } from "../../store/feed";
 import { delete_like, set_new_like } from "../../store/like";
@@ -22,12 +22,16 @@ const LikeUnlikeComponent = ({imageId, feedpage=false}) => {
             } else {
                 await dispatch(delete_like(Number(imageId)))
             }
-            setLiked(prev => !prev)
-
             await dispatch(get_feed())
         }
         update_like()
     }
+
+    useEffect(() => {
+        setLiked(Object.values(image.likes).some(like => (like.userId === user.id)))
+    }, [image, user.id])
+
+
 
     return (
         <div className='like-info__like_component'>
