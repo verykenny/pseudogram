@@ -132,7 +132,7 @@ def like_image(imageId):
     db.session.add(like)
     db.session.add(image)
     db.session.commit()
-    return {'like': like.to_dict()}
+    return {'like': like.to_dict_extended()}
 
 
 @image_routes.route('/<int:imgId>/likes/delete', methods=['DELETE'])
@@ -147,4 +147,4 @@ def un_like(imgId):
 
     db.session.delete(like)
     db.session.commit()
-    return {'like': like.to_dict()}
+    return {'like': like.to_dict_extended()}

@@ -301,13 +301,8 @@ export default function reducer(state = initialState, action) {
                 loading: false,
                 errors: null
             }
-            newState.images[action.payload.imgId].likes = newState.images[action.payload.imgId].likes.map(like => {
-                if (like.id === action.payload.id) {
-                    return action.payload
-                }
-                return like
-            })
-            newState.images[action.payload.imgId].totalLikes = newState.images[action.payload.imgId].totalLikes + 1
+            newState.images[action.payload.imgId.id].likes.push(action.payload)
+            newState.images[action.payload.imgId.id].totalLikes = newState.images[action.payload.imgId.id].totalLikes + 1
             return newState;
 
 
@@ -331,11 +326,11 @@ export default function reducer(state = initialState, action) {
                 loading: false,
                 errors: null
             }
-            newState.images[action.payload.imgId].likes.filter(like => {
+            newState.images[action.payload.imgId.id].likes.filter(like => {
                 return like.id !== action.payload.id
             })
 
-            newState.images[action.payload.imgId].totalLikes = newState.images[action.payload.imgId].totalLikes - 1
+            newState.images[action.payload.imgId.id].totalLikes = newState.images[action.payload.imgId.id].totalLikes - 1
 
             return newState
 
