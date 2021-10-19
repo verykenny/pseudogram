@@ -301,9 +301,7 @@ export default function reducer(state = initialState, action) {
                 loading: false,
                 errors: null
             }
-            console.log(action.payload);
-            console.log(newState.images[action.payload.imgId.id].likes);
-            newState.images[action.payload.imgId.id].likes = newState.images[action.payload.imgId.id].likes.map(like => {
+            newState.images[action.payload.imgId].likes = newState.images[action.payload.imgId].likes.map(like => {
                 if (like.id === action.payload.id) {
                     return action.payload
                 }
@@ -332,7 +330,7 @@ export default function reducer(state = initialState, action) {
                 loading: false,
                 errors: null
             }
-            newState.images[action.payload.imgId.id].likes.filter(like => {
+            newState.images[action.payload.imgId].likes.filter(like => {
                 return like.id !== action.payload.id
             })
 
